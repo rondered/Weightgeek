@@ -1,0 +1,30 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://user:123456@localhost:5432/wg_db"
+}
+
+model User {
+  id         String     @id @default(uuid())
+  email      String     @unique
+  goal       Int?
+  goal_date  String?
+  weight_ins WeightIn[]
+
+  @@index([id, email], name: "User.id_email_index")
+}
+
+model WeightIn {
+  id       String @id @default(uuid())
+  userId   String
+  weight   Int?
+  date     String
+  calories Int?
+  user     User   @relation(fields: [userId], references: [id])
+
+  @@index([id], name: "WeightIn.id_index")
+}

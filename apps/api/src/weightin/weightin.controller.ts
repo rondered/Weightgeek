@@ -1,0 +1,36 @@
+import {
+  Controller,
+  Get,
+  UseGuards,
+  Request,
+  Post,
+  Body,
+} from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { AuthService } from '../auth';
+import { UserService } from '../user';
+import { AddWeightInDto } from '../types/dtos';
+import { WeightinService } from './weightin.service';
+
+@Controller('weightin')
+export class WeightinController {
+  constructor(
+    private weightinService: WeightinService,
+    private authService: AuthService,
+    private userService: UserService,
+  ) {}
+
+  @Get()
+  @UseGuards(AuthGuard('Refresh'))
+  getWeightIns(@Request() req) {
+    return this.weightinService.getWeightIns(req);
+  }
+
+  @Post()
+  @UseGuards(AuthGuard('Refresh'))
+  async addWeightIn(@Request() req, @Body() addWeightInDto: AddWeightInDto) {
+    const email = await this.authService.getEmailFromToken(req);
+    const user = await this.userService.findOrSignUp(email);
+    return this.weightinService.addWeightIn(user.id, addWeightInDto);
+  }
+}

@@ -1,0 +1,4 @@
+/node_modules
+/sql
+/postgres-data
+/**/node_modules
