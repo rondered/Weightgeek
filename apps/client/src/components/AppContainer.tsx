@@ -5,5 +5,5 @@ interface IAppContainer {
 }
 
 export const AppContainer: React.FC<IAppContainer> = (props) => (
-    <div className="max-w-md mx-auto">{props.children}</div>
+    <div className="">{props.children}</div>
 );

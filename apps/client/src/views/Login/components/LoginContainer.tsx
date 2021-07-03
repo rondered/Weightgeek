@@ -5,9 +5,11 @@ interface ILoginContainer {
 }
 
 export const LoginContainer: React.FC<ILoginContainer> = (props) => (
-  <div className="flex h-screen">
+  <div className="flex h-screen bg-gray-100">
     <div className="m-auto">
-      <div className="p-8 shadow">{props.children}</div>
+      <div className="p-8 shadow bg-white">
+        {props.children}
+        </div>
     </div>
   </div>
 );
