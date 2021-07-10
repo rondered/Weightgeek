@@ -10,7 +10,6 @@ import { AccessStrategy, RefreshStrategy } from './strategies';
 @Module({
   imports: [
     ConfigModule,
-    forwardRef(() => UserModule),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

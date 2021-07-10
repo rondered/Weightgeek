@@ -7,7 +7,6 @@ export class AuthService {
   constructor(
     private configService: ConfigService,
     private jwtService: JwtService,
-    private userService: UserService,
   ) {}
 
   generateAccessToken(req): string {
@@ -25,14 +24,6 @@ export class AuthService {
           this.configService.get('REFRESH_TOKEN').signOptions.expiresIn,
       },
     );
-  }
-
-  async validateLogin(email: string, password: string) {
-    const user = await this.userService.getUser(email);
-    if (!user || user.password !== password) {
-      return null;
-    }
-    return user;
   }
 
   generateTokens(req) {

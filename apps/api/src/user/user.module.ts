@@ -1,11 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { DbModule } from '../db';
 import { UserService } from './user.service';
-import { RefreshStrategy } from '../auth';
+import { RefreshStrategy, AuthModule } from '../auth';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [DbModule, ConfigModule],
+  imports: [DbModule, ConfigModule, forwardRef(() => AuthModule)],
   providers: [UserService, RefreshStrategy],
   exports: [UserService],
 })
