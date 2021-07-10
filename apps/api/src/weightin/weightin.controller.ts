@@ -29,8 +29,7 @@ export class WeightinController {
   @Post()
   @UseGuards(AuthGuard('Refresh'))
   async addWeightIn(@Request() req, @Body() addWeightInDto: AddWeightInDto) {
-    const email = await this.authService.getEmailFromToken(req);
-    const user = await this.userService.findOrSignUp(email);
-    return this.weightinService.addWeightIn(user.id, addWeightInDto);
+    const id = await this.authService.getIdFromToken(req);
+    return this.weightinService.addWeightIn(id, addWeightInDto);
   }
 }

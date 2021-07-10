@@ -6,16 +6,15 @@ import { ConfigService } from '@nestjs/config';
 
 @Controller('google')
 export class GoogleController {
-  constructor(private authService: AuthService, private configService : ConfigService ) {}
+  constructor(
+    private authService: AuthService,
+    private configService: ConfigService,
+  ) {}
 
   @Get('redirect')
   @UseGuards(AuthGuard('Google'))
   redirectFromGoogle(@Req() req, @Res() res: Response) {
     const tokens = this.authService.generateTokens(req);
-    // res.setHeader(
-    //   'Set-Cookie',
-    //   `Authentication=${tokens.refresh_token}; HttpOnly; Max-Age='1d'`,
-    // );
     res.cookie('Authentication', tokens, {
       httpOnly: true,
       secure: this.configService.get('PRODUCTION'),

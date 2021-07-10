@@ -15,18 +15,26 @@ export class UserService implements OnModuleInit {
     this.loggerService.log('Service started!', this.context);
   }
 
-  async findOrSignUp(email: string): Promise<User> {
-    const foundUser = await this.dbService.user.findUnique({
-      where: { email: email },
+  async signUp(email: string, google_id?: string) {
+    const signedUpUser = await this.dbService.user.create({
+      data: { email, google_id },
     });
+    return signedUpUser;
+  }
+
+  async getUser(email: string) {
+    return this.dbService.user.findUnique({ where: { email } });
+  }
+
+  async loginOrSignUp(loginPayload: {
+    email: string;
+    google_id?: string;
+    password?: string;
+  }): Promise<User> {
+    const foundUser = await this.getUser(loginPayload.email);
     if (foundUser) {
       return foundUser;
     }
-    const newUser = await this.dbService.user.create({
-      data: {
-        email: email,
-      },
-    });
-    return newUser;
+    return this.dbService.user.create({ data: loginPayload });
   }
 }

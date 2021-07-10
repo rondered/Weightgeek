@@ -6,7 +6,10 @@ import { ConfigService } from '@nestjs/config';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService, private configService : ConfigService) {}
+  constructor(
+    private authService: AuthService,
+    private configService: ConfigService,
+  ) {}
 
   @Get('refresh')
   @UseGuards(AuthGuard('Access'))

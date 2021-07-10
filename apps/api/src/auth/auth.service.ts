@@ -1,28 +1,38 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { runInThisContext } from 'vm';
 import { ConfigService } from '@nestjs/config';
-
+import { UserService } from '../user';
 @Injectable()
 export class AuthService {
   constructor(
     private configService: ConfigService,
     private jwtService: JwtService,
+    private userService: UserService,
   ) {}
 
   generateAccessToken(req): string {
-    return this.jwtService.sign({ email: req.user.email });
+    return this.jwtService.sign({
+      id: req.user.id,
+    });
   }
 
   generateRefreshToken(req) {
     return this.jwtService.sign(
-      { email: req.user.email },
+      { id: req.user.id },
       {
         secret: this.configService.get('REFRESH_TOKEN').secret,
-        expiresIn: this.configService.get('REFRESH_TOKEN').signOptions
-          .expiresIn,
+        expiresIn:
+          this.configService.get('REFRESH_TOKEN').signOptions.expiresIn,
       },
     );
+  }
+
+  async validateLogin(email: string, password: string) {
+    const user = await this.userService.getUser(email);
+    if (!user || user.password !== password) {
+      return null;
+    }
+    return user;
   }
 
   generateTokens(req) {
@@ -32,7 +42,7 @@ export class AuthService {
     };
   }
 
-  getEmailFromToken(req) {
-    return req.user.email;
+  getIdFromToken(req) {
+    return req.user.id;
   }
 }

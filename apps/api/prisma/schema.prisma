@@ -11,8 +11,8 @@ datasource db {
 model User {
   id         String     @id @default(uuid())
   email      String     @unique
-  goal       Int?
-  goal_date  String?
+  password   String?
+  google_id  String?
   weight_ins WeightIn[]
 
   @@index([id, email], name: "User.id_email_index")

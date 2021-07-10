@@ -6,12 +6,15 @@ import { AuthService } from '../auth';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService, private authService : AuthService) {}
+  constructor(
+    private readonly userService: UserService,
+    private authService: AuthService,
+  ) {}
 
   @Get()
   @UseGuards(AuthGuard('Refresh'))
-  async getUser(@Request() req) : Promise<User> {
-    const email = this.authService.getEmailFromToken(req);
-    return this.userService.findOrSignUp(email);
+  async getUser(@Request() req): Promise<User> {
+    const id = this.authService.getIdFromToken(req);
+    return this.userService.loginOrSignUp(req.user.id);
   }
 }
