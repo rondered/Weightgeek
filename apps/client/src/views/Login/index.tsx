@@ -1,16 +1,24 @@
 import React from "react";
-import { LoginContainer } from "./components/LoginContainer";
-import { LoginButton } from "./components/LoginButton";
-import { Link } from "wouter";
-import { config } from '../../config';
+import {
+  LoginButton,
+  LoginContainer,
+  LoginDivider,
+  LoginForm,
+} from "./components";
+import { config } from "../../config";
+import { FaGoogle } from 'react-icons/fa';
+import { Flex, VStack, Spacer, Divider } from "@chakra-ui/react";
 
 export const Login = () => {
-
   return (
     <LoginContainer>
-      <a href={`${config.API_URL}/google/redirect`}>
-        <LoginButton isLoading={false} />
-      </a>
+      <VStack spacing={4} align="stretch">
+        <a href={`${config.API_URL}/google/redirect`}>
+          <LoginButton leftIcon={<FaGoogle/>} text="Login With Google" isLoading={false} />
+        </a>
+        <LoginDivider />
+        <LoginForm />
+      </VStack>
     </LoginContainer>
   );
 };
