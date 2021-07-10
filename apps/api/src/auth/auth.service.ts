@@ -9,27 +9,21 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  generateAccessToken(req): string {
-    return this.jwtService.sign({
-      id: req.user.id,
+  generateAccessToken(payload: any): string {
+    return this.jwtService.sign(payload);
+  }
+
+  generateRefreshToken(payload) {
+    return this.jwtService.sign(payload, {
+      secret: this.configService.get('REFRESH_TOKEN').secret,
+      expiresIn: this.configService.get('REFRESH_TOKEN').signOptions.expiresIn,
     });
   }
 
-  generateRefreshToken(req) {
-    return this.jwtService.sign(
-      { id: req.user.id },
-      {
-        secret: this.configService.get('REFRESH_TOKEN').secret,
-        expiresIn:
-          this.configService.get('REFRESH_TOKEN').signOptions.expiresIn,
-      },
-    );
-  }
-
-  generateTokens(req) {
+  generateTokens(payload) {
     return {
-      access_token: this.generateAccessToken(req),
-      refresh_token: this.generateRefreshToken(req),
+      access_token: this.generateAccessToken(payload),
+      refresh_token: this.generateRefreshToken(payload),
     };
   }
 

@@ -14,12 +14,12 @@ export class GoogleController {
   @Get('redirect')
   @UseGuards(AuthGuard('Google'))
   redirectFromGoogle(@Req() req, @Res() res: Response) {
-    const tokens = this.authService.generateTokens(req);
+    const tokens = this.authService.generateTokens({ id: req.user.id });
     res.cookie('Authentication', tokens, {
       httpOnly: true,
       secure: this.configService.get('PRODUCTION'),
       maxAge: 259200000,
     });
-    return res.redirect(this.configService.get('FE_URL'));
+    res.redirect(this.configService.get('FE_URL'));
   }
 }

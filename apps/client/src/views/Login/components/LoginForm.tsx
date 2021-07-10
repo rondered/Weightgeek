@@ -24,7 +24,18 @@ export const LoginForm = () => {
   } = useForm({ resolver: zodResolver(validationSchema) });
 
   const onSubmit = (values: any) => {
-    alert(JSON.stringify(values));
+    const lala = async () => {
+      const rawResponse = await fetch("http://localhost:4444/user/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      const content = await rawResponse.json();
+    };
+    lala();
   };
 
   return (

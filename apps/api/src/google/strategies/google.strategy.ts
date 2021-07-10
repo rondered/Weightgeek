@@ -36,10 +36,11 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'Google') {
       picture: photos[0].value,
       accessToken,
     };
-    const userInDb = await this.userService.loginOrSignUp({
-      email: user.email,
-      google_id: user.google_id,
-    });
+    const userInDb = await this.userService.loginOrSignUp(
+      user.email,
+      undefined,
+      user.google_id,
+    );
     user.id = userInDb.id;
     done(null, user);
   }
