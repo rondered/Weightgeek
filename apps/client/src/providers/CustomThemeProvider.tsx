@@ -3,7 +3,6 @@ import react from "react";
 import {
   ThemeProvider,
   createGlobalStyle,
-  DefaultTheme,
 } from "styled-components";
 
 interface ICustomThemeProvider {
