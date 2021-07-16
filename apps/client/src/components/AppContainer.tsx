@@ -5,5 +5,5 @@ interface IAppContainer {
 }
 
 export const AppContainer: React.FC<IAppContainer> = (props) => (
-    <div className="">{props.children}</div>
+    <div>{props.children}</div>
 );

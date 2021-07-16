@@ -5,6 +5,7 @@ import {
   FormHelperText,
   Input,
   VStack,
+  HStack
 } from "@chakra-ui/react";
 import { LoginButton } from ".";
 import { z } from "zod";

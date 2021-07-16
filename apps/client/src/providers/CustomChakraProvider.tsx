@@ -1,23 +1,26 @@
 import React from "react";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-
+import { chakra, ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ThemeContext } from 'styled-components';
 interface ICustomChakraProvider {
   children?: React.ReactNode;
 }
 
-const theme = extendTheme({
-    colors: {
-        loginBg: {
-            100: '#E5E7EB'
-        },
-        loginButtonBg: {
-            100: '#10B981'
-        }
-    },
-});
-
 export const CustomChakraProvider: React.FC<ICustomChakraProvider> = (
   props
 ) => {
-  return <ChakraProvider theme={theme}>{props.children}</ChakraProvider>;
+
+  const themeContext = React.useContext(ThemeContext)
+
+  const chakraTheme = extendTheme({
+    colors: {
+      loginBg: {
+        100: themeContext.mainColor,
+      },
+      loginButtonBg: {
+        100: themeContext.mainColor,
+      },
+    },
+  });
+
+  return <ChakraProvider theme={chakraTheme}>{props.children}</ChakraProvider>;
 };

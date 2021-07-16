@@ -1,14 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App';
-import './index.css';
-import { CustomChakraProvider } from './providers';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.css";
+import { CustomChakraProvider, CustomThemeProvider } from "./providers";
 
 ReactDOM.render(
   <React.StrictMode>
-    <CustomChakraProvider>
-    <App />
-    </CustomChakraProvider>
+    <CustomThemeProvider>
+      <CustomChakraProvider>
+        <App />
+      </CustomChakraProvider>
+    </CustomThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);
