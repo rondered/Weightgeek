@@ -3,7 +3,7 @@ import { LoginButton, LoginDivider, LoginForm } from "./components";
 import { config } from "../../config";
 import { FaGoogle } from "react-icons/fa";
 import styled from "styled-components";
-import breakpoint, { map } from 'styled-components-breakpoint';
+import breakpoint from 'styled-components-breakpoint';
 
 
 const LoginContainer = styled.div`
@@ -15,13 +15,15 @@ const LoginContainer = styled.div`
 `;
 
 const LoginFormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  display: grid;
+  gap: 10px;
   width: 100%;
-  ${map({mobile: '20px', tablet: '120px', desktop: '120px'}, padding => `padding: ${padding};`)}
+  padding: 20px;
 `
 
 const LoginDecorationContainer = styled.div`
+  flex: 2;
   width: 100%;
   height: 100%;
   background-color: ${props => props.theme.mainColor};

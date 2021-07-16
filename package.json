@@ -1,6 +1,10 @@
 {
   "name": "wg",
   "private": "true",
+  "scripts": {
+    "start:client": "yarn workspace @wg/client run dev",
+    "start:api": "yarn workspace @wg/api run start:dev"
+  },
   "workspaces": [
     "apps/*"
   ],

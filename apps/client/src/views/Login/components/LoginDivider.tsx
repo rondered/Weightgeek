@@ -6,17 +6,19 @@ const LoginDividerContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  font-decoration: underline;
 `;
 
 const LoginDividerText = styled.div`
   margin-left: 15px;
   margin-right: 15px;
+  font-size: 12px;
 `;
 
 export const LoginDivider = () => (
   <LoginDividerContainer>
-    <Divider isFullWidth />
+    <Divider />
     <LoginDividerText>OR</LoginDividerText>
-    <Divider isFullWidth />
+    <Divider />
   </LoginDividerContainer>
 );

@@ -5,12 +5,18 @@ import {
   FormHelperText,
   Input,
   VStack,
-  HStack
+  HStack,
 } from "@chakra-ui/react";
 import { LoginButton } from ".";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import styled from "styled-components";
+
+const LoginFormContainer = styled.div`
+  display: grid;
+  gap: 20px;
+`;
 
 export const LoginForm = () => {
   const validationSchema = z.object({
@@ -41,7 +47,7 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <VStack>
+      <LoginFormContainer>
         <FormControl isInvalid={errors.email}>
           <Input
             {...register("email")}
@@ -62,8 +68,8 @@ export const LoginForm = () => {
           />
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
         </FormControl>
-        <LoginButton type="submit" isLoading={isSubmitting} text="Login" />
-      </VStack>
+        <LoginButton isLoading={isSubmitting} text="Login" />
+      </LoginFormContainer>
     </form>
   );
 };
