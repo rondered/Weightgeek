@@ -17,12 +17,16 @@ export const CustomChakraProvider: React.FC<ICustomChakraProvider> = (
     },
     fontSizes: {
       md: themeContext.mdFontSize,
+      sm: themeContext.smFontSize,
     },
     colors: {
       loginBg: {
         100: themeContext.mainColor,
       },
       loginButtonBg: {
+        100: themeContext.mainColor,
+      },
+      loginFormFieldFocus: {
         100: themeContext.mainColor,
       },
     },

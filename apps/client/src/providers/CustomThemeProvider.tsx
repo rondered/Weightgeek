@@ -1,29 +1,19 @@
 import React from "react";
-import react from "react";
-import {
-  ThemeProvider,
-  createGlobalStyle,
-} from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 interface ICustomThemeProvider {
   children?: React.ReactNode;
-}
-
-interface CustomTheme {
-  mainColor: string;
-  buttonTextColor: string;
-  fontFamily: string;
-  mdFontSize: string;
 }
 
 const theme = {
   mainColor: "#6366F1",
   buttonTextColor: "#FFFFFF",
   fontFamily: "'Roboto', sans-serif",
-  mdFontSize: "13px",
+  mdFontSize: "18px",
+  smFontSize: "14px"
 };
 
-const GlobalStyle = createGlobalStyle<CustomTheme>`
+const GlobalStyle = createGlobalStyle`
 body {
   font-family: 'Roboto', sans-serif;
 }

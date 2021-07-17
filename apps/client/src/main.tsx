@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { CustomChakraProvider, CustomThemeProvider } from "./providers";
+import {
+  CustomChakraProvider,
+  CustomThemeProvider,
+  CustomQueryClientProvider,
+} from "./providers";
 
 ReactDOM.render(
   <React.StrictMode>
     <CustomThemeProvider>
       <CustomChakraProvider>
-        <App />
+        <CustomQueryClientProvider>
+          <App />
+        </CustomQueryClientProvider>
       </CustomChakraProvider>
     </CustomThemeProvider>
   </React.StrictMode>,

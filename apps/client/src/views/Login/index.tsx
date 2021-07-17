@@ -3,8 +3,7 @@ import { LoginButton, LoginDivider, LoginForm } from "./components";
 import { config } from "../../config";
 import { FaGoogle } from "react-icons/fa";
 import styled from "styled-components";
-import breakpoint from 'styled-components-breakpoint';
-
+import breakpoint from "styled-components-breakpoint";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -20,23 +19,31 @@ const LoginFormContainer = styled.div`
   gap: 10px;
   width: 100%;
   padding: 20px;
-`
+`;
+
+const LoginHeader = styled.div`
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 900;
+`;
 
 const LoginDecorationContainer = styled.div`
   flex: 2;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.mainColor};
+  background-color: ${(props) => props.theme.mainColor};
 
-  ${breakpoint('mobile', 'tablet')`
+  ${breakpoint("mobile", "tablet")`
   display: none;
   `}
-`
+`;
 
 export const Login = () => {
   return (
     <LoginContainer>
       <LoginFormContainer>
+        <LoginHeader>Welcome Back!</LoginHeader>
         <a href={`${config.API_URL}/google/redirect`}>
           <LoginButton
             leftIcon={<FaGoogle />}
@@ -47,7 +54,7 @@ export const Login = () => {
         <LoginDivider />
         <LoginForm />
       </LoginFormContainer>
-      <LoginDecorationContainer/>
+      <LoginDecorationContainer />
     </LoginContainer>
   );
 };
