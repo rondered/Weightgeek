@@ -9,6 +9,9 @@ import {
   FormErrorMessage,
   Input,
   InputGroup,
+  Alert,
+  AlertIcon,
+  AlertDescription,
 } from "@chakra-ui/react";
 import { useLogin } from "../../hooks";
 import { Link } from "wouter";
@@ -73,6 +76,12 @@ export const Login = () => {
     <LoginContainer>
       <LoginFormContainer>
         <LoginHeader>Welcome Back!</LoginHeader>
+        {isResponseError && (
+          <Alert status="error">
+            <AlertIcon />
+            <AlertDescription>{responseError}</AlertDescription>
+          </Alert>
+        )}
         <a href={`${config.API_URL}/google/redirect`}>
           <FormButton
             leftIcon={<FaGoogle />}

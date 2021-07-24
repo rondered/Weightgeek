@@ -1,5 +1,4 @@
 import React from "react";
-import { SignupForm } from "./components";
 import { FormDivider, FormButton } from "../../components";
 import { config } from "../../config";
 import { FaGoogle } from "react-icons/fa";
@@ -10,6 +9,9 @@ import {
   FormErrorMessage,
   Input,
   InputGroup,
+  Alert,
+  AlertIcon,
+  AlertDescription
 } from "@chakra-ui/react";
 import { useSignup } from "../../hooks";
 import { Link } from "wouter";
@@ -74,6 +76,12 @@ export const Signup = () => {
     <SignupContainer>
       <SignupFormContainer>
         <SignupHeader>Sign up</SignupHeader>
+        {isResponseError && (
+          <Alert status="error">
+            <AlertIcon />
+            <AlertDescription>{responseError}</AlertDescription>
+          </Alert>
+        )}
         <a href={`${config.API_URL}/google/redirect`}>
           <FormButton
             leftIcon={<FaGoogle />}
