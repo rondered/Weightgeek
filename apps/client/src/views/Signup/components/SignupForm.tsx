@@ -5,9 +5,8 @@ import {
   Input,
   InputGroup,
 } from "@chakra-ui/react";
-import { FormButton } from '../../../components'
-import { useSignupForm } from "../../../hooks/forms";
-import { useSignup } from "../../../hooks/api";
+import { FormButton } from "../../../components";
+import { useSignup } from "../../../hooks";
 import styled from "styled-components";
 
 const LoginFormContainer = styled.div`
@@ -16,38 +15,44 @@ const LoginFormContainer = styled.div`
 `;
 
 export const SignupForm = () => {
-  const { mutate, isLoading, data, isError, error } = useSignup();
-  const { register, handleSubmit, errors } = useSignupForm();
+  const {
+    isLoading,
+    handleSubmit,
+    register,
+    formErrors,
+    responseError,
+    isResponseError,
+  } = useSignup();
 
   return (
-    <form onSubmit={handleSubmit((values) => mutate(values))}>
+    <form onSubmit={handleSubmit}>
       <LoginFormContainer>
-        <FormControl isInvalid={errors.email}>
+        <FormControl isInvalid={formErrors.email}>
           <InputGroup>
             <Input
               {...register("email")}
               type="email"
               name="email"
               placeholder="email"
-              isInvalid={errors.email}
+              isInvalid={formErrors.email}
               focusBorderColor="loginFormFieldFocus.100"
             />
           </InputGroup>
-          { JSON.stringify(isError) }
-          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+          <FormErrorMessage>{formErrors.email?.message}</FormErrorMessage>
         </FormControl>
-        <FormControl isInvalid={errors.password}>
+        <FormControl isInvalid={formErrors.password}>
           <InputGroup>
             <Input
               {...register("password")}
               type="password"
               name="password"
               placeholder="password"
-              isInvalid={errors.password}
+              isInvalid={formErrors.password}
               focusBorderColor="loginFormFieldFocus.100"
             />
           </InputGroup>
-          <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
+          {JSON.stringify(responseError)}
+          <FormErrorMessage>{formErrors.password?.message}</FormErrorMessage>
         </FormControl>
         <FormButton isLoading={isLoading} text="Sign up" />
       </LoginFormContainer>

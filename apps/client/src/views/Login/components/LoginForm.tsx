@@ -5,9 +5,8 @@ import {
   Input,
   InputGroup,
 } from "@chakra-ui/react";
-import { FormButton } from '../../../components'
-import { useLoginForm } from "../../../hooks/forms";
-import { useLogin } from "../../../hooks/api";
+import { FormButton } from "../../../components";
+import { useLogin } from "../../../hooks";
 import styled from "styled-components";
 
 const LoginFormContainer = styled.div`
@@ -16,37 +15,43 @@ const LoginFormContainer = styled.div`
 `;
 
 export const LoginForm = () => {
-  const { mutate, isLoading, data, isError } = useLogin();
-  const { register, handleSubmit, errors } = useLoginForm();
+  const {
+    isLoading,
+    handleSubmit,
+    register,
+    formErrors,
+    responseError,
+    isResponseError,
+  } = useLogin();
 
   return (
-    <form onSubmit={handleSubmit((values) => mutate(values))}>
+    <form onSubmit={handleSubmit}>
       <LoginFormContainer>
-        <FormControl isInvalid={errors.email}>
+        <FormControl isInvalid={formErrors.email}>
           <InputGroup>
             <Input
               {...register("email")}
               type="email"
               name="email"
               placeholder="email"
-              isInvalid={errors.email}
+              isInvalid={formErrors.email}
               focusBorderColor="loginFormFieldFocus.100"
             />
           </InputGroup>
-          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+          <FormErrorMessage>{formErrors.email?.message}</FormErrorMessage>
         </FormControl>
-        <FormControl isInvalid={errors.password}>
+        <FormControl isInvalid={formErrors.password}>
           <InputGroup>
             <Input
               {...register("password")}
               type="password"
               name="password"
               placeholder="password"
-              isInvalid={errors.password}
+              isInvalid={formErrors.password}
               focusBorderColor="loginFormFieldFocus.100"
             />
           </InputGroup>
-          <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
+          <FormErrorMessage>{formErrors.password?.message}</FormErrorMessage>
         </FormControl>
         <FormButton isLoading={isLoading} text="Login" />
       </LoginFormContainer>

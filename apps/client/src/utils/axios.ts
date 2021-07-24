@@ -25,6 +25,7 @@ axiosInstance.interceptors.response.use(
         throw error;
       }
     } else {
+      console.log(error.response.data.message);
       throw error;
     }
   }
