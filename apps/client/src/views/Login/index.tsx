@@ -1,10 +1,17 @@
 import React from "react";
-import { LoginForm } from "./components";
-import { FormDivider, FormButton } from '../../components'
+import { FormDivider, FormButton } from "../../components";
 import { config } from "../../config";
 import { FaGoogle } from "react-icons/fa";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import {
+  FormControl,
+  FormErrorMessage,
+  Input,
+  InputGroup,
+} from "@chakra-ui/react";
+import { useLogin } from "../../hooks";
+import { Link } from "wouter";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -40,7 +47,28 @@ const LoginDecorationContainer = styled.div`
   `}
 `;
 
+const FormContainer = styled.div`
+  display: grid;
+  gap: 20px;
+`;
+
+const OfferSignupContainer = styled.div`
+  display: inline-block;
+  a {
+    font-weight: 600;
+  }
+`;
+
 export const Login = () => {
+  const {
+    isLoading,
+    handleSubmit,
+    register,
+    formErrors,
+    responseError,
+    isResponseError,
+  } = useLogin();
+
   return (
     <LoginContainer>
       <LoginFormContainer>
@@ -52,8 +80,43 @@ export const Login = () => {
             isLoading={false}
           />
         </a>
-        <FormDivider text="OR"/>
-        <LoginForm />
+        <FormDivider text="OR" />
+        <form onSubmit={handleSubmit}>
+          <FormContainer>
+            <FormControl isInvalid={formErrors.email}>
+              <InputGroup>
+                <Input
+                  {...register("email")}
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  isInvalid={formErrors.email}
+                  focusBorderColor="loginFormFieldFocus.100"
+                />
+              </InputGroup>
+              <FormErrorMessage>{formErrors.email?.message}</FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={formErrors.password}>
+              <InputGroup>
+                <Input
+                  {...register("password")}
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  isInvalid={formErrors.password}
+                  focusBorderColor="loginFormFieldFocus.100"
+                />
+              </InputGroup>
+              <FormErrorMessage>
+                {formErrors.password?.message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormButton isLoading={isLoading} text="Login" />
+          </FormContainer>
+        </form>
+        <OfferSignupContainer>
+          Don't have an account? <Link to="/signup">Signup</Link>
+        </OfferSignupContainer>
       </LoginFormContainer>
       <LoginDecorationContainer />
     </LoginContainer>
