@@ -3,8 +3,7 @@ import { axiosInstance } from "../../utils/axios";
 
 const login = async (values: any) => {
     const result = await axiosInstance.post(`user/login`,values);
-    const { data } = result;
-    return data;
+    return result;
 };
 
 export const useLogin = () => {

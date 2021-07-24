@@ -16,7 +16,7 @@ const LoginFormContainer = styled.div`
 `;
 
 export const SignupForm = () => {
-  const { mutate, isLoading, data, isError } = useSignup();
+  const { mutate, isLoading, data, isError, error } = useSignup();
   const { register, handleSubmit, errors } = useSignupForm();
 
   return (
@@ -33,6 +33,7 @@ export const SignupForm = () => {
               focusBorderColor="loginFormFieldFocus.100"
             />
           </InputGroup>
+          { JSON.stringify(isError) }
           <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
         </FormControl>
         <FormControl isInvalid={errors.password}>
