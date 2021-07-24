@@ -1,14 +1,10 @@
 import React from "react";
 import "./App.css";
 import { Login } from "./views";
-import { AppContainer } from "./components/AppContainer";
+import { AppRouter } from "./Router";
 
 function App() {
-  return (
-      <AppContainer>
-        <Login />
-      </AppContainer>
-  );
+  return <AppRouter />;
 }
 
 export default App;

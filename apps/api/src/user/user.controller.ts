@@ -42,7 +42,7 @@ export class UserController {
     res.redirect(this.configService.get('FE_URL'));
   }
 
-  @Post('/sign-up')
+  @Post('/signup')
   async signUpUser(@Request() req, @Body() payload: SignUpUserDto, @Res() res) {
     const { email, password } = payload;
     const user = await this.userService.signUp(email, password);

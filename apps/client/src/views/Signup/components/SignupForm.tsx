@@ -6,8 +6,8 @@ import {
   InputGroup,
 } from "@chakra-ui/react";
 import { FormButton } from '../../../components'
-import { useLoginForm } from "../../../hooks/forms";
-import { useLogin } from "../../../hooks/api";
+import { useSignupForm } from "../../../hooks/forms";
+import { useSignup } from "../../../hooks/api";
 import styled from "styled-components";
 
 const LoginFormContainer = styled.div`
@@ -15,9 +15,9 @@ const LoginFormContainer = styled.div`
   gap: 20px;
 `;
 
-export const LoginForm = () => {
-  const { mutate, isLoading, data, isError } = useLogin();
-  const { register, handleSubmit, errors } = useLoginForm();
+export const SignupForm = () => {
+  const { mutate, isLoading, data, isError } = useSignup();
+  const { register, handleSubmit, errors } = useSignupForm();
 
   return (
     <form onSubmit={handleSubmit((values) => mutate(values))}>
@@ -48,7 +48,7 @@ export const LoginForm = () => {
           </InputGroup>
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
         </FormControl>
-        <FormButton isLoading={isLoading} text="Login" />
+        <FormButton isLoading={isLoading} text="Sign up" />
       </LoginFormContainer>
     </form>
   );

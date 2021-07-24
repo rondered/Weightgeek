@@ -24,6 +24,12 @@ export class UserService implements OnModuleInit {
   }
 
   async signUp(email: string, password?: string, google_id?: string) {
+    const alreadySignedUpUser = await this.dbService.user.findFirst({
+      where: { email },
+    });
+    if (alreadySignedUpUser) {
+      throw new ForbiddenException('User already exists!');
+    }
     if (password) {
       password = hashSync(password, 10);
     }

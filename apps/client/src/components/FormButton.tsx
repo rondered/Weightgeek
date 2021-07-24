@@ -2,7 +2,7 @@ import React from "react";
 import { Spinner } from "@chakra-ui/react";
 import styled from "styled-components";
 
-interface ILoginButton {
+interface IFormButton {
   children?: React.ReactNode;
   isLoading?: boolean;
   leftIcon?: React.ReactElement;
@@ -10,7 +10,7 @@ interface ILoginButton {
   backgroundColor?: string;
 }
 
-const LoginButtonContainer = styled.button<ILoginButton>`
+const FormButtonContainer = styled.button<IFormButton>`
   padding: 10px;
   display: inline-grid;
   grid-template-columns: 5% 90% 5%;
@@ -30,11 +30,11 @@ const LoginButtonContainer = styled.button<ILoginButton>`
   }
 `;
 
-export const LoginButton: React.FC<ILoginButton> = (props) => (
-  <LoginButtonContainer {...props}>
+export const FormButton: React.FC<IFormButton> = (props) => (
+  <FormButtonContainer {...props}>
     <div className="icon">{props.leftIcon}</div>
     <div className="text">
       {props.isLoading ? <Spinner size="sm" /> : props.text}
     </div>
-  </LoginButtonContainer>
+  </FormButtonContainer>
 );
