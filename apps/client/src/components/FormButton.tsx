@@ -8,6 +8,7 @@ interface IFormButton {
   leftIcon?: React.ReactElement;
   text?: string;
   backgroundColor?: string;
+  textColor?: string;
 }
 
 const FormButtonContainer = styled.button<IFormButton>`
@@ -18,7 +19,7 @@ const FormButtonContainer = styled.button<IFormButton>`
   background-color: ${(props) =>
     props.backgroundColor || props.theme.mainColor};
   width: 100%;
-  color: ${(props) => props.theme.buttonTextColor};
+  color: ${(props) => props.textColor || props.theme.buttonTextColor};
   font-weight: 300;
   font-size: 18px;
   border-radius: 13px;

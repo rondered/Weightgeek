@@ -1,7 +1,7 @@
 import React from "react";
 import { FormDivider, FormButton } from "../../components";
 import { config } from "../../config";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle as GoogleIcon } from "react-icons/fa";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
 import {
@@ -84,9 +84,10 @@ export const Signup = () => {
         )}
         <a href={`${config.API_URL}/google/redirect`}>
           <FormButton
-            leftIcon={<FaGoogle />}
+            leftIcon={<GoogleIcon />}
             text="Sign up with Google"
             isLoading={false}
+            backgroundColor="#374151"
           />
         </a>
         <FormDivider text="OR" />
@@ -116,7 +117,6 @@ export const Signup = () => {
                   focusBorderColor="loginFormFieldFocus.100"
                 />
               </InputGroup>
-              {JSON.stringify(responseError)}
               <FormErrorMessage>
                 {formErrors.password?.message}
               </FormErrorMessage>

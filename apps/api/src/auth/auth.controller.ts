@@ -32,6 +32,6 @@ export class AuthController {
   @Get()
   @UseGuards(AuthGuard('Refresh'))
   checkAuth(@Req() req) {
-    return req.user;
+    return { success: true };
   }
 }
