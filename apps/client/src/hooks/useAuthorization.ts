@@ -9,7 +9,8 @@ const auth = async (values: any) => {
 export const useAuthorization = () => {
   const { isLoading, data, isError, error } = useQuery<any, Error>(
     "auth",
-    auth
+    auth,
+    { retry: false }
   );
 
   return {

@@ -23,17 +23,20 @@ export class UserController {
   ) {}
 
   @Get()
-  @UseGuards(AuthGuard('Refresh'))
+  @UseGuards(AuthGuard('Access'))
   async getUser(@Request() req): Promise<User> {
     const id = this.authService.getIdFromToken(req);
-    return this.userService.loginOrSignUp(req.user.id);
+    return this.userService.getUser({ id: req.user.id });
   }
 
   @Post('/login')
   async loginUser(@Request() req, @Body() payload: LoginUserDto, @Res() res) {
     const { email, password } = payload;
     const user = await this.userService.login(email, password);
-    const tokens = this.authService.generateTokens({ id: user.id });
+    const tokens = this.authService.generateTokens({
+      id: user.id,
+      email: user.email,
+    });
     res.cookie('Authentication', tokens, {
       httpOnly: true,
       secure: this.configService.get('PRODUCTION'),
@@ -46,7 +49,10 @@ export class UserController {
   async signUpUser(@Request() req, @Body() payload: SignUpUserDto, @Res() res) {
     const { email, password } = payload;
     const user = await this.userService.signUp(email, password);
-    const tokens = this.authService.generateTokens({ id: user.id });
+    const tokens = this.authService.generateTokens({
+      id: user.id,
+      email: user.email,
+    });
     res.cookie('Authentication', tokens, {
       httpOnly: true,
       secure: this.configService.get('PRODUCTION'),

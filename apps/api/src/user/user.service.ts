@@ -39,12 +39,12 @@ export class UserService implements OnModuleInit {
     return signedUpUser;
   }
 
-  async getUser(email: string) {
-    return this.dbService.user.findUnique({ where: { email } });
+  async getUser(payload: any) {
+    return this.dbService.user.findUnique({ where: payload });
   }
 
   async login(email: string, password: string) {
-    const user = await this.getUser(email);
+    const user = await this.getUser({ email });
     if (!user) {
       throw new NotFoundException('User not found!');
     }
@@ -59,7 +59,7 @@ export class UserService implements OnModuleInit {
     password?: string,
     google_id?: string,
   ): Promise<User> {
-    const foundUser = await this.getUser(email);
+    const foundUser = await this.getUser({ email });
     if (foundUser) {
       return foundUser;
     }

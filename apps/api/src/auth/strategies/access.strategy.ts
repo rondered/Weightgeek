@@ -21,6 +21,6 @@ export class AccessStrategy extends PassportStrategy(Strategy, 'Access') {
   }
 
   async validate(payload: any) {
-    return { email: payload.email };
+    return { email: payload.email, id: payload.id };
   }
 }

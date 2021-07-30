@@ -11,7 +11,7 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'Refresh') {
       jwtFromRequest: ExtractJwt.fromExtractors([
         (req: Request) => {
           if (req.cookies?.Authentication) {
-            return req.cookies?.Authentication.refresh_token;
+            return req.cookies?.Authentication;
           }
         },
       ]),
@@ -21,6 +21,6 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'Refresh') {
   }
 
   async validate(payload: any) {
-    return { email: payload.email };
+    return { email: payload.email, id: payload.id };
   }
 }

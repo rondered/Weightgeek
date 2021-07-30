@@ -11,14 +11,14 @@ export class AuthController {
     private configService: ConfigService,
   ) {}
 
-  @Get('refresh')
-  @UseGuards(AuthGuard('Access'))
+  @Get('access')
+  @UseGuards(AuthGuard('Refresh'))
   refreshToken(@Req() req: Request, @Res() res: Response) {
     res.cookie(
       'Authentication',
       {
-        access_token: req.cookies.Authentication.access_token,
-        refresh_token: this.authService.generateRefreshToken(req),
+        access_token: this.authService.generateAccessToken(req),
+        refresh_token: req.cookies.Authentication.refresh_token,
       },
       {
         httpOnly: true,
@@ -30,7 +30,7 @@ export class AuthController {
   }
 
   @Get()
-  @UseGuards(AuthGuard('Refresh'))
+  @UseGuards(AuthGuard('Access'))
   checkAuth(@Req() req) {
     return { success: true };
   }

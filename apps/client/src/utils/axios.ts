@@ -8,9 +8,9 @@ const agentConfig: AxiosRequestConfig = {
 
 export const axiosInstance: AxiosInstance = axios.create(agentConfig);
 
-const refreshToken = () => {
-  const REFRESH_URL = `/auth/refresh`;
-  return axios.get(REFRESH_URL, agentConfig);
+const getAccessToken = () => {
+  const ACCESS_URL = `/auth/access`;
+  return axios.get(ACCESS_URL, agentConfig);
 };
 
 axiosInstance.interceptors.response.use(
@@ -19,7 +19,7 @@ axiosInstance.interceptors.response.use(
     const request = error.config;
     if (error.response.status === 401) {
       try {
-        await refreshToken();
+        await getAccessToken();
         return axios(error.config, agentConfig);
       } catch (error) {
         throw error;

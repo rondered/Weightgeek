@@ -6,13 +6,13 @@ export default () => ({
   ACCESS_TOKEN: {
     secret: process.env.ACCESS_SECRET || 'access_secret',
     signOptions: {
-      expiresIn: '7d',
+      expiresIn: '1d',
     },
   },
   REFRESH_TOKEN: {
     secret: process.env.REFRESH_SECET || 'refresh_secret',
     signOptions: {
-      expiresIn: '1d',
+      expiresIn: '7d',
     },
   },
 });
