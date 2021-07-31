@@ -76,62 +76,65 @@ export const Signup: React.FC<{}> = () => {
   } = useSignup();
 
   return (
-    <SignupContainer>
-      <SignupFormContainer>
-        <SignupHeader>Sign up</SignupHeader>
-        {isResponseError && (
-          <Alert status="error">
-            <AlertIcon />
-            <AlertDescription>{responseError}</AlertDescription>
-          </Alert>
-        )}
-        <a href={`${config.API_URL}/google/redirect`}>
-          <FormButton
-            leftIcon={<GoogleIcon />}
-            text="Sign up with Google"
-            isLoading={false}
-            backgroundColor="#374151"
-          />
-        </a>
-        <FormDivider text="OR" />
-        <form onSubmit={handleSubmit}>
-          <FormContainer>
-            <FormControl isInvalid={formErrors.email}>
-              <InputGroup>
-                <Input
-                  {...register("email")}
-                  type="email"
-                  name="email"
-                  placeholder="email"
-                  isInvalid={formErrors.email}
-                  focusBorderColor="loginFormFieldFocus.100"
-                />
-              </InputGroup>
-              <FormErrorMessage>{formErrors.email?.message}</FormErrorMessage>
-            </FormControl>
-            <FormControl isInvalid={formErrors.password}>
-              <InputGroup>
-                <Input
-                  {...register("password")}
-                  type="password"
-                  name="password"
-                  placeholder="password"
-                  isInvalid={formErrors.password}
-                  focusBorderColor="loginFormFieldFocus.100"
-                />
-              </InputGroup>
-              <FormErrorMessage>
-                {formErrors.password?.message}
-              </FormErrorMessage>
-            </FormControl>
-            <FormButton isLoading={isLoading} text="Sign up" />
-          </FormContainer>
-        </form>
-        <OfferLoginContainer>
-          Already signed up? <Link to="/login">Login</Link>
-        </OfferLoginContainer>
-      </SignupFormContainer>
-      <SignupDecorationContainer />
-    </SignupContainer>
+    <>
+      {isSuccess && <Redirect to="/"/>}
+      <SignupContainer>
+        <SignupFormContainer>
+          <SignupHeader>Sign up</SignupHeader>
+          {isResponseError && (
+            <Alert status="error">
+              <AlertIcon />
+              <AlertDescription>{responseError}</AlertDescription>
+            </Alert>
+          )}
+          <a href={`${config.API_URL}/google/redirect`}>
+            <FormButton
+              leftIcon={<GoogleIcon />}
+              text="Sign up with Google"
+              isLoading={false}
+              backgroundColor="#374151"
+            />
+          </a>
+          <FormDivider text="OR" />
+          <form onSubmit={handleSubmit}>
+            <FormContainer>
+              <FormControl isInvalid={formErrors.email}>
+                <InputGroup>
+                  <Input
+                    {...register("email")}
+                    type="email"
+                    name="email"
+                    placeholder="email"
+                    isInvalid={formErrors.email}
+                    focusBorderColor="loginFormFieldFocus.100"
+                  />
+                </InputGroup>
+                <FormErrorMessage>{formErrors.email?.message}</FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={formErrors.password}>
+                <InputGroup>
+                  <Input
+                    {...register("password")}
+                    type="password"
+                    name="password"
+                    placeholder="password"
+                    isInvalid={formErrors.password}
+                    focusBorderColor="loginFormFieldFocus.100"
+                  />
+                </InputGroup>
+                <FormErrorMessage>
+                  {formErrors.password?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormButton isLoading={isLoading} text="Sign up" />
+            </FormContainer>
+          </form>
+          <OfferLoginContainer>
+            Already signed up? <Link to="/login">Login</Link>
+          </OfferLoginContainer>
+        </SignupFormContainer>
+        <SignupDecorationContainer />
+      </SignupContainer>
+    </>
   );
 };
