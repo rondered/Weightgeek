@@ -17,26 +17,23 @@ export const useAuthorization = () => {
     })
   );
 
-  const { isLoading, data, isError, error } = useQuery<any, Error>(
-    "auth",
-    auth,
-    {
-      retry: false,
-      enabled: !authTried,
-      onSettled: () => {
-        setAuthTried();
-      },
-      onSuccess: () => {
-        setLoggedIn(true);
-      },
-      onError: () => {
-        setLoggedIn(false);
-      },
-    }
-  );
+  const { isLoading, refetch } = useQuery<any, Error>("auth", auth, {
+    retry: false,
+    enabled: !authTried,
+    onSettled: () => {
+      setAuthTried();
+    },
+    onSuccess: () => {
+      setLoggedIn(true);
+    },
+    onError: () => {
+      setLoggedIn(false);
+    },
+  });
 
   return {
-    isLoggedIn: !!data,
+    isLoggedIn: isLoggedIn,
     isLoading,
+    refetch,
   };
 };

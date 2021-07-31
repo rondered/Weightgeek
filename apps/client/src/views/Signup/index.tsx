@@ -77,7 +77,7 @@ export const Signup: React.FC<{}> = () => {
 
   return (
     <>
-      {isSuccess && <Redirect to="/"/>}
+      {isSuccess && <Redirect to="/" />}
       <SignupContainer>
         <SignupFormContainer>
           <SignupHeader>Sign up</SignupHeader>

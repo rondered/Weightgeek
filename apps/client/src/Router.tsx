@@ -33,9 +33,7 @@ export const AppRouter: React.FC<{}> = () => {
   return (
     <>
       {isLoading ? (
-        <>
-          <h1></h1>
-        </>
+        <h1></h1>
       ) : (
         <Router>
           <Switch>
@@ -54,6 +52,9 @@ export const AppRouter: React.FC<{}> = () => {
               path="/signup"
               component={Signup}
             />
+            <Route>
+              <Redirect to="/" />
+            </Route>
           </Switch>
         </Router>
       )}

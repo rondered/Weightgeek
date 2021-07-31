@@ -3,7 +3,7 @@ import { axiosInstance } from "../utils/axios";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLocation } from "wouter";
+import { useAuthorization } from "./useAuthorization";
 
 const login = async (values: any) => {
   const { data } = await axiosInstance.post(`user/login`, values);
@@ -16,12 +16,15 @@ const validationSchema = z.object({
 });
 
 export const useLogin = () => {
-  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<any, Error>(
-    login,
-    {
-      retry: false,
-    }
-  );
+  const { refetch } = useAuthorization();
+
+  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
+    any,
+    Error
+  >(login, {
+    retry: false,
+    onSuccess: () => refetch(),
+  });
   const {
     handleSubmit,
     register,
@@ -37,6 +40,6 @@ export const useLogin = () => {
     isLoading,
     data,
     isResponseError: isError,
-    isSuccess
+    isSuccess,
   };
 };
