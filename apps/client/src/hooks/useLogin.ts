@@ -20,10 +20,6 @@ export const useLogin = () => {
     login,
     {
       retry: false,
-      onSuccess: () => {
-        const [ location, setLocation ] = useLocation();
-        setLocation('/');
-      },
     }
   );
   const {
