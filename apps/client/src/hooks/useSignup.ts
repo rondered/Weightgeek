@@ -3,6 +3,7 @@ import { axiosInstance } from "../utils/axios";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLocation } from "wouter";
 
 const signup = async (values: any) => {
   const { data } = await axiosInstance.post(`user/signup`, values);
@@ -16,7 +17,10 @@ const validationSchema = z.object({
 
 export const useSignup = () => {
   const { mutate, isLoading, data, isError, error } = useMutation<any, Error>(
-    signup
+    signup,
+    {
+      retry: false,
+    }
   );
   const {
     handleSubmit,

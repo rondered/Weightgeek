@@ -33,31 +33,25 @@ export class UserController {
   async loginUser(@Request() req, @Body() payload: LoginUserDto, @Res() res) {
     const { email, password } = payload;
     const user = await this.userService.login(email, password);
-    const tokens = this.authService.generateTokens({
-      id: user.id,
-      email: user.email,
-    });
-    res.cookie('Authentication', tokens, {
-      httpOnly: true,
-      secure: this.configService.get('PRODUCTION'),
-      maxAge: 259200000,
-    });
-    res.redirect(this.configService.get('FE_URL'));
+    this.authService.refreshTokens(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      res,
+    );
   }
 
   @Post('/signup')
   async signUpUser(@Request() req, @Body() payload: SignUpUserDto, @Res() res) {
     const { email, password } = payload;
     const user = await this.userService.signUp(email, password);
-    const tokens = this.authService.generateTokens({
-      id: user.id,
-      email: user.email,
-    });
-    res.cookie('Authentication', tokens, {
-      httpOnly: true,
-      secure: this.configService.get('PRODUCTION'),
-      maxAge: 259200000,
-    });
-    res.send(user);
+    this.authService.refreshTokens(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      res,
+    );
   }
 }

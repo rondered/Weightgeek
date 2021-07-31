@@ -7,12 +7,22 @@ interface IProtectedRoute extends RouteProps {
   isLoggedIn?: boolean;
 }
 
+interface IPublicRoute extends RouteProps {
+  isLoggedIn?: boolean;
+}
+
 const ProtectedRoute: React.FC<IProtectedRoute> = (props) => {
   const { isLoggedIn, ...restOfProps } = props;
 
   return (
     <>{isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/login" />}</>
   );
+};
+
+const PublicRoute: React.FC<IPublicRoute> = (props) => {
+  const { isLoggedIn, ...restOfProps } = props;
+
+  return <>{!isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/" />}</>;
 };
 
 const Component = () => <h1>lala</h1>;
@@ -34,8 +44,16 @@ export const AppRouter: React.FC<{}> = () => {
               path="/"
               component={Component}
             />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            <PublicRoute
+              isLoggedIn={isLoggedIn}
+              path="/login"
+              component={Login}
+            />
+            <PublicRoute
+              isLoggedIn={isLoggedIn}
+              path="/signup"
+              component={Signup}
+            />
           </Switch>
         </Router>
       )}

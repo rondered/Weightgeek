@@ -3,6 +3,7 @@ import { axiosInstance } from "../utils/axios";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLocation } from "wouter";
 
 const login = async (values: any) => {
   const { data } = await axiosInstance.post(`user/login`, values);
@@ -16,7 +17,14 @@ const validationSchema = z.object({
 
 export const useLogin = () => {
   const { mutate, isLoading, data, isError, error } = useMutation<any, Error>(
-    login
+    login,
+    {
+      retry: false,
+      onSuccess: () => {
+        const [ location, setLocation ] = useLocation();
+        setLocation('/');
+      },
+    }
   );
   const {
     handleSubmit,

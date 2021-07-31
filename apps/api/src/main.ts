@@ -8,7 +8,11 @@ async function main(): Promise<void> {
   const app = await NestFactory.create(AppModule);
   const configService: ConfigService = app.get(ConfigService);
   app.useGlobalPipes(new ValidationPipe());
-  app.enableCors({ origin: [configService.get('FE_URL')], credentials: true });
+  app.enableCors({
+    origin: true,
+    credentials: true,
+    methods: 'GET, POST, DELETE, PUT',
+  });
   app.use(cookieParser());
   await app.listen(configService.get('API_PORT'));
   const logger = new Logger('WeightgeekBackend');

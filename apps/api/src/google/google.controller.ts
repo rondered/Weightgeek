@@ -14,7 +14,10 @@ export class GoogleController {
   @Get('redirect')
   @UseGuards(AuthGuard('Google'))
   redirectFromGoogle(@Req() req, @Res() res: Response) {
-    const tokens = this.authService.generateTokens({ id: req.user.id });
+    const tokens = this.authService.generateTokens({
+      id: req.user.id,
+      email: req.user.email,
+    });
     res.cookie('Authentication', tokens, {
       httpOnly: true,
       secure: this.configService.get('PRODUCTION'),
