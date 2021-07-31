@@ -11,6 +11,9 @@ export const CustomChakraProvider: React.FC<ICustomChakraProvider> = (
   const themeContext = React.useContext(ThemeContext);
 
   const chakraTheme = extendTheme({
+    config: {
+      initialColorMode: "dark",
+    },
     fonts: {
       heading: themeContext.fontFamily,
       body: themeContext.fontFamily,
