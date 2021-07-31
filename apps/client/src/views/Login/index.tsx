@@ -14,7 +14,7 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 import { useLogin } from "../../hooks";
-import { Link } from "wouter";
+import { Link, Redirect } from "wouter";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -61,6 +61,8 @@ const OfferSignupContainer = styled.div`
     font-weight: 600;
   }
 `;
+
+const SuccessRedirect: React.FC<{}> = () => <Redirect to="/" />;
 
 export const Login = () => {
   const {

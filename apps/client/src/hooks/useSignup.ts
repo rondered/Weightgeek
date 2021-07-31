@@ -16,12 +16,12 @@ const validationSchema = z.object({
 });
 
 export const useSignup = () => {
-  const { mutate, isLoading, data, isError, error } = useMutation<any, Error>(
-    signup,
-    {
-      retry: false,
-    }
-  );
+  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
+    any,
+    Error
+  >(signup, {
+    retry: false,
+  });
   const {
     handleSubmit,
     register,
@@ -37,5 +37,6 @@ export const useSignup = () => {
     isLoading,
     data,
     isResponseError: isError,
+    isSuccess,
   };
 };

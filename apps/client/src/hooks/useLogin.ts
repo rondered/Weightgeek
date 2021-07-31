@@ -16,7 +16,7 @@ const validationSchema = z.object({
 });
 
 export const useLogin = () => {
-  const { mutate, isLoading, data, isError, error } = useMutation<any, Error>(
+  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<any, Error>(
     login,
     {
       retry: false,
@@ -37,5 +37,6 @@ export const useLogin = () => {
     isLoading,
     data,
     isResponseError: isError,
+    isSuccess
   };
 };

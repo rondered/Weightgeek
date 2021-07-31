@@ -11,10 +11,10 @@ import {
   InputGroup,
   Alert,
   AlertIcon,
-  AlertDescription
+  AlertDescription,
 } from "@chakra-ui/react";
 import { useSignup } from "../../hooks";
-import { Link } from "wouter";
+import { Link, Redirect } from "wouter";
 
 const SignupContainer = styled.div`
   display: flex;
@@ -62,7 +62,9 @@ const OfferLoginContainer = styled.div`
   }
 `;
 
-export const Signup = () => {
+const SuccessRedirect: React.FC<{}> = () => <Redirect to="/" />;
+
+export const Signup: React.FC<{}> = () => {
   const {
     isLoading,
     handleSubmit,
@@ -70,6 +72,7 @@ export const Signup = () => {
     formErrors,
     responseError,
     isResponseError,
+    isSuccess,
   } = useSignup();
 
   return (
