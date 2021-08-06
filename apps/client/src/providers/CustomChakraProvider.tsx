@@ -14,6 +14,13 @@ export const CustomChakraProvider: React.FC<ICustomChakraProvider> = (
     config: {
       initialColorMode: "dark",
     },
+    styles: {
+      global: {
+        body: {
+          bg: themeContext.mainBgColor,
+        },
+      },
+    },
     fonts: {
       heading: themeContext.fontFamily,
       body: themeContext.fontFamily,

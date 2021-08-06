@@ -8,9 +8,10 @@ interface ICustomThemeProvider {
 const theme = {
   mainColor: "#6366F1",
   buttonTextColor: "#FFFFFF",
+  mainBgColor: "black",
   fontFamily: "'Roboto', sans-serif",
   mdFontSize: "18px",
-  smFontSize: "14px"
+  smFontSize: "14px",
 };
 
 const GlobalStyle = createGlobalStyle`

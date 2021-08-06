@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Router, RouteProps, Redirect } from "wouter";
 import { Login, Signup } from "./views";
 import { useAuthorization } from "./hooks";
+import { Navbar } from "./components/index";
 
 interface IProtectedRoute extends RouteProps {
   isLoggedIn?: boolean;
@@ -25,7 +26,7 @@ const PublicRoute: React.FC<IPublicRoute> = (props) => {
   return <>{!isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/" />}</>;
 };
 
-const Component = () => <h1>lala</h1>;
+const Component = () => <Navbar />;
 
 export const AppRouter: React.FC<{}> = () => {
   const { isLoggedIn, isLoading } = useAuthorization();
