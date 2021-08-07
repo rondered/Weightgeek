@@ -8,7 +8,8 @@ interface ICustomThemeProvider {
 const theme = {
   mainColor: "#6366F1",
   buttonTextColor: "#FFFFFF",
-  mainBgColor: "black",
+  mainBgColor: "#1F2937",
+  headerBgColor: '#111827',
   fontFamily: "'Roboto', sans-serif",
   mdFontSize: "18px",
   smFontSize: "14px",

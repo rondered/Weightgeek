@@ -11,6 +11,7 @@ const NavbarContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding: 10px;
+  background-color: ${(props) => props.theme.headerBgColor};
   ${breakpoint("mobile", "tablet")`
   flex-direction: column;`}
 `;
@@ -29,7 +30,7 @@ const LinkContainer = styled.div`
 const LinksContainer = styled.div`
   display: flex;
   ${breakpoint("mobile", "tablet")`
-  display: ${(props) => (props.closed ? "none" : "inherit")};
+  display: ${(props) => (props.closed ? "none" : "block")};
   flex-direction: column;`}
 `;
 
