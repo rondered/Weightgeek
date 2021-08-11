@@ -2,7 +2,8 @@ import React from "react";
 import { FormDivider, FormButton } from "../../components";
 import { config } from "../../config";
 import { FaGoogle as GoogleIcon } from "react-icons/fa";
-import styled from "styled-components";
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import breakpoint from "styled-components-breakpoint";
 import {
   FormControl,
