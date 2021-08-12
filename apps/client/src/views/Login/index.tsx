@@ -3,36 +3,20 @@ import { FormDivider, FormButton } from "../../components";
 import { config } from "../../config";
 import { FaGoogle as GoogleIcon } from "react-icons/fa";
 import tw, { styled, theme } from "twin.macro";
-import {
-  FormControl,
-  FormErrorMessage,
-  Input,
-  InputGroup,
-  Alert,
-  AlertIcon,
-  AlertDescription,
-} from "@chakra-ui/react";
 import { useLogin } from "../../hooks";
 import { Link, Redirect } from "wouter";
 import { MainContainer } from "../../components/layout/MainContainer";
 
 const LoginContainer = styled.div`
-  ${tw`flex h-screen p-10 min-w-min md:max-w-xl bg-indigo-100`}
+  ${tw`flex h-screen justify-center items-center`}
 `;
 
 const LoginFormContainer = styled.div`
-  flex: 1;
-  display: grid;
-  gap: 10px;
-  width: 100%;
-  padding: 20px;
+  ${tw`w-full p-10 md:w-[600px] md:shadow-2xl`}
 `;
 
 const LoginHeader = styled.div`
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 25px;
-  font-weight: 900;
+  ${tw`mb-8 text-4xl`}
 `;
 
 const LoginDecorationContainer = styled.div`
@@ -73,51 +57,26 @@ export const Login = () => {
       <LoginContainer>
         <LoginFormContainer>
           <LoginHeader>Welcome Back!</LoginHeader>
-          {isResponseError && (
-            <Alert status="error">
-              <AlertIcon />
-              <AlertDescription>{responseError}</AlertDescription>
-            </Alert>
-          )}
-          <a href={`${config.API_URL}/google/redirect`}>
-            <FormButton
-              leftIcon={<GoogleIcon />}
-              text="Login With Google"
-              isLoading={false}
-              backgroundColor="#374151"
-            />
-          </a>
+          <FormButton
+            leftIcon={<GoogleIcon />}
+            text="Login With Google"
+            isLoading={false}
+          />
           <FormDivider text="OR" />
           <form onSubmit={handleSubmit}>
             <FormContainer>
-              <FormControl isInvalid={formErrors.email}>
-                <InputGroup>
-                  <Input
-                    {...register("email")}
-                    type="email"
-                    name="email"
-                    placeholder="email"
-                    isInvalid={formErrors.email}
-                    focusBorderColor="loginFormFieldFocus.100"
-                  />
-                </InputGroup>
-                <FormErrorMessage>{formErrors.email?.message}</FormErrorMessage>
-              </FormControl>
-              <FormControl isInvalid={formErrors.password}>
-                <InputGroup>
-                  <Input
-                    {...register("password")}
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    isInvalid={formErrors.password}
-                    focusBorderColor="loginFormFieldFocus.100"
-                  />
-                </InputGroup>
-                <FormErrorMessage>
-                  {formErrors.password?.message}
-                </FormErrorMessage>
-              </FormControl>
+              <input
+                {...register("email")}
+                type="email"
+                name="email"
+                placeholder="email"
+              />
+              <input
+                {...register("password")}
+                type="password"
+                name="password"
+                placeholder="password"
+              />
               <FormButton isLoading={isLoading} text="Login" />
             </FormContainer>
           </form>

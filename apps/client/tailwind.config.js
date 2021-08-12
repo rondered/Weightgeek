@@ -1,16 +1,16 @@
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ['"PT Sans"', "sans-serif"],
+      rubik: ["Rubik", "sans-serif"],
     },
     extend: {
       colors: {
         background: "#F9FAFB",
-        fontColor: '#3B3B3B '
+        fontColor: "#3B3B3B ",
       },
-      fonts: {
-          'rubik': ['Rubik', 'sans-serif']
-      }
+      spacing: {
+        loginForm: "50rem",
+      },
     },
   },
   plugins: [],

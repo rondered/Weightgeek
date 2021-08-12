@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "@chakra-ui/react";
-import tw, { styled , theme} from "twin.macro";
+import tw, { styled, theme } from "twin.macro";
 
 interface IFormButton {
   children?: React.ReactNode;
@@ -9,12 +9,11 @@ interface IFormButton {
   text?: string;
   backgroundColor?: string;
   textColor?: string;
+  onClick?: void;
 }
 
 const FormButtonContainer = styled.button`
-  ${tw`flex justify-between w-full bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-5 shadow-md rounded-full`}
-  color: ${theme`colors.fontColor`};
-  font-family: ${theme`fonts.rubik`};
+  ${tw`flex justify-center items-center h-auto justify-between w-full h-2 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-5 shadow-md rounded-full`}
 `;
 
 export const FormButton: React.FC<IFormButton> = (props) => (
