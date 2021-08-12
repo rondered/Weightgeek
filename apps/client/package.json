@@ -6,6 +6,11 @@
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
+    }
+  },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.14",
     "@chakra-ui/react": "^1.6.5",
@@ -22,8 +27,6 @@
     "react-hook-form": "^7.10.1",
     "react-icons": "^4.2.0",
     "react-query": "^3.19.0",
-    "styled-components": "^5.3.0",
-    "styled-components-breakpoint": "^3.0.0-preview.20",
     "tailwindcss": "^2.2.7",
     "twin.macro": "^2.6.2",
     "vite-plugin-svgr": "^0.3.0",
@@ -38,6 +41,7 @@
     "@vitejs/plugin-react-refresh": "^1.3.1",
     "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.2",
-    "vite": "^2.3.8"
+    "vite": "^2.3.8",
+    "vite-plugin-babel-macros": "^1.0.5"
   }
 }

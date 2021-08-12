@@ -2,8 +2,8 @@ import React from "react";
 import { FormDivider, FormButton } from "../../components";
 import { config } from "../../config";
 import { FaGoogle as GoogleIcon } from "react-icons/fa";
-import styled from "styled-components";
-import breakpoint from "styled-components-breakpoint";
+import tw, { styled } from 'twin.macro';
+
 import {
   FormControl,
   FormErrorMessage,
@@ -44,10 +44,6 @@ const SignupDecorationContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${(props) => props.theme.mainColor};
-
-  ${breakpoint("mobile", "tablet")`
-  display: none;
-  `}
 `;
 
 const FormContainer = styled.div`

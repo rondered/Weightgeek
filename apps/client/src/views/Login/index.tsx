@@ -2,9 +2,7 @@ import React from "react";
 import { FormDivider, FormButton } from "../../components";
 import { config } from "../../config";
 import { FaGoogle as GoogleIcon } from "react-icons/fa";
-import styled from 'styled-components';
-import tw from 'twin.macro';
-import breakpoint from "styled-components-breakpoint";
+import tw, { styled, theme } from "twin.macro";
 import {
   FormControl,
   FormErrorMessage,
@@ -16,13 +14,10 @@ import {
 } from "@chakra-ui/react";
 import { useLogin } from "../../hooks";
 import { Link, Redirect } from "wouter";
+import { MainContainer } from "../../components/layout/MainContainer";
 
 const LoginContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100wh;
+  ${tw`flex h-screen p-10 min-w-min md:max-w-xl bg-indigo-100`}
 `;
 
 const LoginFormContainer = styled.div`
@@ -45,10 +40,6 @@ const LoginDecorationContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${(props) => props.theme.mainColor};
-
-  ${breakpoint("mobile", "tablet")`
-  display: none;
-  `}
 `;
 
 const FormContainer = styled.div`
@@ -77,7 +68,7 @@ export const Login = () => {
   } = useLogin();
 
   return (
-    <>
+    <MainContainer>
       {isSuccess && <Redirect to="/" />}
       <LoginContainer>
         <LoginFormContainer>
@@ -134,8 +125,7 @@ export const Login = () => {
             Don't have an account? <Link to="/signup">Signup</Link>
           </OfferSignupContainer>
         </LoginFormContainer>
-        <LoginDecorationContainer />
       </LoginContainer>
-    </>
+    </MainContainer>
   );
 };

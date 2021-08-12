@@ -1,6 +1,6 @@
 import React from "react";
 import { Divider } from "@chakra-ui/react";
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
 interface IFormDivider {
   text?: string;

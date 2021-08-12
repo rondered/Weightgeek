@@ -1,21 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import {
-  CustomChakraProvider,
-  CustomThemeProvider,
-  CustomQueryClientProvider,
-} from "./providers";
+import { CustomQueryClientProvider } from "./providers";
+import tw from 'twin.macro'
 
 ReactDOM.render(
   <React.StrictMode>
-    <CustomThemeProvider>
-      <CustomChakraProvider>
-        <CustomQueryClientProvider>
-          <App />
-        </CustomQueryClientProvider>
-      </CustomChakraProvider>
-    </CustomThemeProvider>
+    <CustomQueryClientProvider>
+      <App />
+    </CustomQueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
