@@ -1,5 +1,4 @@
 import React from "react";
-import { Divider } from "@chakra-ui/react";
 import tw, { styled } from "twin.macro";
 
 interface IFormDivider {
@@ -7,21 +6,21 @@ interface IFormDivider {
 }
 
 const FormDividerContainer = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
+  ${tw`flex items-center h-10 w-full`}
 `;
 
-const FormDividerText = styled.div`
-  margin-left: 15px;
-  margin-right: 15px;
-  font-size: 15px;
+const Divider = styled.div`
+  ${tw`h-px bg-gray-300 w-full`}
+`;
+
+const DividerText = styled.div`
+  ${tw`pl-4 pr-4`}
 `;
 
 export const FormDivider: React.FC<IFormDivider> = (props) => (
   <FormDividerContainer>
     <Divider />
-    <FormDividerText>{props.text}</FormDividerText>
+    <DividerText> {props.text}</DividerText>
     <Divider />
   </FormDividerContainer>
 );

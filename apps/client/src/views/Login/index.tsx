@@ -12,11 +12,20 @@ const LoginContainer = styled.div`
 `;
 
 const LoginFormContainer = styled.div`
-  ${tw`w-full p-10 md:w-[600px] md:shadow-2xl`}
+  ${tw`w-full h-screen p-10 rounded-lg bg-white md:w-[600px] md:shadow md:h-auto`}
 `;
 
 const LoginHeader = styled.div`
   ${tw`mb-8 text-4xl`}
+`;
+
+const DividerContainer = styled.div`
+  ${tw`flex pt-6 pb-6 pl-10 pr-10`}
+`;
+
+const LoginInput = styled.input<{ isInvalid: boolean }>`
+  ${tw`border rounded-lg p-3 focus:ring`}
+  ${(props) => (props.isInvalid ? tw`border-red-400` : tw`border-gray-200`)}
 `;
 
 const LoginDecorationContainer = styled.div`
@@ -62,20 +71,25 @@ export const Login = () => {
             text="Login With Google"
             isLoading={false}
           />
-          <FormDivider text="OR" />
+          <DividerContainer>
+            <FormDivider text="OR" />
+          </DividerContainer>
           <form onSubmit={handleSubmit}>
             <FormContainer>
-              <input
+              <LoginInput
                 {...register("email")}
                 type="email"
                 name="email"
                 placeholder="email"
+                isInvalid={formErrors.email}
               />
-              <input
+              {formErrors.email && <p>{formErrors.email.message}</p>}
+              <LoginInput
                 {...register("password")}
                 type="password"
                 name="password"
                 placeholder="password"
+                isInvalid={formErrors?.password}
               />
               <FormButton isLoading={isLoading} text="Login" />
             </FormContainer>

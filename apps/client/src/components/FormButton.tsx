@@ -13,7 +13,7 @@ interface IFormButton {
 }
 
 const FormButtonContainer = styled.button`
-  ${tw`flex justify-center items-center h-auto justify-between w-full h-2 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-5 shadow-md rounded-full`}
+  ${tw`flex justify-center items-center h-auto justify-between w-full h-2 bg-primary pl-10 pr-10 pt-6 pb-6 rounded-full`}
 `;
 
 export const FormButton: React.FC<IFormButton> = (props) => (
