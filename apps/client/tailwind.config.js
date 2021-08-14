@@ -6,7 +6,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        background: "#374151",
+        background: "#E5E7EB",
         fontColor: "#4B5563",
         formButtonBackground: '#000000',
         primary: "#34D399",

@@ -4,29 +4,51 @@ import tw, { styled, theme } from "twin.macro";
 import { useLogin } from "../../hooks";
 import { Link, Redirect } from "wouter";
 import { MainContainer } from "../../components/layout/MainContainer";
+import { HiOutlineMail as MailIcon } from "react-icons/hi";
+import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
 const LoginContainer = styled.div`
   ${tw`flex h-screen justify-center items-center`}
 `;
 
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 bg-gray-100 md:w-[600px] md:h-auto border-t-[10px] border-b-[10px] border-primary`}
+  ${tw`w-full h-screen p-10 bg-gray-100 md:w-[600px] md:h-auto rounded-lg shadow-xl`}
 `;
 
 const LoginHeader = styled.div`
-  ${tw`mb-8 text-4xl font-extrabold`}
+  ${tw`mb-8 text-4xl font-extrabold text-center`}
 `;
 
 const DividerContainer = styled.div`
   ${tw`flex mt-6 mb-6`}
 `;
 
-const LoginInput = styled.input<{ isInvalid: boolean }>`
-  ${tw`rounded-lg p-3 shadow-md`}
+const Input = (props) => {
+  const InputField = styled.input<{ isInvalid: boolean }>`
+    ${tw`rounded-lg p-3 shadow-sm text-base w-full -ml-10 pl-10`}
+    ${(props) => props.isInvalid && tw`border border-red-500`}
+  `;
+  const Icon = styled.div`
+    ${tw`w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center`}
+  `;
+  return (
+    <div css={tw`flex`}>
+      <Icon>{props.icon}</Icon>
+      <InputField {...props} />
+    </div>
+  );
+};
+
+const InputError = styled.div<{ isInvalid: boolean }>`
+  ${tw`text-red-500`}
+`;
+
+const InputContainer = styled.div`
+  ${tw`flex w-full h-[100px] flex-col text-xs font-semibold gap-[5px]`}
 `;
 
 const FormContainer = styled.div`
-  ${tw`grid grid-flow-row gap-5`}
+  ${tw`grid grid-flow-row gap-[10px]`}
 `;
 
 const OfferSignupContainer = styled.div`
@@ -65,21 +87,34 @@ export const Login = () => {
           </DividerContainer>
           <form onSubmit={handleSubmit}>
             <FormContainer>
-              <LoginInput
-                {...register("email")}
-                type="email"
-                name="email"
-                placeholder="email"
-                isInvalid={formErrors.email}
-              />
-              {formErrors.email && <p>{formErrors.email.message}</p>}
-              <LoginInput
-                {...register("password")}
-                type="password"
-                name="password"
-                placeholder="password"
-                isInvalid={formErrors?.password}
-              />
+              <InputContainer>
+                <label>Email</label>
+                <Input
+                  {...register("email")}
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  isInvalid={formErrors.email}
+                  icon={<MailIcon size="20px" />}
+                />
+                <InputError>
+                  {formErrors.email && <p>{formErrors.email.message}</p>}
+                </InputError>
+              </InputContainer>
+              <InputContainer>
+                <label>Password</label>
+                <Input
+                  {...register("password")}
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  isInvalid={formErrors?.password}
+                  icon={<PasswordIcon size="20px" />}
+                />
+                <InputError>
+                  {formErrors.password && <p>{formErrors.password.message}</p>}
+                </InputError>
+              </InputContainer>
               <FormButton isLoading={isLoading} text="Login" />
             </FormContainer>
           </form>
