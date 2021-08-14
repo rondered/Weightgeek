@@ -16,11 +16,11 @@ const LoginFormContainer = styled.div`
 `;
 
 const LoginHeader = styled.div`
-  ${tw`mb-8 text-4xl`}
+  ${tw`mb-8 text-4xl font-extrabold`}
 `;
 
 const DividerContainer = styled.div`
-  ${tw`flex pt-6 pb-6 pl-10 pr-10`}
+  ${tw`flex mt-6 mb-6`}
 `;
 
 const LoginInput = styled.input<{ isInvalid: boolean }>`
@@ -28,23 +28,12 @@ const LoginInput = styled.input<{ isInvalid: boolean }>`
   ${(props) => (props.isInvalid ? tw`border-red-400` : tw`border-gray-200`)}
 `;
 
-const LoginDecorationContainer = styled.div`
-  flex: 2;
-  width: 100%;
-  height: 100%;
-  background-color: ${(props) => props.theme.mainColor};
-`;
-
 const FormContainer = styled.div`
-  display: grid;
-  gap: 20px;
+  ${tw`grid grid-flow-row gap-5`}
 `;
 
 const OfferSignupContainer = styled.div`
-  display: inline-block;
-  a {
-    font-weight: 600;
-  }
+  ${tw`mt-10`}
 `;
 
 const SuccessRedirect: React.FC<{}> = () => <Redirect to="/" />;
