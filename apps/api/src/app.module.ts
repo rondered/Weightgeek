@@ -9,7 +9,7 @@ import { WeightinModule } from './weightin/weightin.module';
   imports: [
     DbModule,
     ConfigModule.forRoot({
-      load: [configuration]
+      load: [configuration],
     }),
     UserModule,
     ConfigModule,

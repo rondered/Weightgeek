@@ -62,6 +62,13 @@ export const Login = () => {
               isLoading={false}
             />
           </a>
+          <a href="http://localhost:4444/auth/facebook/redirect">
+            <FormButton
+              leftIcon={<GoogleIcon />}
+              text="Login With Facebook"
+              isLoading={false}
+            />
+          </a>
           <DividerContainer>
             <FormDivider text="OR" />
           </DividerContainer>

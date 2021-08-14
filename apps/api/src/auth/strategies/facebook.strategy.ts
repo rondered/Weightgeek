@@ -1,21 +1,22 @@
 import { PassportStrategy } from '@nestjs/passport';
-import { Strategy, VerifyCallback } from 'passport-google-oauth20';
+import { Strategy, VerifyCallback } from 'passport-facebook';
 
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { UserService } from '../../user/user.service';
 
 @Injectable()
-export class GoogleStrategy extends PassportStrategy(Strategy, 'Google') {
+export class FacebookStrategy extends PassportStrategy(Strategy, 'Facebook') {
   constructor(
     private configService: ConfigService,
     private userService: UserService,
   ) {
     super({
-      clientID: configService.get('GOOGLE_CLIENT_ID'),
-      clientSecret: configService.get('GOOGLE_CLIENT_SECRET'),
-      callbackURL: `${configService.get('API_URL')}/auth/google/redirect`,
-      scope: ['email', 'profile'],
+      clientID: configService.get('FACEBOOK_CLIENT_ID'),
+      clientSecret: configService.get('FACEBOOK_CLIENT_SECRET'),
+      callbackURL: `${configService.get('API_URL')}/auth/facebook/redirect`,
+      scope: 'email',
+      profileFields: ['emails', 'name', 'picture.type(large)'],
     });
   }
   async validate(
@@ -34,7 +35,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'Google') {
       accessToken,
     };
     const userInDb = await this.userService.loginOrSignUp({
-      google_id: user.id,
+      facebook_id: user.id,
     });
     user.id = userInDb.id;
     done(null, user);

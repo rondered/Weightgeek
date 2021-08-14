@@ -62,10 +62,25 @@ export class AuthController {
     res.redirect(this.configService.get('FE_URL'));
   }
 
+  @Get('facebook/redirect')
+  @UseGuards(AuthGuard('Facebook'))
+  redirectFromFacebook(@Req() req, @Res() res: Response) {
+    const tokens = this.authService.generateTokens({
+      id: req.user.id,
+      email: req.user.email,
+    });
+    res.cookie('Authentication', tokens, {
+      httpOnly: true,
+      secure: this.configService.get('PRODUCTION'),
+      maxAge: 259200000,
+    });
+    res.redirect(this.configService.get('FE_URL'));
+  }
+
   @Post('/signup')
   async signUpUser(@Req() req, @Body() payload: SignUpUserDto, @Res() res) {
     const { email, password } = payload;
-    const user = await this.userService.signUp(email, password);
+    const user = await this.userService.signUp({ email }, password);
     this.authService.refreshTokens(
       {
         id: user.id,

@@ -22,9 +22,12 @@ export class UserService implements OnModuleInit {
     this.loggerService.log('Service started!', this.context);
   }
 
-  async signUp(email: string, password?: string, google_id?: string) {
+  async signUp(
+    payload?: { email?: string; google_id?: string; facebook_id?: string },
+    password?: string,
+  ): Promise<User> {
     const alreadySignedUpUser = await this.dbService.user.findFirst({
-      where: { email },
+      where: { ...payload },
     });
     if (alreadySignedUpUser) {
       throw new ForbiddenException('User already exists!');
@@ -33,7 +36,7 @@ export class UserService implements OnModuleInit {
       password = hashSync(password, 10);
     }
     const signedUpUser = await this.dbService.user.create({
-      data: { email, google_id, password },
+      data: { ...payload, password },
     });
     return signedUpUser;
   }
@@ -54,14 +57,13 @@ export class UserService implements OnModuleInit {
   }
 
   async loginOrSignUp(
-    email: string,
+    payload?: { email?: string; google_id?: string; facebook_id?: string },
     password?: string,
-    google_id?: string,
   ): Promise<User> {
-    const foundUser = await this.getUser({ email });
+    const foundUser = await this.getUser({ ...payload });
     if (foundUser) {
       return foundUser;
     }
-    return this.signUp(email, password, google_id);
+    return this.signUp(payload, password);
   }
 }
