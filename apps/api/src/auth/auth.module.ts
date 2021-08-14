@@ -1,25 +1,15 @@
-import { Module, forwardRef } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-import { ConfigService, ConfigModule } from '@nestjs/config';
-import { GoogleStrategy } from '../google';
+import { ConfigModule } from '@nestjs/config';
 import { JwtModule, JwtService } from '@nestjs/jwt';
-import { UserModule } from '../user';
-import { AccessStrategy, RefreshStrategy } from './strategies';
+import { UserModule } from '../user/user.module';
+import { AccessStrategy, RefreshStrategy, GoogleStrategy } from './strategies';
 
 @Module({
-  imports: [
-    ConfigModule,
-    JwtModule.registerAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => {
-        return { ...configService.get('ACCESS_TOKEN') };
-      },
-    }),
-  ],
+  imports: [ConfigModule, UserModule, JwtModule.register({})],
   exports: [AuthService],
-  providers: [AuthService, AccessStrategy, RefreshStrategy],
+  providers: [AuthService, AccessStrategy, RefreshStrategy, GoogleStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}

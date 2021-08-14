@@ -8,14 +8,13 @@ import {
 import { User } from '@prisma/client';
 import { DbService } from '../db/db.service';
 import { hashSync, compareSync } from 'bcrypt';
-import { AuthService } from '../auth';
 
 @Injectable()
 export class UserService implements OnModuleInit {
   context: string;
   loggerService: Logger;
 
-  constructor(private dbService: DbService, private authService: AuthService) {
+  constructor(private dbService: DbService) {
     this.loggerService = new Logger('UserService');
   }
 

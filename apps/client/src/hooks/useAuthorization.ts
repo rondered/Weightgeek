@@ -3,7 +3,7 @@ import { axiosInstance } from "../utils/axios";
 import { useAuthStore } from "../stores";
 
 const auth = async (values: any) => {
-  const { data } = await axiosInstance.get(`auth`, values);
+  const { data } = await axiosInstance.get(`auth/me`, values);
   return data;
 };
 

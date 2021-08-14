@@ -55,11 +55,13 @@ export const Login = () => {
       <LoginContainer>
         <LoginFormContainer>
           <LoginHeader>Welcome Back!</LoginHeader>
-          <FormButton
-            leftIcon={<GoogleIcon />}
-            text="Login With Google"
-            isLoading={false}
-          />
+          <a href="http://localhost:4444/auth/google/redirect">
+            <FormButton
+              leftIcon={<GoogleIcon />}
+              text="Login With Google"
+              isLoading={false}
+            />
+          </a>
           <DividerContainer>
             <FormDivider text="OR" />
           </DividerContainer>

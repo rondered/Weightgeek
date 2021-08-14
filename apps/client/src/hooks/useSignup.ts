@@ -7,7 +7,7 @@ import { useLocation } from "wouter";
 import { useAuthorization } from "./useAuthorization";
 
 const signup = async (values: any) => {
-  const { data } = await axiosInstance.post(`user/signup`, values);
+  const { data } = await axiosInstance.post(`auth/signup`, values);
   return data;
 };
 

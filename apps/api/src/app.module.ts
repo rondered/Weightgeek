@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './user';
+import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { DbModule } from './db';
-import { GoogleModule } from './google';
-import { AuthModule } from './auth';
-import { UserController } from './user/user.controller';
+import { AuthController, AuthModule } from './auth';
 import configuration from './config/configuration';
 import { WeightinModule } from './weightin/weightin.module';
 @Module({
@@ -15,11 +13,10 @@ import { WeightinModule } from './weightin/weightin.module';
     }),
     UserModule,
     ConfigModule,
-    GoogleModule,
     AuthModule,
     WeightinModule,
   ],
-  controllers: [UserController],
+  controllers: [AuthController],
   providers: [],
 })
 export class AppModule {}

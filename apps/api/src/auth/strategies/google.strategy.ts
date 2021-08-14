@@ -2,9 +2,9 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, VerifyCallback } from 'passport-google-oauth20';
 import { config } from 'dotenv';
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { UserService } from '../../user';
+import { UserService } from '../../user/user.service';
 
 config();
 
@@ -17,7 +17,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'Google') {
     super({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: `${configService.get('API_URL')}/google/redirect`,
+      callbackURL: `${configService.get('API_URL')}/auth/google/redirect`,
       scope: ['email', 'profile'],
     });
   }

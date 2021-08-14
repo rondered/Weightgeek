@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from '../auth';
-import { UserService } from '../user';
+import { UserService } from '../user/user.service';
 import { AddWeightInDto } from '../types/dtos';
 import { WeightinService } from './weightin.service';
 
