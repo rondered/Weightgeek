@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthorization } from "./useAuthorization";
 
 const login = async (values: any) => {
-  const { data } = await axiosInstance.post(`user/login`, values);
+  const { data } = await axiosInstance.post(`auth/login`, values);
   return data;
 };
 

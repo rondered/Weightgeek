@@ -1,26 +1,15 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw, { css } from "twin.macro";
 
 interface IFormDivider {
   text?: string;
 }
-
-const FormDividerContainer = styled.div`
-  ${tw`flex items-center h-10 w-full`}
-`;
-
-const Divider = styled.div`
-  ${tw`h-px bg-gray-300 w-full`}
-`;
-
-const DividerText = styled.div`
-  ${tw`pl-4 pr-4`}
-`;
+const Divider = () => <div css={tw`h-px bg-gray-300 w-full`} />;
 
 export const FormDivider: React.FC<IFormDivider> = (props) => (
-  <FormDividerContainer>
+  <div css={tw`flex items-center h-10 w-full`}>
     <Divider />
-    <DividerText> {props.text}</DividerText>
+    <div css={tw`pl-4 pr-4`}> {props.text}</div>
     <Divider />
-  </FormDividerContainer>
+  </div>
 );

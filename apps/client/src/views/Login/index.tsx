@@ -1,7 +1,6 @@
 import React from "react";
-import { FormDivider, FormButton } from "../../components";
+import { FormDivider, FormButton, SocialLoginButton } from "../../components";
 import { config } from "../../config";
-import { FaGoogle as GoogleIcon } from "react-icons/fa";
 import tw, { styled, theme } from "twin.macro";
 import { useLogin } from "../../hooks";
 import { Link, Redirect } from "wouter";
@@ -55,20 +54,14 @@ export const Login = () => {
       <LoginContainer>
         <LoginFormContainer>
           <LoginHeader>Welcome Back!</LoginHeader>
-          <a href="http://localhost:4444/auth/google/redirect">
-            <FormButton
-              leftIcon={<GoogleIcon />}
-              text="Login With Google"
-              isLoading={false}
-            />
-          </a>
-          <a href="http://localhost:4444/auth/facebook/redirect">
-            <FormButton
-              leftIcon={<GoogleIcon />}
-              text="Login With Facebook"
-              isLoading={false}
-            />
-          </a>
+          <div css={tw`flex gap-10 justify-center`}>
+            <a href="http://localhost:4444/auth/google/redirect">
+              <SocialLoginButton variation="google" />
+            </a>
+            <a href="http://localhost:4444/auth/facebook/redirect">
+              <SocialLoginButton variation="facebook" />
+            </a>
+          </div>
           <DividerContainer>
             <FormDivider text="OR" />
           </DividerContainer>
