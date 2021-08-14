@@ -1,6 +1,5 @@
 import React from "react";
 import { FormDivider, FormButton, SocialLoginButton } from "../../components";
-import { config } from "../../config";
 import tw, { styled, theme } from "twin.macro";
 import { useLogin } from "../../hooks";
 import { Link, Redirect } from "wouter";
