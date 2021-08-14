@@ -11,7 +11,7 @@ const LoginContainer = styled.div`
 `;
 
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 rounded-lg bg-white md:w-[600px] md:shadow md:h-auto`}
+  ${tw`w-full h-screen p-10 bg-gray-100 md:w-[600px] md:h-auto border-t-[10px] border-b-[10px] border-primary`}
 `;
 
 const LoginHeader = styled.div`
@@ -23,8 +23,7 @@ const DividerContainer = styled.div`
 `;
 
 const LoginInput = styled.input<{ isInvalid: boolean }>`
-  ${tw`border rounded-lg p-3 focus:ring`}
-  ${(props) => (props.isInvalid ? tw`border-red-400` : tw`border-gray-200`)}
+  ${tw`rounded-lg p-3 shadow-md`}
 `;
 
 const FormContainer = styled.div`

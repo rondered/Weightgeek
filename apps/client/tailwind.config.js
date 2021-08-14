@@ -1,12 +1,14 @@
 module.exports = {
+  darkMode: 'class',
   theme: {
     fontFamily: {
       rubik: ["Rubik", "sans-serif"],
     },
     extend: {
       colors: {
-        background: "#F9FAFB",
-        fontColor: "#3B3B3B ",
+        background: "#374151",
+        fontColor: "#4B5563",
+        formButtonBackground: '#000000',
         primary: "#34D399",
         secondary: "#3B82F6",
         google: "#DB4437",
