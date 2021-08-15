@@ -8,11 +8,11 @@ import { HiOutlineMail as MailIcon } from "react-icons/hi";
 import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
 const LoginContainer = styled.div`
-  ${tw`flex h-screen justify-center items-center`}
+  ${tw`flex h-screen justify-center items-center md:justify-start`}
 `;
 
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 bg-gray-100 md:w-[600px] md:h-auto rounded-lg shadow-xl`}
+  ${tw`w-full h-screen p-10 md:w-[400px] md:h-auto`}
 `;
 
 const LoginHeader = styled.div`
@@ -25,8 +25,8 @@ const DividerContainer = styled.div`
 
 const Input = (props) => {
   const InputField = styled.input<{ isInvalid: boolean }>`
-    ${tw`rounded-lg p-3 shadow-sm text-base w-full -ml-10 pl-10`}
-    ${(props) => props.isInvalid && tw`border border-red-500`}
+    ${tw`border border-white rounded-lg p-3 shadow-sm text-base w-full -ml-10 pl-10 bg-transparent`}
+    ${(props) => props.isInvalid && tw`border-red-500`}
   `;
   const Icon = styled.div`
     ${tw`w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center`}
@@ -44,7 +44,7 @@ const InputError = styled.div<{ isInvalid: boolean }>`
 `;
 
 const InputContainer = styled.div`
-  ${tw`flex w-full h-[100px] flex-col text-xs font-semibold gap-[5px]`}
+  ${tw`flex w-full h-[70px] flex-col text-xs font-semibold gap-[1px]`}
 `;
 
 const FormContainer = styled.div`
@@ -88,7 +88,6 @@ export const Login = () => {
           <form onSubmit={handleSubmit}>
             <FormContainer>
               <InputContainer>
-                <label>Email</label>
                 <Input
                   {...register("email")}
                   type="email"
@@ -102,7 +101,6 @@ export const Login = () => {
                 </InputError>
               </InputContainer>
               <InputContainer>
-                <label>Password</label>
                 <Input
                   {...register("password")}
                   type="password"
