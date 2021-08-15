@@ -8,11 +8,11 @@ import { HiOutlineMail as MailIcon } from "react-icons/hi";
 import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
 const LoginContainer = styled.div`
-  ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
+  ${tw`flex h-screen w-full justify-center items-center md:justify-start md:w-1/2`}
 `;
 
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-auto shadow-2xl bg-white`}
+  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-screen shadow-2xl bg-white`}
 `;
 
 const LoginHeader = styled.div`
@@ -68,8 +68,7 @@ export const Login = () => {
       {isSuccess && <Redirect to="/" />}
       <div
         css={[
-          tw`flex w-full bg-no-repeat bg-fixed bg-right`,
-          "background-image: url('https://mocah.org/download.php?f=568759-appetizer-breakfast.jpg');",
+          tw`flex w-full  bg-gradient-to-r from-purple-100 to-indigo-600 bg-fixed `
         ]}
       >
         <LoginContainer>
