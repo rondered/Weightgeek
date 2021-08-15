@@ -8,11 +8,11 @@ import { HiOutlineMail as MailIcon } from "react-icons/hi";
 import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
 const LoginContainer = styled.div`
-  ${tw`flex h-screen w-full justify-center items-center md:justify-start md:w-1/2`}
+  ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
 `;
 
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-screen shadow-2xl bg-white`}
+  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-auto shadow-2xl bg-white`}
 `;
 
 const LoginHeader = styled.div`
