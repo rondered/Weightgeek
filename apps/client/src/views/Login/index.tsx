@@ -12,7 +12,7 @@ const LoginContainer = styled.div`
 `;
 
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-auto`}
+  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-auto shadow-2xl bg-white`}
 `;
 
 const LoginHeader = styled.div`
@@ -66,7 +66,12 @@ export const Login = () => {
   return (
     <MainContainer>
       {isSuccess && <Redirect to="/" />}
-      <div css={tw`flex w-full`}>
+      <div
+        css={[
+          tw`flex w-full bg-no-repeat bg-fixed bg-right`,
+          "background-image: url('https://mocah.org/download.php?f=568759-appetizer-breakfast.jpg');",
+        ]}
+      >
         <LoginContainer>
           <LoginFormContainer>
             <LoginHeader>Welcome Back!</LoginHeader>
@@ -119,7 +124,6 @@ export const Login = () => {
             </OfferSignupContainer>
           </LoginFormContainer>
         </LoginContainer>
-        <div css={tw`hidden md:block md:w-1/2`}>lala</div>
       </div>
     </MainContainer>
   );
