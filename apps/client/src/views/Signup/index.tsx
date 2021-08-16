@@ -1,66 +1,40 @@
 import React from "react";
-import { FormDivider, FormButton } from "../../components";
-import { config } from "../../config";
-import { FaGoogle as GoogleIcon } from "react-icons/fa";
-import tw, { styled } from 'twin.macro';
-
 import {
-  FormControl,
-  FormErrorMessage,
-  Input,
-  InputGroup,
-  Alert,
-  AlertIcon,
-  AlertDescription,
-} from "@chakra-ui/react";
+  FormDivider,
+  FormButton,
+  SocialLoginButton,
+  FormInput,
+} from "../../components";
+import tw, { styled, theme } from "twin.macro";
 import { useSignup } from "../../hooks";
 import { Link, Redirect } from "wouter";
+import { MainContainer } from "../../components/layout/MainContainer";
+import { HiOutlineMail as MailIcon } from "react-icons/hi";
+import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
 const SignupContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100wh;
+  ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
 `;
-
 const SignupFormContainer = styled.div`
-  flex: 1;
-  display: grid;
-  gap: 10px;
-  width: 100%;
-  padding: 20px;
+  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-auto shadow-2xl bg-white`}
 `;
-
 const SignupHeader = styled.div`
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 25px;
-  font-weight: 900;
+  ${tw`mb-8 text-4xl font-extrabold text-center`}
 `;
-
-const SignupDecorationContainer = styled.div`
-  flex: 2;
-  width: 100%;
-  height: 100%;
-  background-color: ${(props) => props.theme.mainColor};
+const InputError = styled.div<{ isInvalid: boolean }>`
+  ${tw`text-red-500`}
 `;
-
+const InputContainer = styled.div`
+  ${tw`flex w-full h-[70px] flex-col text-xs font-semibold gap-[1px]`}
+`;
 const FormContainer = styled.div`
-  display: grid;
-  gap: 20px;
+  ${tw`grid grid-flow-row gap-[10px]`}
 `;
-
 const OfferLoginContainer = styled.div`
-  display: inline-block;
-  a {
-    font-weight: 600;
-  }
+  ${tw`mt-10`}
 `;
 
-const SuccessRedirect: React.FC<{}> = () => <Redirect to="/" />;
-
-export const Signup: React.FC<{}> = () => {
+export const Signup = () => {
   const {
     isLoading,
     handleSubmit,
@@ -72,65 +46,66 @@ export const Signup: React.FC<{}> = () => {
   } = useSignup();
 
   return (
-    <>
+    <MainContainer>
       {isSuccess && <Redirect to="/" />}
-      <SignupContainer>
-        <SignupFormContainer>
-          <SignupHeader>Sign up</SignupHeader>
-          {isResponseError && (
-            <Alert status="error">
-              <AlertIcon />
-              <AlertDescription>{responseError}</AlertDescription>
-            </Alert>
-          )}
-          <a href={`${config.API_URL}/google/redirect`}>
-            <FormButton
-              leftIcon={<GoogleIcon />}
-              text="Sign up with Google"
-              isLoading={false}
-              backgroundColor="#374151"
-            />
-          </a>
-          <FormDivider text="OR" />
-          <form onSubmit={handleSubmit}>
-            <FormContainer>
-              <FormControl isInvalid={formErrors.email}>
-                <InputGroup>
-                  <Input
+      <div
+        css={[
+          tw`flex w-full  bg-gradient-to-r from-purple-100 to-indigo-600 bg-fixed `,
+        ]}
+      >
+        <SignupContainer>
+          <SignupFormContainer>
+            <SignupHeader>Sign up</SignupHeader>
+            <div css={tw`flex gap-10 justify-center`}>
+              <a href="http://localhost:4444/auth/google/redirect">
+                <SocialLoginButton variation="google" />
+              </a>
+              <a href="http://localhost:4444/auth/facebook/redirect">
+                <SocialLoginButton variation="facebook" />
+              </a>
+            </div>
+            <div css={tw`flex mt-6 mb-6`}>
+              <FormDivider text="OR" />
+            </div>
+            <form onSubmit={handleSubmit}>
+              <FormContainer>
+                <InputContainer>
+                  <FormInput
                     {...register("email")}
                     type="email"
                     name="email"
                     placeholder="email"
                     isInvalid={formErrors.email}
-                    focusBorderColor="loginFormFieldFocus.100"
+                    icon={<MailIcon size="20px" />}
                   />
-                </InputGroup>
-                <FormErrorMessage>{formErrors.email?.message}</FormErrorMessage>
-              </FormControl>
-              <FormControl isInvalid={formErrors.password}>
-                <InputGroup>
-                  <Input
+                  <InputError>
+                    {formErrors.email && <p>{formErrors.email.message}</p>}
+                  </InputError>
+                </InputContainer>
+                <InputContainer>
+                  <FormInput
                     {...register("password")}
                     type="password"
                     name="password"
                     placeholder="password"
-                    isInvalid={formErrors.password}
-                    focusBorderColor="loginFormFieldFocus.100"
+                    isInvalid={formErrors?.password}
+                    icon={<PasswordIcon size="20px" />}
                   />
-                </InputGroup>
-                <FormErrorMessage>
-                  {formErrors.password?.message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormButton isLoading={isLoading} text="Sign up" />
-            </FormContainer>
-          </form>
-          <OfferLoginContainer>
-            Already signed up? <Link to="/login">Login</Link>
-          </OfferLoginContainer>
-        </SignupFormContainer>
-        <SignupDecorationContainer />
-      </SignupContainer>
-    </>
+                  <InputError>
+                    {formErrors.password && (
+                      <p>{formErrors.password.message}</p>
+                    )}
+                  </InputError>
+                </InputContainer>
+                <FormButton isLoading={isLoading} text="Login" />
+              </FormContainer>
+            </form>
+            <OfferLoginContainer>
+              Have a account? <Link to="/login">Login</Link>
+            </OfferLoginContainer>
+          </SignupFormContainer>
+        </SignupContainer>
+      </div>
+    </MainContainer>
   );
 };

@@ -1,5 +1,11 @@
 import React from "react";
-import { FormDivider, FormButton, SocialLoginButton } from "../../components";
+import {
+  FormDivider,
+  FormButton,
+  SocialLoginButton,
+  FormInput,
+  FormAlert,
+} from "../../components";
 import tw, { styled, theme } from "twin.macro";
 import { useLogin } from "../../hooks";
 import { Link, Redirect } from "wouter";
@@ -10,44 +16,21 @@ import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 const LoginContainer = styled.div`
   ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
 `;
-
 const LoginFormContainer = styled.div`
   ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-auto shadow-2xl bg-white`}
 `;
-
 const LoginHeader = styled.div`
   ${tw`mb-8 text-4xl font-extrabold text-center`}
 `;
-
-const InputField = styled.input<{ isInvalid: boolean }>`
-  ${tw`border border-white rounded-lg p-3 shadow-sm text-base w-full -ml-10 pl-10 bg-transparent`}
-  ${(props) => props.isInvalid && tw`border-red-500`}
-`;
-const Icon = styled.div`
-  ${tw`w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center`}
-`;
-
-const Input = (props) => {
-  return (
-    <div css={tw`flex`}>
-      <Icon>{props.icon}</Icon>
-      <InputField {...props} />
-    </div>
-  );
-};
-
 const InputError = styled.div<{ isInvalid: boolean }>`
   ${tw`text-red-500`}
 `;
-
 const InputContainer = styled.div`
   ${tw`flex w-full h-[70px] flex-col text-xs font-semibold gap-[1px]`}
 `;
-
 const FormContainer = styled.div`
   ${tw`grid grid-flow-row gap-[10px]`}
 `;
-
 const OfferSignupContainer = styled.div`
   ${tw`mt-10`}
 `;
@@ -68,7 +51,7 @@ export const Login = () => {
       {isSuccess && <Redirect to="/" />}
       <div
         css={[
-          tw`flex w-full  bg-gradient-to-r from-purple-100 to-indigo-600 bg-fixed `
+          tw`flex w-full  bg-gradient-to-r from-purple-100 to-indigo-600 bg-fixed `,
         ]}
       >
         <LoginContainer>
@@ -87,8 +70,13 @@ export const Login = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <FormContainer>
+                {isResponseError ? (
+                  <FormAlert message={responseError} />
+                ) : (
+                  <></>
+                )}
                 <InputContainer>
-                  <Input
+                  <FormInput
                     {...register("email")}
                     type="email"
                     name="email"
@@ -101,7 +89,7 @@ export const Login = () => {
                   </InputError>
                 </InputContainer>
                 <InputContainer>
-                  <Input
+                  <FormInput
                     {...register("password")}
                     type="password"
                     name="password"
