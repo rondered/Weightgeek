@@ -66,6 +66,7 @@ export const Login = () => {
               {isResponseError && (
                   <FormAlert
                     message={responseError}
+                    variation="error"
                   />
               )}
                 <FormInput
@@ -90,6 +91,7 @@ export const Login = () => {
                 <FormButton isLoading={isLoading} text="Login" />
               </FormContainer>
             </form>
+            <div css={tw`h-px bg-gray-600 mt-10 -ml-10 -mr-10`}></div>
             <OfferSignupContainer>
               Don't have an account? <Link to="/signup">Signup</Link>
             </OfferSignupContainer>

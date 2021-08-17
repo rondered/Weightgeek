@@ -62,7 +62,9 @@ export const Signup = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <FormContainer>
-                {isResponseError && <FormAlert message={responseError} />}
+                {isResponseError && (
+                  <FormAlert message={responseError} variation="error" />
+                )}
                 <FormInput
                   {...register("email")}
                   type="email"
@@ -85,6 +87,7 @@ export const Signup = () => {
                 <FormButton isLoading={isLoading} text="Sign Up" />
               </FormContainer>
             </form>
+            <div css={tw`h-px bg-gray-600 mt-10 -ml-10 -mr-10`}></div>
             <OfferLoginContainer>
               Have a account? <Link to="/login">Login</Link>
             </OfferLoginContainer>
