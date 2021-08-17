@@ -17,7 +17,7 @@ const LoginContainer = styled.div`
   ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
 `;
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[350px] md:h-auto shadow-2xl bg-gray-800 rounded`}
+  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[350px] md:h-auto shadow-2xl bg-gray-800`}
 `;
 const LoginHeader = styled.div`
   ${tw`mb-8 text-4xl font-extrabold text-center`}
