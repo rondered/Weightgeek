@@ -6,7 +6,7 @@ interface IMainContainer {
 }
 
 const Container = styled.div`
-  ${tw`w-full bg-background text-fontColor min-w-[375px]`}
+  ${tw`w-full bg-purple-900 text-fontColor min-w-[375px]`}
 `;
 
 export const MainContainer: React.FC<IMainContainer> = (props) => {

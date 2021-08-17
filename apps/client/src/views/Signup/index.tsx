@@ -8,7 +8,7 @@ import {
 import tw, { styled, theme } from "twin.macro";
 import { useSignup } from "../../hooks";
 import { Link, Redirect } from "wouter";
-import { MainContainer } from "../../components/layout/MainContainer";
+import { MainContainer, FormAlert } from "../../components";
 import { HiOutlineMail as MailIcon } from "react-icons/hi";
 import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
@@ -16,7 +16,7 @@ const SignupContainer = styled.div`
   ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
 `;
 const SignupFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-auto shadow-2xl bg-white`}
+  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[350px] md:h-auto shadow-2xl bg-purple-800 rounded`}
 `;
 const SignupHeader = styled.div`
   ${tw`mb-8 text-4xl font-extrabold text-center`}
@@ -33,6 +33,9 @@ const FormContainer = styled.div`
 const OfferLoginContainer = styled.div`
   ${tw`mt-10`}
 `;
+const AlertContainer = styled.div`
+  ${tw`pb-5`}
+`;
 
 export const Signup = () => {
   const {
@@ -48,14 +51,10 @@ export const Signup = () => {
   return (
     <MainContainer>
       {isSuccess && <Redirect to="/" />}
-      <div
-        css={[
-          tw`flex w-full  bg-gradient-to-r from-purple-100 to-indigo-600 bg-fixed `,
-        ]}
-      >
+      <div css={[tw`flex w-full`]}>
         <SignupContainer>
           <SignupFormContainer>
-            <SignupHeader>Sign up</SignupHeader>
+            <SignupHeader>Sign Up</SignupHeader>
             <div css={tw`flex gap-10 justify-center`}>
               <a href="http://localhost:4444/auth/google/redirect">
                 <SocialLoginButton variation="google" />
@@ -69,6 +68,14 @@ export const Signup = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <FormContainer>
+                {
+                  <AlertContainer>
+                    <FormAlert
+                      enabled={isResponseError}
+                      message={responseError}
+                    />
+                  </AlertContainer>
+                }
                 <InputContainer>
                   <FormInput
                     {...register("email")}
@@ -97,7 +104,7 @@ export const Signup = () => {
                     )}
                   </InputError>
                 </InputContainer>
-                <FormButton isLoading={isLoading} text="Login" />
+                <FormButton isLoading={isLoading} text="Sign Up" />
               </FormContainer>
             </form>
             <OfferLoginContainer>

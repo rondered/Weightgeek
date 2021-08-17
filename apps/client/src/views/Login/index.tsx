@@ -17,7 +17,7 @@ const LoginContainer = styled.div`
   ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
 `;
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[400px] md:h-auto shadow-2xl bg-white`}
+  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[350px] md:h-auto shadow-2xl bg-purple-800 rounded`}
 `;
 const LoginHeader = styled.div`
   ${tw`mb-8 text-4xl font-extrabold text-center`}
@@ -34,6 +34,9 @@ const FormContainer = styled.div`
 const OfferSignupContainer = styled.div`
   ${tw`mt-10`}
 `;
+const AlertContainer = styled.div`
+  ${tw`pb-5`}
+`;
 
 export const Login = () => {
   const {
@@ -49,11 +52,7 @@ export const Login = () => {
   return (
     <MainContainer>
       {isSuccess && <Redirect to="/" />}
-      <div
-        css={[
-          tw`flex w-full  bg-gradient-to-r from-purple-100 to-indigo-600 bg-fixed `,
-        ]}
-      >
+      <div css={[tw`flex w-full`]}>
         <LoginContainer>
           <LoginFormContainer>
             <LoginHeader>Welcome Back!</LoginHeader>
@@ -70,11 +69,14 @@ export const Login = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <FormContainer>
-                {isResponseError ? (
-                  <FormAlert message={responseError} />
-                ) : (
-                  <></>
-                )}
+                {
+                  <AlertContainer>
+                    <FormAlert
+                      enabled={isResponseError}
+                      message={responseError}
+                    />
+                  </AlertContainer>
+                }
                 <InputContainer>
                   <FormInput
                     {...register("email")}
