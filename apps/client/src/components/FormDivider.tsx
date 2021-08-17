@@ -4,7 +4,7 @@ import tw, { css } from "twin.macro";
 interface IFormDivider {
   text?: string;
 }
-const Divider = () => <div css={tw`h-px bg-gray-300 w-full`} />;
+const Divider = () => <div css={tw`h-px bg-gray-600 w-full`} />;
 
 export const FormDivider: React.FC<IFormDivider> = (props) => (
   <div css={tw`flex items-center h-10 w-full`}>
