@@ -13,7 +13,7 @@ const Icon = styled.div`
   ${tw`w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center`}
 `;
 
-const InputError = styled.div`${tw`relative bottom-[20px] text-right font-light pr-1 text-xs text-red-500`}`;
+const InputError = styled.div`${tw`relative bottom-[20px] text-right font-light pr-2 pb-2 text-xs text-red-400`}`;
 
 const InputContainer = styled.div`
   ${tw`flex w-full h-[50px] flex-col text-xs`}
