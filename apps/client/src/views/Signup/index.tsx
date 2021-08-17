@@ -22,7 +22,7 @@ const SignupHeader = styled.div`
   ${tw`mb-8 text-4xl font-extrabold text-center`}
 `;
 const FormContainer = styled.div`
-  ${tw`grid grid-flow-row gap-[10px]`}
+  ${tw`grid grid-flow-row gap-[15px]`}
 `;
 const OfferLoginContainer = styled.div`
   ${tw`mt-10`}
@@ -49,7 +49,7 @@ export const Signup = () => {
         <SignupContainer>
           <SignupFormContainer>
             <SignupHeader>Sign Up</SignupHeader>
-            <div css={tw`flex gap-10 justify-center`}>
+            <div css={tw`flex gap-[15px] justify-center`}>
               <a href="http://localhost:4444/auth/google/redirect">
                 <SocialLoginButton variation="google" />
               </a>
@@ -62,14 +62,7 @@ export const Signup = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <FormContainer>
-                {
-                  <AlertContainer>
-                    <FormAlert
-                      enabled={isResponseError}
-                      message={responseError}
-                    />
-                  </AlertContainer>
-                }
+                {isResponseError && <FormAlert message={responseError} />}
                 <FormInput
                   {...register("email")}
                   type="email"
@@ -87,6 +80,7 @@ export const Signup = () => {
                   isInvalid={formErrors?.password}
                   icon={<PasswordIcon size="20px" />}
                   errorMessage={formErrors.password?.message}
+                  maxLength="24"
                 />
                 <FormButton isLoading={isLoading} text="Sign Up" />
               </FormContainer>
