@@ -17,16 +17,10 @@ const LoginContainer = styled.div`
   ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
 `;
 const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[350px] md:h-auto shadow-2xl bg-purple-800 rounded`}
+  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[350px] md:h-auto shadow-2xl bg-green-500 rounded`}
 `;
 const LoginHeader = styled.div`
   ${tw`mb-8 text-4xl font-extrabold text-center`}
-`;
-const InputError = styled.div<{ isInvalid: boolean }>`
-  ${tw`text-red-500`}
-`;
-const InputContainer = styled.div`
-  ${tw`flex w-full h-[70px] flex-col text-xs font-semibold gap-[1px]`}
 `;
 const FormContainer = styled.div`
   ${tw`grid grid-flow-row gap-[10px]`}
@@ -77,34 +71,24 @@ export const Login = () => {
                     />
                   </AlertContainer>
                 }
-                <InputContainer>
-                  <FormInput
-                    {...register("email")}
-                    type="email"
-                    name="email"
-                    placeholder="email"
-                    isInvalid={formErrors.email}
-                    icon={<MailIcon size="20px" />}
-                  />
-                  <InputError>
-                    {formErrors.email && <p>{formErrors.email.message}</p>}
-                  </InputError>
-                </InputContainer>
-                <InputContainer>
-                  <FormInput
-                    {...register("password")}
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    isInvalid={formErrors?.password}
-                    icon={<PasswordIcon size="20px" />}
-                  />
-                  <InputError>
-                    {formErrors.password && (
-                      <p>{formErrors.password.message}</p>
-                    )}
-                  </InputError>
-                </InputContainer>
+                <FormInput
+                  {...register("email")}
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  isInvalid={formErrors.email}
+                  icon={<MailIcon size="20px" />}
+                  errorMessage={formErrors.email?.message}
+                />
+                <FormInput
+                  {...register("password")}
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  isInvalid={formErrors?.password}
+                  icon={<PasswordIcon size="20px" />}
+                  errorMessage={formErrors.email?.password}
+                />
                 <FormButton isLoading={isLoading} text="Login" />
               </FormContainer>
             </form>
