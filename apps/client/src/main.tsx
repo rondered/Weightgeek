@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { CustomQueryClientProvider } from "./providers";
-import tw from 'twin.macro'
 
 ReactDOM.render(
   <React.StrictMode>

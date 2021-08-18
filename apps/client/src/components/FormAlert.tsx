@@ -8,7 +8,7 @@ interface IFormAlert {
 }
 
 const backgroundForVariation = {
-  error: tw`bg-red-400`,
+  error: tw`bg-red-900`,
 };
 
 const iconForVariation = {
@@ -16,7 +16,7 @@ const iconForVariation = {
 };
 
 const FormAlertContainer = styled.div<IFormAlert>`
-  ${tw`flex items-center justify-between transition duration-1000 p-3`}
+  ${tw`flex rounded-lg items-center justify-between transition duration-1000 p-3`}
   ${(props) => backgroundForVariation[props.variation]}
 `;
 
