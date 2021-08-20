@@ -1,5 +1,4 @@
 import React from "react";
-import { propNames, Spinner } from "@chakra-ui/react";
 import tw, { styled, css } from "twin.macro";
 import {
   FaGoogle as GoogleIcon,

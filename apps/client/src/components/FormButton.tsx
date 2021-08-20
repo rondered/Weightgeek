@@ -11,11 +11,9 @@ interface IFormButton {
 }
 
 export const FormButton: React.FC<IFormButton> = (props) => (
-  <button
-    css={tw`flex rounded justify-center text-white font-bold items-center h-auto w-full h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 pl-10 pr-10 pt-6 pb-6 hover:(from-green-200 via-blue-400 to-purple-500)`}
-  >
+  <button className="flex rounded justify-center text-white font-bold items-center h-auto w-full h-2 bg-green-500 pl-10 pr-10 pt-6 pb-6">
     {props.isLoading ? (
-      <div css={tw`animate-spin`}>
+      <div className="animate-spin">
         <SpinnerIcon size="30px" />
       </div>
     ) : (

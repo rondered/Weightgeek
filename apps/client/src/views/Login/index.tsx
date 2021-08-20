@@ -13,25 +13,6 @@ import { MainContainer } from "../../components/layout/MainContainer";
 import { HiOutlineMail as MailIcon } from "react-icons/hi";
 import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
-const LoginContainer = styled.div`
-  ${tw`flex h-screen w-full justify-center items-center md:justify-center md:w-1/2`}
-`;
-const LoginFormContainer = styled.div`
-  ${tw`w-full h-screen p-10 md:w-1/2 md:min-w-[350px] md:h-auto shadow-2xl bg-gray-800`}
-`;
-const LoginHeader = styled.div`
-  ${tw`mb-8 text-4xl font-extrabold text-center`}
-`;
-const FormContainer = styled.div`
-  ${tw`grid grid-flow-row gap-[15px]`}
-`;
-const OfferSignupContainer = styled.div`
-  ${tw`mt-10`}
-`;
-const AlertContainer = styled.div`
-  ${tw`pb-5`}
-`;
-
 export const Login = () => {
   const {
     isLoading,
@@ -46,11 +27,13 @@ export const Login = () => {
   return (
     <MainContainer>
       {isSuccess && <Redirect to="/" />}
-      <div css={[tw`flex w-full`]}>
-        <LoginContainer>
-          <LoginFormContainer>
-            <LoginHeader>Welcome Back!</LoginHeader>
-            <div css={tw`flex gap-[15px] justify-center`}>
+      <div className="flex w-full">
+        <div className="flex h-screen w-full justify-center items-center md:(justify-center w-1/2)">
+          <div className="w-full rounded-lg h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto) bg-gray-800">
+            <div className="mb-8 text-4xl font-extrabold text-center">
+              Welcome Back!
+            </div>
+            <div className="flex gap-[15px] justify-center">
               <a href="http://localhost:4444/auth/google/redirect">
                 <SocialLoginButton variation="google" />
               </a>
@@ -58,17 +41,14 @@ export const Login = () => {
                 <SocialLoginButton variation="facebook" />
               </a>
             </div>
-            <div css={tw`flex mt-6 mb-6`}>
+            <div className="flex mt-6 mb-6">
               <FormDivider text="OR" />
             </div>
             <form onSubmit={handleSubmit}>
-              <FormContainer>
-              {isResponseError && (
-                  <FormAlert
-                    message={responseError}
-                    variation="error"
-                  />
-              )}
+              <div className="grid grid-flow-row gap-[15px]">
+                {isResponseError && (
+                  <FormAlert message={responseError} variation="error" />
+                )}
                 <FormInput
                   {...register("email")}
                   type="email"
@@ -89,14 +69,14 @@ export const Login = () => {
                   maxLength="24"
                 />
                 <FormButton isLoading={isLoading} text="Login" />
-              </FormContainer>
+              </div>
             </form>
-            <div css={tw`h-px bg-gray-600 mt-10 -ml-10 -mr-10`}></div>
-            <OfferSignupContainer>
+            <div className="h-px bg-gray-600 mt-10 -ml-10 -mr-10"></div>
+            <div className="mt-10">
               Don't have an account? <Link to="/signup">Signup</Link>
-            </OfferSignupContainer>
-          </LoginFormContainer>
-        </LoginContainer>
+            </div>
+          </div>
+        </div>
       </div>
     </MainContainer>
   );

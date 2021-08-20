@@ -1,6 +1,13 @@
 import create from "zustand";
 
-export const useAuthStore = create((set) => ({
+interface IAuthStore {
+  isLoggedIn: boolean;
+  setLoggedIn: (loggedIn: boolean) => void;
+  authTried: boolean;
+  setAuthTried: () => void;
+}
+
+export const useAuthStore = create<IAuthStore>((set) => ({
   isLoggedIn: false,
   setLoggedIn: (logged: boolean) => set((state) => ({ isLoggedIn: logged })),
   authTried: false,
