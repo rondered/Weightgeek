@@ -18,14 +18,16 @@ const socialIcons = {
 };
 
 const socialIconsBackground = {
-  facebook: tw`bg-facebook`,
-  google: tw`bg-google`,
+  facebook: 'facebook',
+  google: 'google',
 };
 
 export const SocialLoginButton: React.FC<IFormButton> = (props) => {
   return (
     <div
-      css={[tw`rounded-full p-5 w-min text-white`, socialIconsBackground[props.variation]]}
+      className={`rounded-full flex items-center justify-center h-[60px] w-[60px] text-white bg-${
+        socialIconsBackground[props.variation]
+      }`}
     >
       {socialIcons[props.variation]}
     </div>

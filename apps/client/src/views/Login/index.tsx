@@ -29,7 +29,7 @@ export const Login = () => {
       {isSuccess && <Redirect to="/" />}
       <div className="flex w-full">
         <div className="flex h-screen w-full justify-center items-center md:(justify-center w-1/2)">
-          <div className="w-full rounded-lg h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto) bg-gray-800">
+          <div className="w-full rounded-lg h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto) bg-white shadow-2xl">
             <div className="mb-8 text-4xl font-extrabold text-center">
               Welcome Back!
             </div>
@@ -71,7 +71,7 @@ export const Login = () => {
                 <FormButton isLoading={isLoading} text="Login" />
               </div>
             </form>
-            <div className="h-px bg-gray-600 mt-10 -ml-10 -mr-10"></div>
+            <div className="divider mt-10 -ml-10 -mr-10 md:block"></div>
             <div className="mt-10">
               Don't have an account? <Link to="/signup">Signup</Link>
             </div>
