@@ -1,19 +1,14 @@
 import React from "react";
 import { RiMenu3Fill as SidebarIcon } from "react-icons/ri";
-import tw, { styled, css } from "twin.macro";
 import { useSidebar } from "../../hooks";
-import { Sidebar } from './Sidebar'; 
+import { Sidebar } from "./Sidebar";
 
 const Links = ["Dashboard", "Projects", "Team"];
-
-const NavbarContainer = styled.div`
-  ${tw`w-screen bg-gray-800 p-5 flex items-center justify-between`}
-`;
 
 const SidebarButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
 ) => (
-  <button css={tw`md:hidden`} {...props}>
+  <button className="md:hidden" {...props}>
     <SidebarIcon size="20" />
   </button>
 );
@@ -23,10 +18,10 @@ export const Navbar = () => {
 
   return (
     <>
-      <NavbarContainer>
+      <div className="w-screen bg-gray-800 p-5 flex items-center justify-between">
         <div>logo</div>
         <SidebarButton onClick={toggleSidebar} />
-      </NavbarContainer>
+      </div>
       <Sidebar isOpen={sidebar} toggle={toggleSidebar} />
     </>
   );

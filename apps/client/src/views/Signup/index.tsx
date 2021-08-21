@@ -5,7 +5,6 @@ import {
   SocialLoginButton,
   FormInput,
 } from "../../components";
-import tw, { styled, theme } from "twin.macro";
 import { useSignup } from "../../hooks";
 import { Link, Redirect } from "wouter";
 import { MainContainer, FormAlert } from "../../components";
@@ -65,7 +64,7 @@ export const Signup = () => {
                   isInvalid={formErrors?.password}
                   icon={<PasswordIcon size="20px" />}
                   errorMessage={formErrors.password?.message}
-                  maxLength="24"
+                  maxLength={24}
                 />
                 <FormButton isLoading={isLoading} text="Sign Up" />
               </div>

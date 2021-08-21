@@ -3,6 +3,7 @@
   "private": "true",
   "scripts": {
     "start:client": "yarn workspace @wg/client run dev",
+    "build:client": "yarn workspace @wg/client run build",
     "start:api": "yarn workspace @wg/api run start:dev"
   },
   "workspaces": [

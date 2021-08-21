@@ -1,5 +1,4 @@
 import React from "react";
-import tw, { theme, styled } from "twin.macro";
 
 interface IMainContainer {
   children?: React.ReactNode;

@@ -18,21 +18,25 @@ const validationSchema = z.object({
 export const useLogin = () => {
   const { refetch } = useAuthorization();
 
-  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
-    any,
-    Error
-  >(login, {
-    retry: false,
-    onSuccess: () => refetch(),
-  });
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(validationSchema) });
+  } = useForm({
+    resolver: zodResolver(validationSchema),
+  });
+
+  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
+    any,
+    any,
+    z.infer<typeof validationSchema>
+  >(login, {
+    retry: false,
+    onSuccess: () => refetch(),
+  });
 
   return {
-    handleSubmit: handleSubmit((values) => mutate(values)),
+    handleSubmit: handleSubmit((values: z.infer<typeof validationSchema>) => mutate(values)),
     register,
     formErrors: errors,
     responseError: error?.response?.data.message,

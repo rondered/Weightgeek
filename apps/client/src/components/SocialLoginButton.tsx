@@ -1,5 +1,4 @@
 import React from "react";
-import tw, { styled, css } from "twin.macro";
 import {
   FaGoogle as GoogleIcon,
   FaFacebook as FacebookIcon,
@@ -12,22 +11,20 @@ interface IFormButton {
   variation: "google" | "facebook";
 }
 
-const socialIcons = {
-  facebook: <FacebookIcon />,
-  google: <GoogleIcon />,
-};
-
-const socialIconsBackground = {
-  facebook: 'facebook',
-  google: 'google',
-};
-
 export const SocialLoginButton: React.FC<IFormButton> = (props) => {
+  const socialIcons = {
+    facebook: <FacebookIcon />,
+    google: <GoogleIcon />,
+  };
+
+  const socialIconsBackground = {
+    google: "red-500",
+    facebook: "[#DB4437]",
+  };
+
   return (
     <div
-      className={`rounded-full flex items-center justify-center h-[60px] w-[60px] text-white bg-${
-        socialIconsBackground[props.variation]
-      }`}
+      className={`bg-${socialIconsBackground[props.variation]} rounded-full flex items-center justify-center h-[60px] w-[60px] text-white`}
     >
       {socialIcons[props.variation]}
     </div>

@@ -6,7 +6,6 @@ import {
   FormInput,
   FormAlert,
 } from "../../components";
-import tw, { styled, theme } from "twin.macro";
 import { useLogin } from "../../hooks";
 import { Link, Redirect } from "wouter";
 import { MainContainer } from "../../components/layout/MainContainer";
@@ -66,7 +65,7 @@ export const Login = () => {
                   isInvalid={formErrors?.password}
                   icon={<PasswordIcon size="20px" />}
                   errorMessage={formErrors.password?.message}
-                  maxLength="24"
+                  maxLength={24}
                 />
                 <FormButton isLoading={isLoading} text="Login" />
               </div>
