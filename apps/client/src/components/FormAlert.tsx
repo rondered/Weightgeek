@@ -15,14 +15,14 @@ const iconForVariation = {
 };
 
 export const FormAlert: React.FC<IFormAlert> = (props) => {
+  const { variation, message } = props;
+
   return (
     <div
-      className={`flex rounded-lg items-center justify-between transition duration-1000 p-3 bg-${
-        backgroundForVariation[props.variation]
-      }`}
+      className={`flex border border-${backgroundForVariation[variation]} rounded-lg items-center justify-between transition duration-1000 p-3 bg-${backgroundForVariation[variation]}`}
     >
-      {props.message}
-      {iconForVariation[props.variation]}
+      {message}
+      {iconForVariation[variation]}
     </div>
   );
 };

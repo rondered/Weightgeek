@@ -29,7 +29,7 @@ export const Login = () => {
       <div className="flex w-full">
         <div className="flex h-screen w-full justify-center items-center md:(justify-center w-1/2)">
           <div className="card w-full h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto)">
-            <div className="mb-8 text-4xl font-extrabold text-center">
+            <div className="mb-8 text-4xl font-extrabold text-center header">
               Welcome Back!
             </div>
             <div className="flex gap-[15px] flex-col justify-center">
