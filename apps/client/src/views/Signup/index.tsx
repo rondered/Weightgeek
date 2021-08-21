@@ -27,11 +27,11 @@ export const Signup = () => {
       {isSuccess && <Redirect to="/" />}
       <div className="flex w-full">
         <div className="flex h-screen w-full justify-center items-center md:(justify-center w-1/2)">
-          <div className="w-full rounded-lg h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto) bg-white shadow-2xl">
+          <div className="card w-full h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto)">
             <div className="mb-8 text-4xl font-extrabold text-center">
               Sign Up
             </div>
-            <div className="flex gap-[15px] flex-col justify-center">
+            <div className="flex gap-[15px] flex-col">
               <SocialLoginButton variation="google" />
               <SocialLoginButton variation="facebook" />
             </div>
@@ -39,7 +39,7 @@ export const Signup = () => {
               <FormDivider text="OR" />
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-flow-row gap-[15px]">
+              <div className="flex gap-[15px] flex-col">
                 {isResponseError && (
                   <FormAlert message={responseError} variation="error" />
                 )}

@@ -28,7 +28,7 @@ export const Login = () => {
       {isSuccess && <Redirect to="/" />}
       <div className="flex w-full">
         <div className="flex h-screen w-full justify-center items-center md:(justify-center w-1/2)">
-          <div className="w-full rounded-lg h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto) bg-white shadow-2xl">
+          <div className="card w-full h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto)">
             <div className="mb-8 text-4xl font-extrabold text-center">
               Welcome Back!
             </div>
