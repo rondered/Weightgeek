@@ -11,7 +11,7 @@ export const Sidebar: React.FC<ISidebar> = (props) => {
     <div
       className={`${
         props.isOpen ? "w-screen" : "w-0"
-      } h-screen transition-all bg-gray-800 top-0 right-0 absolute md:(hidden) z-10 duration-500`}
+      } h-screen transition-all bg-blue-100 top-[70px] right-0 absolute md:(hidden) duration-500 z-10`}
     >
       {props.isOpen && (
         <div className="p-5">
