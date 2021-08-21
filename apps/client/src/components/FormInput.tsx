@@ -10,14 +10,14 @@ export const FormInput: React.FC<IFormInput> = (props) => {
   const { icon, isInvalid, errorMessage, ...inputProps } = props;
 
   return (
-    <div className="flex w-full h-[50px] flex-col text-xs">
+    <div className="flex w-full h-[50px] flex-col">
       <div className="flex">
         <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center text-gray-900">
           {icon}
         </div>
         <input
-          className={`p-3 pl-10 -ml-10 border border-gray-300 rounded text-base w-full transition-colors duration-1000 text-gray-900 font-bold focus:(text-gray-900) ${
-            isInvalid && `border border-red-400 text-red-400`
+          className={`p-3 pl-10 -ml-10 border border-gray-300 rounded text-base w-full transition-colors duration-1000 text-gray-900 focus:(text-gray-900 ring-3 ring-blue-500) ${
+            isInvalid && `ring-3 ring-red-400`
           }`}
           {...inputProps}
         />

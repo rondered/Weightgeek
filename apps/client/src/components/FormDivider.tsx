@@ -7,7 +7,7 @@ interface IFormDivider {
 export const FormDivider: React.FC<IFormDivider> = (props) => (
   <div className="flex items-center h-10 w-full">
     <div className="divider w-full" />
-    <div className="pl-4 pr-4 text-gray-900 font-bold"> {props.text}</div>
+    <div className="text-gray-500 light text-sm mr-3 ml-3"> {props.text}</div>
     <div className="divider w-full" />
   </div>
 );

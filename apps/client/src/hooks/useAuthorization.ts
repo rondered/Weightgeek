@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { axiosInstance } from "../utils/axios";
 import { useAuthStore } from "../stores";
+import { IGetAuthorization } from '../types';
 
 const AUTH = async (values: any) => {
   const { data } = await axiosInstance.get(`auth/me`, values);
@@ -17,7 +18,7 @@ export const useAuthorization = () => {
     })
   );
 
-  const { isLoading, refetch } = useQuery<any, Error>("AUTH", AUTH, {
+  const { isLoading, refetch } = useQuery<IGetAuthorization, Error>("AUTH", AUTH, {
     retry: false,
     enabled: !authTried,
     onSettled: () => {
