@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocation } from "wouter";
 import { useAuthorization } from "./useAuthorization";
 
-const signup = async (values: any) => {
+const SIGN_UP = async (values: any) => {
   const { data } = await axiosInstance.post(`auth/signup`, values);
   return data;
 };
@@ -15,6 +15,8 @@ const validationSchema = z.object({
   email: z.string().email({ message: "Must be a valid email address" }),
   password: z.string().min(6, { message: "Must be 6 or more characters" }),
 });
+
+type CreateSignUp = z.infer<typeof validationSchema>;
 
 export const useSignup = () => {
   const { refetch } = useAuthorization();
@@ -28,16 +30,16 @@ export const useSignup = () => {
   });
 
   const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
+    CreateSignUp,
     any,
-    any,
-    z.infer<typeof validationSchema>
-  >(signup, {
+    CreateSignUp
+  >(SIGN_UP, {
     retry: false,
     onSuccess: () => refetch(),
   });
 
   return {
-    handleSubmit: handleSubmit((values: z.infer<typeof validationSchema>) => mutate(values)),
+    handleSubmit: handleSubmit((values: CreateSignUp) => mutate(values)),
     register,
     formErrors: errors,
     responseError: error?.response?.data.message,

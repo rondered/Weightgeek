@@ -32,13 +32,9 @@ export const Login = () => {
             <div className="mb-8 text-4xl font-extrabold text-center">
               Welcome Back!
             </div>
-            <div className="flex gap-[15px] justify-center">
-              <a href="http://localhost:4444/auth/google/redirect">
+            <div className="flex gap-[15px] flex-col justify-center">
                 <SocialLoginButton variation="google" />
-              </a>
-              <a href="http://localhost:4444/auth/facebook/redirect">
                 <SocialLoginButton variation="facebook" />
-              </a>
             </div>
             <div className="flex mt-6 mb-6">
               <FormDivider text="OR" />

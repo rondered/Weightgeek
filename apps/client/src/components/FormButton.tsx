@@ -10,7 +10,7 @@ interface IFormButton {
 }
 
 export const FormButton: React.FC<IFormButton> = (props) => (
-  <button className="btn">
+  <button className="btn-primary">
     {props.isLoading ? (
       <div className="animate-spin">
         <SpinnerIcon size="30px" />

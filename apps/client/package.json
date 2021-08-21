@@ -6,11 +6,6 @@
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
-  "babelMacros": {
-    "twin": {
-      "preset": "styled-components"
-    }
-  },
   "dependencies": {
     "@hookform/resolvers": "^2.8.0",
     "autoprefixer": "^10.3.1",

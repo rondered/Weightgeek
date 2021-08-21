@@ -1,32 +1,29 @@
 import React from "react";
-import {
-  FaGoogle as GoogleIcon,
-  FaFacebook as FacebookIcon,
-} from "react-icons/fa";
+import { FaFacebook as FacebookIcon } from "react-icons/fa";
+import { FcGoogle as GoogleIcon } from "react-icons/fc";
 
 interface IFormButton {
   children?: React.ReactNode;
-  icon?: React.ReactElement;
-  backgroundColor?: string;
   variation: "google" | "facebook";
 }
 
-export const SocialLoginButton: React.FC<IFormButton> = (props) => {
-  const socialIcons = {
-    facebook: <FacebookIcon />,
-    google: <GoogleIcon />,
-  };
+const socialIcons = {
+  facebook: {
+    icon: <FacebookIcon color="#4267B2" size="20px" />,
+    link: "http://localhost:4444/auth/facebook/redirect",
+  },
+  google: {
+    icon: <GoogleIcon size="20px" />,
+    link: "http://localhost:4444/auth/google/redirect",
+  },
+};
 
-  const socialIconsBackground = {
-    google: "red-500",
-    facebook: "[#DB4437]",
-  };
+export const SocialLoginButton: React.FC<IFormButton> = (props) => {
+  const { icon, link } = socialIcons[props.variation];
 
   return (
-    <div
-      className={`bg-${socialIconsBackground[props.variation]} rounded-full flex items-center justify-center h-[60px] w-[60px] text-white`}
-    >
-      {socialIcons[props.variation]}
-    </div>
+    <a href={link}>
+      <div className="btn">{icon}<div>sign in</div></div>
+    </a>
   );
 };

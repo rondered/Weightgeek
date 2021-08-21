@@ -17,7 +17,7 @@ export const FormInput: React.FC<IFormInput> = (props) => {
         </div>
         <input
           className={`p-3 pl-10 -ml-10 border border-gray-300 rounded text-base w-full transition-colors duration-1000 text-gray-900 font-bold focus:(text-gray-900) ${
-            isInvalid && `border-2 border-red-400 text-red-400`
+            isInvalid && `border border-red-400 text-red-400`
           }`}
           {...inputProps}
         />
