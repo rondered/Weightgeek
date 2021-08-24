@@ -3,7 +3,7 @@ import { axiosInstance } from "../utils/axios";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAuthorization } from "./useAuthorization";
+import { useSession } from "./useSession";
 
 const LOGIN = async (values: any) => {
   const { data } = await axiosInstance.post(`auth/login`, values);
@@ -18,7 +18,7 @@ const validationSchema = z.object({
 type CreateLogin = z.infer<typeof validationSchema>;
 
 export const useLogin = () => {
-  const { refetch } = useAuthorization();
+  const { refetch } = useSession();
 
   const {
     handleSubmit,

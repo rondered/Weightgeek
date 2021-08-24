@@ -31,11 +31,12 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'Facebook') {
       email: emails[0].value,
       firstName: name.givenName,
       lastName: name.familyName,
-      picture: photos[0].value,
+      profile_photo: photos.length > 0 ? photos[0].value : undefined,
       accessToken,
     };
     const userInDb = await this.userService.loginOrSignUp({
       facebook_id: user.id,
+      profile_photo: user.profile_photo,
     });
     user.id = userInDb.id;
     done(null, user);

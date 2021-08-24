@@ -42,7 +42,21 @@ export class UserService implements OnModuleInit {
   }
 
   async getUser(payload: any) {
-    return this.dbService.user.findUnique({ where: payload });
+    const { email, google_id, facebook_id, id } = payload;
+    const getUserQuery : any = {};
+    if (email) {
+      getUserQuery.email = email;
+    }
+    if (google_id) {
+      getUserQuery.google_id = google_id;
+    }
+    if (facebook_id) {
+      getUserQuery.facebook_id = facebook_id;
+    }
+    if (id) {
+      getUserQuery.id = id;
+    }
+    return this.dbService.user.findUnique({ where: getUserQuery });
   }
 
   async login(email: string, password: string) {
@@ -57,7 +71,12 @@ export class UserService implements OnModuleInit {
   }
 
   async loginOrSignUp(
-    payload?: { email?: string; google_id?: string; facebook_id?: string },
+    payload?: {
+      email?: string;
+      google_id?: string;
+      facebook_id?: string;
+      profile_photo?: string;
+    },
     password?: string,
   ): Promise<User> {
     const foundUser = await this.getUser({ ...payload });

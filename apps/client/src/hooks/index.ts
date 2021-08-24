@@ -1,5 +1,5 @@
 export * from "./useLogin";
 export * from "./useSignup";
-export * from "./useAuthorization";
+export * from "./useSession";
 export * from './useSidebar';
 export * from './useMenuItems';

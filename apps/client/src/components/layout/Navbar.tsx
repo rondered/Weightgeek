@@ -1,6 +1,6 @@
 import React from "react";
 import { RiMenu3Fill as SidebarIcon } from "react-icons/ri";
-import { useSidebar, useMenuItems } from "../../hooks";
+import { useSidebar, useMenuItems, useSession } from "../../hooks";
 import { Sidebar } from "./Sidebar";
 import { Link } from "wouter";
 
@@ -20,6 +20,8 @@ export const Navbar = () => {
 
   const { items } = useMenuItems();
 
+  const { profilePhoto } = useSession();
+
   return (
     <>
       <div className="w-screen top-0 sticky bg-white p-5 flex items-center justify-between shadow-md h-navBar z-50">
@@ -27,11 +29,12 @@ export const Navbar = () => {
         <div className="hidden md:(inline-flex flex-row) gap-[20px]">
           {items.map((item) => (
             <Link to={item.path}>
-              <div className="cursor-pointer rounded-lg border h-[40px] pl-12 pr-12 flex items-center justify-center box-content hover:(text-blue-500 bg-gray-50 custom-ring)">
+              <div className="cursor-pointer rounded-lg h-[40px] pl-12 pr-12 flex items-center justify-center box-content hover:(text-blue-500 bg-gray-50 custom-ring)">
                 {item.name}
               </div>
             </Link>
           ))}
+          <img src={profilePhoto}/>
         </div>
         <SidebarButton onClick={toggleSidebar} />
       </div>

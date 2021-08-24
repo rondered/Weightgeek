@@ -1,6 +1,4 @@
 import { defineConfig } from "windicss/helpers";
-import colors from "windicss/colors";
-import plugin from "windicss/plugin";
 
 export default defineConfig({
   theme: {
@@ -8,9 +6,11 @@ export default defineConfig({
       sora: ["Sora", "sans-serif"],
       playfair: ["Playfair Display", "serif"],
     },
-    height: {
-      navBar: "70px"
-    }
+    extend: {
+      height: {
+        navBar: "70px",
+      },
+    },
   },
   shortcuts: {
     header: "font-playfair",
@@ -19,6 +19,6 @@ export default defineConfig({
     btn: "flex font-bold border border-gray-300 rounded justify-between items-center text-gray-900 font-medium h-auto w-full pl-4 pr-4 pt-3 pb-3 bg-white hover:(bg-gray-100) transitiona-all duration-500",
     divider: "h-px bg-gray-300",
     card: "shadow bg-white rounded-lg",
-    'custom-ring': "ring-3 ring-blue-500"
+    "custom-ring": "ring-3 ring-blue-500",
   },
 });

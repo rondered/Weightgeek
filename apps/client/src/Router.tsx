@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Router, RouteProps, Redirect } from "wouter";
 import { Login, Signup } from "./views";
-import { useAuthorization } from "./hooks";
+import { useSession } from "./hooks";
 import { Navbar, MainContainer } from "./components";
 
 interface IRoute {
@@ -40,7 +40,7 @@ const Component = () => (
 );
 
 export const AppRouter: React.FC<{}> = () => {
-  const { isLoggedIn, isLoading } = useAuthorization();
+  const { isLoggedIn, isLoading } = useSession();
 
   return (
     <>
