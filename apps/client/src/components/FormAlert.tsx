@@ -6,23 +6,20 @@ interface IFormAlert {
   variation: "error";
 }
 
-const backgroundForVariation = {
-  error: "red-900",
-};
-
-const iconForVariation = {
-  error: <ErrorIcon size="20px" />,
+const variationConfig = {
+  error: { icon: <ErrorIcon size="20px" />, ring: "ring-red-400" },
 };
 
 export const FormAlert: React.FC<IFormAlert> = (props) => {
   const { variation, message } = props;
-
   return (
     <div
-      className={`flex border border-${backgroundForVariation[variation]} rounded-lg items-center justify-between transition duration-1000 p-3 bg-${backgroundForVariation[variation]}`}
+      className={`flex border rounded-lg items-center justify-between transition duration-1000 p-3 custom-ring ${
+        variationConfig[variation].ring
+      }`}
     >
       {message}
-      {iconForVariation[variation]}
+      {variationConfig[variation].icon}
     </div>
   );
 };

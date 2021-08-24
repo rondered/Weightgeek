@@ -4,6 +4,13 @@ import { Login, Signup } from "./views";
 import { useAuthorization } from "./hooks";
 import { Navbar, MainContainer } from "./components";
 
+interface IRoute {
+  isProtected: boolean;
+  path: string;
+  component: React.FC;
+  menuName: string | undefined;
+}
+
 interface IProtectedRoute extends RouteProps {
   isLoggedIn?: boolean;
 }
@@ -26,7 +33,11 @@ const PublicRoute: React.FC<IPublicRoute> = (props) => {
   return <>{!isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/" />}</>;
 };
 
-const Component = () => <MainContainer><Navbar /></MainContainer>;
+const Component = () => (
+  <MainContainer>
+    <Navbar />
+  </MainContainer>
+);
 
 export const AppRouter: React.FC<{}> = () => {
   const { isLoggedIn, isLoading } = useAuthorization();
@@ -34,7 +45,7 @@ export const AppRouter: React.FC<{}> = () => {
   return (
     <>
       {isLoading ? (
-        <h1></h1>
+        <></>
       ) : (
         <Router>
           <Switch>

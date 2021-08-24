@@ -16,20 +16,15 @@ const getAccessToken = () => {
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
-    console.log('here1')
     const request = error.config;
     if (error.response.status === 401) {
       try {
         await getAccessToken();
-        console.log('here2')
         return axios(error.config, agentConfig);
       } catch (error) {
-        console.log('here3')
         throw error;
       }
     } else {
-      console.log('here4')
-      console.log(error.response.data.message);
       throw error;
     }
   }
