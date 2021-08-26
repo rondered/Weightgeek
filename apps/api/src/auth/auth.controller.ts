@@ -29,7 +29,6 @@ export class AuthController {
     res.cookie(
       'Authentication',
       {
-        access_token: this.authService.generateAccessToken(req),
         refresh_token: req.cookies.Authentication.refresh_token,
       },
       {
@@ -38,7 +37,9 @@ export class AuthController {
         maxAge: 259200000,
       },
     );
-    return res.send(req.user);
+    return res.send({
+      access_token: this.authService.generateAccessToken(req),
+    });
   }
 
   @Get()
