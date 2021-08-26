@@ -9,9 +9,17 @@ const AUTH = async (values: any) => {
 };
 
 export const useSession = () => {
-  const { isLoggedIn, setLoggedIn, setAccessToken } = useAuthStore((state) => ({
+  const {
+    isLoggedIn,
+    setLoggedIn,
+    setAccessToken,
+    setInitalized,
+    isInitalized,
+  } = useAuthStore((state) => ({
     isLoggedIn: state.isLoggedIn,
     setLoggedIn: state.setLoggedIn,
+    isInitalized: state.isInitalized,
+    setInitalized: state.setInitalized,
     accessToken: state.accessToken,
     setAccessToken: state.setAccessToken,
     removeAccessToken: state.removeAccessToken,
@@ -27,13 +35,16 @@ export const useSession = () => {
     AUTH,
     {
       retry: false,
-      enabled: isLoggedIn,
+      enabled: isLoggedIn || !isInitalized,
+      onSettled: () => {
+        setInitalized();
+      },
       onSuccess: (data: any) => {
         setProfilePhoto(data.profile_photo);
         setLoggedIn(true);
       },
       onError: () => {
-        setLoggedIn(true);
+        setLoggedIn(false);
       },
     }
   );
