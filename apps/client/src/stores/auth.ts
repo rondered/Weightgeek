@@ -3,13 +3,15 @@ import create from "zustand";
 interface IAuthStore {
   isLoggedIn: boolean;
   setLoggedIn: (loggedIn: boolean) => void;
-  authTried: boolean;
-  setAuthTried: () => void;
+  accessToken: string | undefined;
+  setAccessToken: (token: string) => void;
+  removeAccessToken: () => void;
 }
 
 export const useAuthStore = create<IAuthStore>((set) => ({
   isLoggedIn: false,
   setLoggedIn: (logged: boolean) => set((state) => ({ isLoggedIn: logged })),
-  authTried: false,
-  setAuthTried: () => set({ authTried: true }),
+  accessToken: undefined,
+  setAccessToken: (token: string) => set({ accessToken: token }),
+  removeAccessToken: () => set({ accessToken: undefined }),
 }));

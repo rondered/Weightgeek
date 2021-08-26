@@ -24,7 +24,7 @@ export class AuthService {
     });
   }
 
-  generateTokens(payload) {
+  generateTokens(payload): { access_token: string; refresh_token: string } {
     return {
       access_token: this.generateAccessToken(payload),
       refresh_token: this.generateRefreshToken(payload),
@@ -36,27 +36,16 @@ export class AuthService {
   }
 
   refreshAccessToken(@Req() req: Request, @Res() res: Response): void {
-    res.cookie(
-      'Authentication',
-      {
-        access_token: this.generateAccessToken(req),
-        refresh_token: req.cookies.Authentication.refresh_token,
-      },
-      {
-        httpOnly: true,
-        secure: this.configService.get('PRODUCTION'),
-        maxAge: 259200000,
-      },
-    );
-    res.send(req.user);
+    res.send({ access_token: this.generateAccessToken(req) });
   }
 
   refreshTokens(payload, @Res() res: Response): void {
+    const { access_token, refresh_token } = this.generateTokens(payload);
+
     res.cookie(
       'Authentication',
       {
-        access_token: this.generateAccessToken(payload),
-        refresh_token: this.generateRefreshToken(payload),
+        refresh_token,
       },
       {
         httpOnly: true,
@@ -64,6 +53,25 @@ export class AuthService {
         maxAge: 259200000,
       },
     );
-    res.send();
+    res.send({ access_token });
+  }
+
+  passportTokens(req, res): void {
+    const { access_token, refresh_token } = this.generateTokens({
+      id: req.user.id,
+      email: req.user.email,
+    });
+    res.cookie(
+      'Authentication',
+      { refresh_token },
+      {
+        httpOnly: true,
+        secure: this.configService.get('PRODUCTION'),
+        maxAge: 259200000,
+      },
+    );
+    res.redirect(
+      `${this.configService.get('FE_URL')}?accessToken=${access_token}`,
+    );
   }
 }

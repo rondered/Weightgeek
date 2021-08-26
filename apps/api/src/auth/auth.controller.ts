@@ -50,31 +50,13 @@ export class AuthController {
   @Get('google/redirect')
   @UseGuards(AuthGuard('Google'))
   redirectFromGoogle(@Req() req, @Res() res: Response) {
-    const tokens = this.authService.generateTokens({
-      id: req.user.id,
-      email: req.user.email,
-    });
-    res.cookie('Authentication', tokens, {
-      httpOnly: true,
-      secure: this.configService.get('PRODUCTION'),
-      maxAge: 259200000,
-    });
-    res.redirect(this.configService.get('FE_URL'));
+    this.authService.passportTokens(req, res);
   }
 
   @Get('facebook/redirect')
   @UseGuards(AuthGuard('Facebook'))
   redirectFromFacebook(@Req() req, @Res() res: Response) {
-    const tokens = this.authService.generateTokens({
-      id: req.user.id,
-      email: req.user.email,
-    });
-    res.cookie('Authentication', tokens, {
-      httpOnly: true,
-      secure: this.configService.get('PRODUCTION'),
-      maxAge: 259200000,
-    });
-    res.redirect(this.configService.get('FE_URL'));
+    this.authService.passportTokens(req, res);
   }
 
   @Post('/signup')

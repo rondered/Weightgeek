@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Router, RouteProps, Redirect } from "wouter";
+import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
 import { Login, Signup } from "./views";
 import { useSession } from "./hooks";
 import { Navbar, MainContainer } from "./components";
@@ -40,7 +40,20 @@ const Component = () => (
 );
 
 export const AppRouter: React.FC<{}> = () => {
-  const { isLoggedIn, isLoading } = useSession();
+  const { isLoggedIn, isLoading, setAccessToken, setLoggedIn } = useSession();
+
+  React.useEffect(() => {
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const accessToken = params.get("accessToken");
+
+    if (accessToken) {
+      setAccessToken(accessToken);
+      console.log('access token: ', accessToken);
+      console.log('logged in');
+      setLoggedIn(true);
+    }
+  }, []);
 
   return (
     <>

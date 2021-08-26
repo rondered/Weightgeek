@@ -1,9 +1,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { config } from "../config";
+import { useAuthStore } from "../stores";
 
 const agentConfig: AxiosRequestConfig = {
   withCredentials: true,
   baseURL: "http://localhost:4444",
+  headers: {
+    Authorization: `Bearer ${useAuthStore.getState().accessToken}`,
+  },
 };
 
 export const axiosInstance: AxiosInstance = axios.create(agentConfig);

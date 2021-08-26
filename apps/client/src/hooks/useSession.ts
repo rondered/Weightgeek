@@ -4,19 +4,18 @@ import { useAuthStore, useUserStore } from "../stores";
 import { IGetAuthorization } from "../types";
 
 const AUTH = async (values: any) => {
-  const { data } = await axiosInstance.get(`auth/me`, values);
+  const { data } = await axiosInstance.get(`auth/me`);
   return data;
 };
 
 export const useSession = () => {
-  const { isLoggedIn, setLoggedIn, authTried, setAuthTried } = useAuthStore(
-    (state) => ({
-      isLoggedIn: state.isLoggedIn,
-      setLoggedIn: state.setLoggedIn,
-      authTried: state.authTried,
-      setAuthTried: state.setAuthTried,
-    })
-  );
+  const { isLoggedIn, setLoggedIn, setAccessToken } = useAuthStore((state) => ({
+    isLoggedIn: state.isLoggedIn,
+    setLoggedIn: state.setLoggedIn,
+    accessToken: state.accessToken,
+    setAccessToken: state.setAccessToken,
+    removeAccessToken: state.removeAccessToken,
+  }));
 
   const { setProfilePhoto, profilePhoto } = useUserStore((state) => ({
     setProfilePhoto: state.setProfilePhoto,
@@ -28,10 +27,7 @@ export const useSession = () => {
     AUTH,
     {
       retry: false,
-      enabled: !authTried,
-      onSettled: () => {
-        setAuthTried();
-      },
+      enabled: isLoggedIn,
       onSuccess: (data: any) => {
         setProfilePhoto(data.profile_photo);
         setLoggedIn(true);
@@ -44,7 +40,9 @@ export const useSession = () => {
 
   return {
     isLoggedIn,
+    setLoggedIn,
     isLoading,
+    setAccessToken,
     profilePhoto,
     refetch,
   };
