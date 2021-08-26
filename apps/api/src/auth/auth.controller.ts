@@ -38,7 +38,7 @@ export class AuthController {
       },
     );
     return res.send({
-      access_token: this.authService.generateAccessToken(req),
+      access_token: this.authService.generateAccessToken(req.user),
     });
   }
 
