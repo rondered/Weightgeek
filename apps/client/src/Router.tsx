@@ -3,6 +3,7 @@ import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
 import { Login, Signup } from "./views";
 import { useSession } from "./hooks";
 import { Navbar, MainContainer } from "./components";
+import { axiosInstance } from "./utils/axios";
 
 interface IRoute {
   isProtected: boolean;
@@ -41,23 +42,24 @@ const Component = () => (
 
 export const AppRouter: React.FC<{}> = () => {
   const { isLoggedIn, isLoading, setAccessToken, setLoggedIn } = useSession();
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const accessToken = params.get("accessToken");
+
+  const [set, setSet] = React.useState(false);
 
   React.useEffect(() => {
-    const search = window.location.search;
-    const params = new URLSearchParams(search);
-    const accessToken = params.get("accessToken");
-
     if (accessToken) {
       setAccessToken(accessToken);
-      console.log('access token: ', accessToken);
-      console.log('logged in');
+      axiosInstance.defaults.headers["Authorization"] = `Bearer ${accessToken}`;
       setLoggedIn(true);
     }
+    setSet(true);
   }, []);
 
   return (
     <>
-      {isLoading ? (
+      {isLoading || !set ? (
         <></>
       ) : (
         <Router>

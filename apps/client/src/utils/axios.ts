@@ -4,9 +4,6 @@ import { useAuthStore } from "../stores";
 const agentConfig: AxiosRequestConfig = {
   withCredentials: true,
   baseURL: "http://localhost:4444",
-  headers: {
-    Authorization: `Bearer ${useAuthStore.getState().accessToken}`,
-  },
 };
 
 export const axiosInstance: AxiosInstance = axios.create(agentConfig);
@@ -20,6 +17,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const request = error.config;
+    console.log(error);
     if (error.response.status === 401) {
       try {
         await getAccessToken();

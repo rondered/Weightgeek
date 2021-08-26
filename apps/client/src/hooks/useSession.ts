@@ -33,7 +33,7 @@ export const useSession = () => {
         setLoggedIn(true);
       },
       onError: () => {
-        setLoggedIn(false);
+        setLoggedIn(true);
       },
     }
   );
