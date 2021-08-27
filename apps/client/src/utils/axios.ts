@@ -8,25 +8,36 @@ const agentConfig: AxiosRequestConfig = {
 
 export const axiosInstance: AxiosInstance = axios.create(agentConfig);
 
-const getAccessToken = () => {
-  const ACCESS_URL = `/auth/access`;
-  return axios.get(ACCESS_URL, agentConfig);
+const getAccessToken = async () => {
+  const { data } = await axios.get(`/auth/access`, agentConfig);
+  return data.access_token;
 };
 
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const request = error.config;
-    console.log(error);
     if (error.response.status === 401) {
       try {
-        await getAccessToken();
-        return axios(error.config, agentConfig);
+        const access_token = await getAccessToken();
+        useAuthStore.setState({ accessToken: access_token });
+        return axiosInstance(error.config, agentConfig);
       } catch (error) {
         throw error;
       }
     } else {
       throw error;
     }
+  }
+);
+
+axiosInstance.interceptors.request.use(
+  (config) => {
+    config.headers["Authorization"] = `Bearer ${
+      useAuthStore.getState().accessToken
+    }`;
+    return config;
+  },
+  (error) => {
+    Promise.reject(error);
   }
 );

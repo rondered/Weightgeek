@@ -51,7 +51,7 @@ export const AppRouter: React.FC<{}> = () => {
   React.useEffect(() => {
     if (accessToken) {
       setAccessToken(accessToken);
-      axiosInstance.defaults.headers["Authorization"] = `Bearer ${accessToken}`;
+      console.log(accessToken);
       setLoggedIn(true);
     }
     setSet(true);
