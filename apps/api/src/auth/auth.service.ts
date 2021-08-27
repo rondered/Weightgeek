@@ -57,7 +57,7 @@ export class AuthService {
   }
 
   passportTokens(req, res): void {
-    const { access_token, refresh_token } = this.generateTokens({
+    const refresh_token = this.generateRefreshToken({
       id: req.user.id,
       email: req.user.email,
     });
@@ -70,8 +70,6 @@ export class AuthService {
         maxAge: 259200000,
       },
     );
-    res.redirect(
-      `${this.configService.get('FE_URL')}?accessToken=${access_token}`,
-    );
+    res.redirect(`${this.configService.get('FE_URL')}`);
   }
 }

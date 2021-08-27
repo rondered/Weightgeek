@@ -1,9 +1,8 @@
 import React from "react";
 import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
-import { Login, Signup } from "./views";
+import { Login, Signup, Loading } from "@/views";
 import { useSession } from "./hooks";
 import { Navbar, MainContainer } from "@/components/layout";
-import { axiosInstance } from "./utils/axios";
 
 interface IRoute {
   isProtected: boolean;
@@ -12,26 +11,20 @@ interface IRoute {
   menuName: string | undefined;
 }
 
-interface IProtectedRoute extends RouteProps {
-  isLoggedIn?: boolean;
-}
+interface IProtectedRoute extends RouteProps {}
 
-interface IPublicRoute extends RouteProps {
-  isLoggedIn?: boolean;
-}
+interface IPublicRoute extends RouteProps {}
 
 const ProtectedRoute: React.FC<IProtectedRoute> = (props) => {
-  const { isLoggedIn, ...restOfProps } = props;
+  const { isLoggedIn } = useSession();
 
-  return (
-    <>{isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/login" />}</>
-  );
+  return <>{isLoggedIn ? <Route {...props} /> : <Redirect to="/login" />}</>;
 };
 
 const PublicRoute: React.FC<IPublicRoute> = (props) => {
-  const { isLoggedIn, ...restOfProps } = props;
+  const { isLoggedIn } = useSession();
 
-  return <>{!isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/" />}</>;
+  return <>{!isLoggedIn ? <Route {...props} /> : <Redirect to="/" />}</>;
 };
 
 const Component = () => (
@@ -41,40 +34,18 @@ const Component = () => (
 );
 
 export const AppRouter: React.FC<{}> = () => {
-  const { isLoggedIn, isLoading, setAccessToken, setLoggedIn } = useSession();
-  const search = window.location.search;
-  const params = new URLSearchParams(search);
-  const accessToken = params.get("accessToken");
-
-  React.useEffect(() => {
-    if (accessToken) {
-      setAccessToken(accessToken);
-      setLoggedIn(true);
-    }
-  }, []);
+  const { isLoading } = useSession();
 
   return (
     <>
-      {isLoading ? (
-        <></>
+      {true ? (
+        <Loading />
       ) : (
         <Router>
           <Switch>
-            <ProtectedRoute
-              isLoggedIn={isLoggedIn}
-              path="/"
-              component={Component}
-            />
-            <PublicRoute
-              isLoggedIn={isLoggedIn}
-              path="/login"
-              component={Login}
-            />
-            <PublicRoute
-              isLoggedIn={isLoggedIn}
-              path="/signup"
-              component={Signup}
-            />
+            <ProtectedRoute path="/" component={Component} />
+            <PublicRoute path="/login" component={Login} />
+            <PublicRoute path="/signup" component={Signup} />
             <Route>
               <Redirect to="/" />
             </Route>
