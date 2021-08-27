@@ -72,4 +72,17 @@ export class AuthService {
     );
     res.redirect(`${this.configService.get('FE_URL')}`);
   }
+
+  invalidateTokens(req, res): void {
+    res.cookie(
+      'Authentication',
+      { refresh_token: '' },
+      {
+        httpOnly: true,
+        secure: this.configService.get('PRODUCTION'),
+        maxAge: 259200000,
+      },
+    );
+    res.redirect(`${this.configService.get('FE_URL')}`);
+  }
 }

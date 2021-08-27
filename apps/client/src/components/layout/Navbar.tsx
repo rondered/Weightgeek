@@ -19,7 +19,7 @@ const SidebarButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
 const Profile: React.FC<{}> = () => {
   const [open, setOpen] = React.useState<boolean>(false);
 
-  const { disconnect } = useSession();
+  const { logout } = useSession();
 
   return (
     <>
@@ -34,7 +34,7 @@ const Profile: React.FC<{}> = () => {
           open ? "h-[40px]" : "h-0 p-0"
         }`}
       >
-        <div onClick={disconnect} >disconnect</div>
+        <div onClick={logout}>disconnect</div>
       </div>
     </>
   );

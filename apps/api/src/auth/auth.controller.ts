@@ -60,6 +60,11 @@ export class AuthController {
     this.authService.passportTokens(req, res);
   }
 
+  @Get('logout')
+  logout(@Req() req, @Res() res: Response) {
+    this.authService.invalidateTokens(req, res);
+  }
+
   @Post('/signup')
   async signUpUser(@Req() req, @Body() payload: SignUpUserDto, @Res() res) {
     const { email, password } = payload;

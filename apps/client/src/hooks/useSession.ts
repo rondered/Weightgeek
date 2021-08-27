@@ -1,3 +1,4 @@
+import React from "react";
 import { useQuery } from "react-query";
 import { axiosInstance } from "../utils/axios";
 import { useAuthStore, useUserStore } from "../stores";
@@ -8,6 +9,11 @@ const AUTH = async (values: any) => {
   return data;
 };
 
+const LOGOUT = async (values: any) => {
+  const { data } = await axiosInstance.get(`auth/logout`);
+  return data;
+};
+
 export const useSession = () => {
   const {
     isLoggedIn,
@@ -15,7 +21,7 @@ export const useSession = () => {
     setAccessToken,
     setInitalized,
     isInitalized,
-    disconnect,
+    removeAccessToken,
   } = useAuthStore((state) => ({
     isLoggedIn: state.isLoggedIn,
     setLoggedIn: state.setLoggedIn,
@@ -24,7 +30,6 @@ export const useSession = () => {
     accessToken: state.accessToken,
     setAccessToken: state.setAccessToken,
     removeAccessToken: state.removeAccessToken,
-    disconnect: state.disconnect,
   }));
 
   const { setProfilePhoto, profilePhoto } = useUserStore((state) => ({
@@ -32,35 +37,45 @@ export const useSession = () => {
     profilePhoto: state.profilePhoto,
   }));
 
-  const { isLoading, refetch } = useQuery<IGetAuthorization, Error>(
-    "AUTH",
-    AUTH,
+  const { isLoading: isAuthLoading, refetch } = useQuery<
+    IGetAuthorization,
+    Error
+  >("AUTH", AUTH, {
+    retry: false,
+    enabled: isLoggedIn || !isInitalized,
+    onSettled: () => {
+      setInitalized();
+    },
+    onSuccess: (data: any) => {
+      setProfilePhoto(data.profile_photo);
+      setLoggedIn(true);
+    },
+    onError: () => {
+      setLoggedIn(false);
+    },
+  });
+
+  const [isLogout, setIsLogout] = React.useState<boolean>(false);
+
+  const { isLoading: isLogoutLoading } = useQuery<any, Error>(
+    "LOGOUT",
+    LOGOUT,
     {
       retry: false,
-      enabled: isLoggedIn || !isInitalized,
-      onSettled: () => {
-        setInitalized();
-      },
-      onSuccess: (data: any) => {
-        setProfilePhoto(data.profile_photo);
-        setLoggedIn(true);
-      },
-      onError: () => {
-        setLoggedIn(false);
-      },
+      enabled: isLogout,
     }
   );
 
   return {
     isLoggedIn,
     setLoggedIn,
-    isLoading,
+    isLoading: isAuthLoading || isLogoutLoading,
     setAccessToken,
     profilePhoto,
     refetch,
-    disconnect: () => {
-      disconnect();
-      refetch();
+    logout: () => {
+      setIsLogout(true);
+      removeAccessToken();
     },
   };
 };
