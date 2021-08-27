@@ -5,10 +5,10 @@ import {
   SocialLoginButton,
   FormInput,
   FormAlert,
-} from "../../components";
-import { useLogin } from "../../hooks";
+} from "@/components/common";
+import { useLogin } from "@/hooks";
 import { Link, Redirect } from "wouter";
-import { MainContainer } from "../../components/layout/MainContainer";
+import { MainContainer } from "@/components/layout";
 import { HiOutlineMail as MailIcon } from "react-icons/hi";
 import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
@@ -33,8 +33,8 @@ export const Login = () => {
               Welcome Back!
             </div>
             <div className="flex gap-[15px] flex-col justify-center">
-                <SocialLoginButton variation="google" />
-                <SocialLoginButton variation="facebook" />
+              <SocialLoginButton variation="google" />
+              <SocialLoginButton variation="facebook" />
             </div>
             <div className="flex mt-6 mb-6">
               <FormDivider text="OR" />

@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
 import { Login, Signup } from "./views";
 import { useSession } from "./hooks";
-import { Navbar, MainContainer } from "./components";
+import { Navbar, MainContainer } from "@/components/layout";
 import { axiosInstance } from "./utils/axios";
 
 interface IRoute {
