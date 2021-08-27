@@ -11,7 +11,6 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'Refresh') {
       jwtFromRequest: ExtractJwt.fromExtractors([
         (req: Request) => {
           if (req.cookies?.Authentication) {
-            console.log(req.cookies?.Authentication.refresh_token);
             return req.cookies?.Authentication.refresh_token;
           }
         },

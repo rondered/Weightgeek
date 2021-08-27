@@ -46,15 +46,11 @@ export const AppRouter: React.FC<{}> = () => {
   const params = new URLSearchParams(search);
   const accessToken = params.get("accessToken");
 
-  const [set, setSet] = React.useState(false);
-
   React.useEffect(() => {
     if (accessToken) {
       setAccessToken(accessToken);
-      console.log(accessToken);
       setLoggedIn(true);
     }
-    setSet(true);
   }, []);
 
   return (
