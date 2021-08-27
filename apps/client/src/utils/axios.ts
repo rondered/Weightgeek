@@ -6,12 +6,24 @@ const agentConfig: AxiosRequestConfig = {
   baseURL: "http://localhost:4444",
 };
 
-export const axiosInstance: AxiosInstance = axios.create(agentConfig);
-
 const getAccessToken = async () => {
   const { data } = await axios.get(`/auth/access`, agentConfig);
   return data.access_token;
 };
+
+export const axiosInstance: AxiosInstance = axios.create(agentConfig);
+
+axiosInstance.interceptors.request.use(
+  (config) => {
+    config.headers["Authorization"] = `Bearer ${
+      useAuthStore.getState().accessToken
+    }`;
+    return config;
+  },
+  async (error) => {
+    throw error;
+  }
+);
 
 axiosInstance.interceptors.response.use(
   (response) => response,
@@ -27,17 +39,5 @@ axiosInstance.interceptors.response.use(
     } else {
       throw error;
     }
-  }
-);
-
-axiosInstance.interceptors.request.use(
-  (config) => {
-    config.headers["Authorization"] = `Bearer ${
-      useAuthStore.getState().accessToken
-    }`;
-    return config;
-  },
-  async (error) => {
-    throw error;
   }
 );

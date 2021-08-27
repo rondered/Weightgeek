@@ -11,20 +11,26 @@ interface IRoute {
   menuName: string | undefined;
 }
 
-interface IProtectedRoute extends RouteProps {}
+interface IProtectedRoute extends RouteProps {
+  isLoggedIn?: boolean;
+}
 
-interface IPublicRoute extends RouteProps {}
+interface IPublicRoute extends RouteProps {
+  isLoggedIn?: boolean;
+}
 
 const ProtectedRoute: React.FC<IProtectedRoute> = (props) => {
-  const { isLoggedIn } = useSession();
+  const { isLoggedIn, ...restOfProps } = props;
 
-  return <>{isLoggedIn ? <Route {...props} /> : <Redirect to="/login" />}</>;
+  return (
+    <>{isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/login" />}</>
+  );
 };
 
 const PublicRoute: React.FC<IPublicRoute> = (props) => {
-  const { isLoggedIn } = useSession();
+  const { isLoggedIn, ...restOfProps } = props;
 
-  return <>{!isLoggedIn ? <Route {...props} /> : <Redirect to="/" />}</>;
+  return <>{!isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/" />}</>;
 };
 
 const Component = () => (
@@ -34,18 +40,30 @@ const Component = () => (
 );
 
 export const AppRouter: React.FC<{}> = () => {
-  const { isLoading } = useSession();
+  const { isLoggedIn, isLoading, setAccessToken, setLoggedIn } = useSession();
 
   return (
     <>
-      {true ? (
-        <Loading />
+      {isLoading ? (
+        <Loading/>
       ) : (
         <Router>
           <Switch>
-            <ProtectedRoute path="/" component={Component} />
-            <PublicRoute path="/login" component={Login} />
-            <PublicRoute path="/signup" component={Signup} />
+            <ProtectedRoute
+              isLoggedIn={isLoggedIn}
+              path="/"
+              component={Component}
+            />
+            <PublicRoute
+              isLoggedIn={isLoggedIn}
+              path="/login"
+              component={Login}
+            />
+            <PublicRoute
+              isLoggedIn={isLoggedIn}
+              path="/signup"
+              component={Signup}
+            />
             <Route>
               <Redirect to="/" />
             </Route>

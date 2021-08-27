@@ -8,6 +8,7 @@ interface IAuthStore {
   accessToken: string | undefined;
   setAccessToken: (token: string) => void;
   removeAccessToken: () => void;
+  disconnect: () => void;
 }
 
 export const useAuthStore = create<IAuthStore>((set) => ({
@@ -18,4 +19,5 @@ export const useAuthStore = create<IAuthStore>((set) => ({
   accessToken: undefined,
   setAccessToken: (token: string) => set({ accessToken: token }),
   removeAccessToken: () => set({ accessToken: undefined }),
+  disconnect: () => set({ isLoggedIn: false, accessToken: undefined, isInitalized: false }),
 }));

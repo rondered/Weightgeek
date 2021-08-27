@@ -1,6 +1,6 @@
 import React from "react";
 import { RiMenu3Fill as SidebarIcon } from "react-icons/ri";
-import { useSidebar, useMenuItems, useSession } from "../../hooks";
+import { useSidebar, useMenuItems, useSession } from "@/hooks";
 import { Sidebar } from "./Sidebar";
 import { Link } from "wouter";
 import { CgProfile as ProfileIcon } from "react-icons/cg";
@@ -19,6 +19,8 @@ const SidebarButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
 const Profile: React.FC<{}> = () => {
   const [open, setOpen] = React.useState<boolean>(false);
 
+  const { disconnect } = useSession();
+
   return (
     <>
       <ProfileIcon
@@ -32,7 +34,7 @@ const Profile: React.FC<{}> = () => {
           open ? "h-[40px]" : "h-0 p-0"
         }`}
       >
-        lala
+        <div onClick={disconnect} >disconnect</div>
       </div>
     </>
   );

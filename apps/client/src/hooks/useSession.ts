@@ -15,6 +15,7 @@ export const useSession = () => {
     setAccessToken,
     setInitalized,
     isInitalized,
+    disconnect,
   } = useAuthStore((state) => ({
     isLoggedIn: state.isLoggedIn,
     setLoggedIn: state.setLoggedIn,
@@ -23,6 +24,7 @@ export const useSession = () => {
     accessToken: state.accessToken,
     setAccessToken: state.setAccessToken,
     removeAccessToken: state.removeAccessToken,
+    disconnect: state.disconnect,
   }));
 
   const { setProfilePhoto, profilePhoto } = useUserStore((state) => ({
@@ -56,5 +58,9 @@ export const useSession = () => {
     setAccessToken,
     profilePhoto,
     refetch,
+    disconnect: () => {
+      disconnect();
+      refetch();
+    },
   };
 };
