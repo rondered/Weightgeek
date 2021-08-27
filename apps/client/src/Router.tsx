@@ -55,7 +55,7 @@ export const AppRouter: React.FC<{}> = () => {
 
   return (
     <>
-      {isLoading || !set ? (
+      {isLoading ? (
         <></>
       ) : (
         <Router>
