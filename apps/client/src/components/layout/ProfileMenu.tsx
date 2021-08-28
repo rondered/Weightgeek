@@ -7,7 +7,7 @@ const ProfileMenuItem: React.FC<{ text: string; onClick: MouseEventHandler }> =
   (props) => {
     return (
       <div className="cursor-pointer py-2" onClick={props.onClick}>
-        <div className="link" >{props.text}</div>
+        <div className="link">{props.text}</div>
       </div>
     );
   };
@@ -32,7 +32,7 @@ export const ProfileMenu: React.FC<{}> = () => {
       />
       <div
         className={`transition-all divide-y items-center justify-center flex flex-col overflow-hidden absolute right-0 top-[80px] card mr-[10px] ${
-          open ? "h-auto px-4 py-2" : "h-0 p-0"
+          open ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
         {items.map((item) => (
