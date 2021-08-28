@@ -32,7 +32,7 @@ export const ProfileMenu: React.FC<{}> = () => {
       />
       <div
         className={`transition-all divide-y items-center justify-center flex flex-col overflow-hidden absolute right-0 top-[80px] card mr-[10px] ${
-          open ? "h-auto p-x-2 p-y-2" : "h-0 p-0"
+          open ? "h-auto px-4 py-2" : "h-0 p-0"
         }`}
       >
         {items.map((item) => (

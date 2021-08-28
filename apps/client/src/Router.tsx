@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
-import { Login, Signup, Loading } from "@/views";
+import { Login, Signup, Loading, Logbook } from "@/views";
 import { useSession } from "./hooks";
 import { Navbar, MainContainer } from "@/components/layout";
 
@@ -33,26 +33,25 @@ const PublicRoute: React.FC<IPublicRoute> = (props) => {
   return <>{!isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/" />}</>;
 };
 
-const Component = () => (
-  <MainContainer>
-    <Navbar />
-  </MainContainer>
-);
-
 export const AppRouter: React.FC<{}> = () => {
   const { isLoggedIn, isLoading } = useSession();
 
   return (
     <>
       {isLoading ? (
-        <Loading/>
+        <Loading />
       ) : (
         <Router>
           <Switch>
             <ProtectedRoute
               isLoggedIn={isLoggedIn}
               path="/"
-              component={Component}
+              component={Logbook}
+            />
+            <ProtectedRoute
+              isLoggedIn={isLoggedIn}
+              path="/logbook"
+              component={Logbook}
             />
             <PublicRoute
               isLoggedIn={isLoggedIn}
