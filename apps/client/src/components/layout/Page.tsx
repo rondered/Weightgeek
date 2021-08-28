@@ -18,7 +18,7 @@ export const Page: React.FC<IPage> = (props) => {
       <div className="flex justify-center">
         <div className="p-4 flex h-full w-full flex-col gap-[10px] md:(max-w-[1000px])">
           {header && (
-            <div className="text-3xl font-bold md:(text-5xl mb-[30px]) font-playfair mb-[20px]">
+            <div className="text-3xl font-bold md:(text-5xl mb-[30px]) font-playfair mb-[20px] text-center">
               {header}
             </div>
           )}
