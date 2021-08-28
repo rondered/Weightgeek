@@ -20,5 +20,6 @@ export default defineConfig({
     divider: "h-px bg-gray-300",
     card: "shadow bg-white rounded-lg",
     "custom-ring": "ring-3 ring-blue-500",
+    link: "text-gray-900 hover:(text-blue-600)"
   },
 });
