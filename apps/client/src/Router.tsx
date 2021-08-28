@@ -40,7 +40,7 @@ const Component = () => (
 );
 
 export const AppRouter: React.FC<{}> = () => {
-  const { isLoggedIn, isLoading, setAccessToken, setLoggedIn } = useSession();
+  const { isLoggedIn, isLoading } = useSession();
 
   return (
     <>

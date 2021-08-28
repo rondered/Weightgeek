@@ -1,13 +1,12 @@
 import { useMutation } from "react-query";
-import { axiosInstance } from "../utils/axios";
+import { axiosInstance } from "@/utils";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLocation } from "wouter";
-import { useSession } from "./useSession";
+import { useSession } from "@/hooks";
 
-const SIGN_UP = async (values: any) => {
-  const { data } = await axiosInstance.post(`auth/signup`, values);
+const LOGIN = async (values: any) => {
+  const { data } = await axiosInstance.post(`auth/login`, values);
   return data;
 };
 
@@ -16,9 +15,9 @@ const validationSchema = z.object({
   password: z.string().min(6, { message: "Must be 6 or more characters" }),
 });
 
-type CreateSignUp = z.infer<typeof validationSchema>;
+type CreateLogin = z.infer<typeof validationSchema>;
 
-export const useSignup = () => {
+export const useLogin = () => {
   const { refetch } = useSession();
 
   const {
@@ -30,16 +29,16 @@ export const useSignup = () => {
   });
 
   const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
-    CreateSignUp,
+    CreateLogin,
     any,
-    CreateSignUp
-  >(SIGN_UP, {
+    CreateLogin
+  >(LOGIN, {
     retry: false,
     onSuccess: () => refetch(),
   });
 
   return {
-    handleSubmit: handleSubmit((values: CreateSignUp) => mutate(values)),
+    handleSubmit: handleSubmit((values: CreateLogin) => mutate(values)),
     register,
     formErrors: errors,
     responseError: error?.response?.data.message,

@@ -5,10 +5,10 @@ import {
   SocialLoginButton,
   FormInput,
 } from "@/components/common";
-import { useSignup } from "../../hooks";
+import { useSignup } from "./useSignup";
 import { Link, Redirect } from "wouter";
 import { FormAlert } from "@/components/common";
-import { MainContainer } from '@/components/layout';
+import { MainContainer } from "@/components/layout";
 import { HiOutlineMail as MailIcon } from "react-icons/hi";
 import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 

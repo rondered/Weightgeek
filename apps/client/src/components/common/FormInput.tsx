@@ -6,7 +6,7 @@ interface IFormInput extends React.InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: boolean;
 }
 
-export const FormInput: React.FC<IFormInput> = (props) => {
+export const FormInput = React.forwardRef((props: IFormInput, ref) => {
   const { icon, isInvalid, errorMessage, ...inputProps } = props;
 
   return (
@@ -29,4 +29,4 @@ export const FormInput: React.FC<IFormInput> = (props) => {
       )}
     </div>
   );
-};
+});

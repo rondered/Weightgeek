@@ -6,7 +6,7 @@ import {
   FormInput,
   FormAlert,
 } from "@/components/common";
-import { useLogin } from "@/hooks";
+import { useLogin } from "./useLogin";
 import { Link, Redirect } from "wouter";
 import { MainContainer } from "@/components/layout";
 import { HiOutlineMail as MailIcon } from "react-icons/hi";

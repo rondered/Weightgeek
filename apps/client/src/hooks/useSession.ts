@@ -55,14 +55,14 @@ export const useSession = () => {
     },
   });
 
-  const [isLogout, setIsLogout] = React.useState<boolean>(false);
+  const [isLoggingOut, setIsLoggingOut] = React.useState<boolean>(false);
 
   const { isLoading: isLogoutLoading } = useQuery<any, Error>(
     "LOGOUT",
     LOGOUT,
     {
       retry: false,
-      enabled: isLogout,
+      enabled: isLoggingOut,
     }
   );
 
@@ -74,7 +74,7 @@ export const useSession = () => {
     profilePhoto,
     refetch,
     logout: () => {
-      setIsLogout(true);
+      setIsLoggingOut(true);
       removeAccessToken();
     },
   };

@@ -1,9 +1,8 @@
 import React from "react";
 import { RiMenu3Fill as SidebarIcon } from "react-icons/ri";
 import { useSidebar, useMenuItems, useSession } from "@/hooks";
-import { Sidebar } from "./Sidebar";
+import { Sidebar, ProfileMenu } from "@/components/layout";
 import { Link } from "wouter";
-import { CgProfile as ProfileIcon } from "react-icons/cg";
 
 const SidebarButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
@@ -15,30 +14,6 @@ const SidebarButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
     <SidebarIcon size="20" />
   </button>
 );
-
-const Profile: React.FC<{}> = () => {
-  const [open, setOpen] = React.useState<boolean>(false);
-
-  const { logout } = useSession();
-
-  return (
-    <>
-      <ProfileIcon
-        onClick={() => {
-          setOpen(!open);
-        }}
-        className="rounded-full h-[35px] w-[35px] hover:(custom-ring) cursor-pointer"
-      />
-      <div
-        className={`transition-all overflow-hidden absolute w-[80px] right-0 p-4 top-[80px] rounded shadow bg-white mr-[10px] ${
-          open ? "h-[40px]" : "h-0 p-0"
-        }`}
-      >
-        <div onClick={logout}>disconnect</div>
-      </div>
-    </>
-  );
-};
 
 export const Navbar = () => {
   const { toggleSidebar, sidebar } = useSidebar();
@@ -57,7 +32,7 @@ export const Navbar = () => {
               </div>
             </Link>
           ))}
-          <Profile />
+          <ProfileMenu />
         </div>
         <div className="inline-flex gap-[20px] flex-row md:(hidden)">
           <SidebarButton onClick={toggleSidebar} />
