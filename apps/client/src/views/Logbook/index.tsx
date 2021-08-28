@@ -1,6 +1,7 @@
 import React from "react";
 import { Page } from "@/components/layout";
 import { FormInput } from "@/components/common";
+import Datepicker from "react-datepicker";
 import {
   RiScales2Line as WeightIcon,
   RiFireLine as CaloriesIcon,
@@ -22,11 +23,14 @@ export const Logbook = () => {
             type="number"
             placeholder="Calories"
           />
-          <FormInput
-            icon={<CaloriesIcon size="20px" />}
-            type="date"
-            placeholder="Calories"
-          />
+        </div>
+        <div className="custom-datepicker">
+        <Datepicker
+          inline
+          onChange={() => {
+            console.log("lala");
+          }}
+        />
         </div>
       </div>
     </Page>

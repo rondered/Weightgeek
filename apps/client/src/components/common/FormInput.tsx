@@ -16,7 +16,7 @@ export const FormInput = React.forwardRef((props: IFormInput, ref) => {
           {icon}
         </div>
         <input
-          className={`p-3 pl-10 -ml-10 border border-gray-300 rounded text-base w-full transition-colors duration-1000 text-gray-900 focus:(text-gray-900 custom-ring) ${
+          className={`input-field pl-10 -ml-10 text-base w-full transition-colors duration-1000 text-gray-900 ${
             isInvalid && `custom-ring ring-red-400`
           }`}
           {...inputProps}

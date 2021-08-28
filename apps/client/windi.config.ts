@@ -1,6 +1,9 @@
 import { defineConfig } from "windicss/helpers";
 
 export default defineConfig({
+  extract: {
+    include: ['src/**/*.{html,vue,jsx,tsx,svelte}'],
+  },
   theme: {
     fontFamily: {
       sora: ["Sora", "sans-serif"],
@@ -21,5 +24,6 @@ export default defineConfig({
     card: "shadow bg-white rounded-lg p-3 md:(p-5)",
     "custom-ring": "ring-3 ring-blue-500",
     link: "text-gray-900 hover:(text-blue-600)",
+    'input-field': "p-3 border border-gray-300 rounded focus:(text-gray-900 custom-ring)"
   },
 });
