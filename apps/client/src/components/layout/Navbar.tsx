@@ -19,12 +19,12 @@ const NavbarLink: React.FC<{
     <Link to={path}>
       <div
         className={`w-full flex cursor-pointer rounded p-2
-        hover:(bg-blue-50 text-blue-600 font-bold stroke-3 stroke-current) transition-all
+        hover:(bg-blue-50 text-blue-600) transition-all
         py-4
         flex items-center flex-row gap-[20px]
         ${
           active &&
-          "bg-blue-100 hover:(bg-blue-100) text-blue-600 font-bold stroke-3 stroke-current"
+          "bg-blue-100 hover:(bg-blue-100) text-blue-600 font-bold stroke-2 stroke-current"
         }
         `}
       >
