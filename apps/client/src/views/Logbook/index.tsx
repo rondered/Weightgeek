@@ -9,30 +9,8 @@ import {
 
 export const Logbook = () => {
   return (
-    <Page header="Logbook">
-      <div className="card">
-        <div className="font-playfair text-xl mb-[20px]">Add Log</div>
-        <div className="flex gap-[15px] flex-col md:(flex-row)">
-          <FormInput
-            icon={<WeightIcon size="20px" />}
-            type="number"
-            placeholder="Weight"
-          />
-          <FormInput
-            icon={<CaloriesIcon size="20px" />}
-            type="number"
-            placeholder="Calories"
-          />
-        </div>
-        <div className="custom-datepicker">
-        <Datepicker
-          inline
-          onChange={() => {
-            console.log("lala");
-          }}
-        />
-        </div>
-      </div>
+    <Page>
+      <div className="card w-full">lala</div>
     </Page>
   );
 };

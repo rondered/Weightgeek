@@ -1,10 +1,15 @@
 import React from "react";
 import { useLocation } from "wouter";
+import {
+  FiEdit2 as LogbookIcon,
+  FiActivity as StatsIcon,
+} from "react-icons/fi";
+import { ReactComponent as HomeIcon } from '@/assets/icons/home.svg'
 
 const items = [
-  { name: "Logbook", path: "/logbook" },
-  { name: "Logbook", path: "/logbook" },
-  { name: "Logbook", path: "/logbook" },
+  { name: "Home", path: "/", icon: HomeIcon },
+  { name: "Logbook", path: "/logbook", icon: LogbookIcon },
+  { name: "Stats", path: "/stats", icon: StatsIcon },
 ];
 
 export const useMenuItems = () => {
