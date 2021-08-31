@@ -4,7 +4,7 @@ import {
   FiEdit2 as LogbookIcon,
   FiActivity as StatsIcon,
 } from "react-icons/fi";
-import { ReactComponent as HomeIcon } from '@/assets/icons/home.svg'
+import HomeIcon from '@/assets/icons/home.svg'
 
 const items = [
   { name: "Home", path: "/", icon: HomeIcon },

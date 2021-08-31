@@ -29,7 +29,6 @@ const NavbarLink: React.FC<{
         }
         `}
       >
-        {React.createElement(icon)}
         <div>{name}</div>
       </div>
     </Link>

@@ -1,11 +1,9 @@
 import { defineConfig } from "windicss/helpers";
 
 export default defineConfig({
-  plugins: [
-    require("@windicss/plugin-icons")
-  ],
+  plugins: [require("@windicss/plugin-icons")],
   extract: {
-    include: ['src/**/*.{html,vue,jsx,tsx,svelte}'],
+    include: ["src/**/*.{html,vue,jsx,tsx,svelte}"],
   },
   theme: {
     fontFamily: {
@@ -27,7 +25,9 @@ export default defineConfig({
     card: "bg-white shadow rounded-lg p-3 md:(p-5)",
     "custom-ring": "ring-3 ring-blue-500",
     link: "text-gray-900 hover:(text-blue-600)",
-    'input-field': "p-3 border border-gray-300 rounded focus:(text-gray-900 custom-ring)",
-    'gradient-header': "font-bold bg-clip-text text-transparent bg-gradient-2 w-min"
+    "input-field":
+      "p-3 border border-gray-300 rounded focus:(text-gray-900 custom-ring)",
+    "gradient-header":
+      "font-bold bg-clip-text text-transparent bg-gradient-2 w-min",
   },
 });
