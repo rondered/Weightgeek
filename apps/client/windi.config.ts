@@ -24,6 +24,7 @@ export default defineConfig({
     card: "bg-white shadow rounded-lg p-3 md:(p-5)",
     "custom-ring": "ring-3 ring-blue-500",
     link: "text-gray-900 hover:(text-blue-600)",
-    'input-field': "p-3 border border-gray-300 rounded focus:(text-gray-900 custom-ring)"
+    'input-field': "p-3 border border-gray-300 rounded focus:(text-gray-900 custom-ring)",
+    'gradient-header': "font-bold bg-clip-text text-transparent bg-gradient-to-l from-red-400 to-blue-500 w-min"
   },
 });

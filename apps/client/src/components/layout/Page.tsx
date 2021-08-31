@@ -13,7 +13,11 @@ export const Page: React.FC<IPage> = (props) => {
       <div className="flex">
         <Navbar />
         <div className="w-full p-5 flex flex-col">
-          <div className="text-3xl mb-[40px] font-bold">Logbook</div>
+          <div className="text-[50px] mb-[40px] p-3">
+            <div className="gradient-header">
+              Welcome!
+            </div>
+          </div>
           <div className="">{props.children}</div>
         </div>
       </div>
