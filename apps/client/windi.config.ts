@@ -1,6 +1,9 @@
 import { defineConfig } from "windicss/helpers";
 
 export default defineConfig({
+  plugins: [
+    require("@windicss/plugin-icons")
+  ],
   extract: {
     include: ['src/**/*.{html,vue,jsx,tsx,svelte}'],
   },
@@ -25,6 +28,6 @@ export default defineConfig({
     "custom-ring": "ring-3 ring-blue-500",
     link: "text-gray-900 hover:(text-blue-600)",
     'input-field': "p-3 border border-gray-300 rounded focus:(text-gray-900 custom-ring)",
-    'gradient-header': "font-bold bg-clip-text text-transparent bg-gradient-to-l from-red-400 to-blue-500 w-min"
+    'gradient-header': "font-bold bg-clip-text text-transparent bg-gradient-2 w-min"
   },
 });

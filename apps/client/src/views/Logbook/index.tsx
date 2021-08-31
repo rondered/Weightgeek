@@ -14,7 +14,7 @@ export const Logbook = () => {
         <div className="card h-[150px] w-[150px] bg-blue-500 flex-none text-white">
           lala
         </div>
-        <div className="card h-[150px] w-[150px] bg-red-500 flex-none text-white">
+        <div className="card h-[150px] w-[150px] bg-gradient-4 flex-none text-white">
           lala
         </div>
         <div className="card h-[150px] w-[150px] bg-lime-500 flex-none text-white">

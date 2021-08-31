@@ -18,13 +18,14 @@ const NavbarLink: React.FC<{
   return (
     <Link to={path}>
       <div
-        className={`w-full flex cursor-pointer rounded p-2
-        hover:(bg-blue-400) transition-all
+        className={`w-full flex cursor-pointer
+        hover:(bg-gray-500) transition-all
         py-4
+        px-3
         flex items-center flex-row gap-[20px]
         ${
           active &&
-          "bg-blue-400 hover:(bg-blue-400) font-bold stroke-2 stroke-current"
+          "bg-gray-400 hover:(bg-gray-400) font-bold stroke-2 stroke-current border-r-4 border-[#F761A1]"
         }
         `}
       >
@@ -42,16 +43,16 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="hidden h-screen w-[260px] md:(flex flex-none flex-col justify-between) bg-blue-500 text-white">
+      <div className="hidden h-screen w-[260px] md:(flex flex-none flex-col justify-between) bg-gray-600 text-white">
         <div className="logo pt-4 px-4 fixed p-5">logo</div>
-        <div className="links flex gap-[10px] flex-col mt-[120px] p-5">
+        <div className="links flex gap-[10px] flex-col mt-[120px]">
           {items.map((item: any) => (
             <NavbarLink {...item} active={location === item.path} />
           ))}
         </div>
-        <div className="footer p-5 bg-blue-600">
-          <div className="flex flex-row gap-[10px] items-center">
-            <LogoutIcon />
+        <div className="footer p-5 bg-gray-700">
+          <div className="flex flex-row items-center">
+            <div className="icon-log-out mr-[20px]" />
             <div>Logout</div>
           </div>
         </div>
