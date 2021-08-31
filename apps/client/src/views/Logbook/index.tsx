@@ -10,10 +10,16 @@ import {
 export const Logbook = () => {
   return (
     <Page>
-      <div className="flex flex-row gap-[30px]">
-        <div className="card w-full">lala</div>
-        <div className="card w-full">lala</div>
-        <div className="card w-full">lala</div>
+      <div className="flex flex-row gap-[30px] overflow-x-scroll">
+        <div className="card h-[150px] w-[150px] bg-blue-500 flex-none text-white">
+          lala
+        </div>
+        <div className="card h-[150px] w-[150px] bg-red-500 flex-none text-white">
+          lala
+        </div>
+        <div className="card h-[150px] w-[150px] bg-lime-500 flex-none text-white">
+          lala
+        </div>
       </div>
       <div className="card w-full mt-[40px]">lala</div>
     </Page>

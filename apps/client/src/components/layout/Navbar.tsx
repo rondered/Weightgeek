@@ -19,12 +19,12 @@ const NavbarLink: React.FC<{
     <Link to={path}>
       <div
         className={`w-full flex cursor-pointer rounded p-2
-        hover:(bg-blue-50 text-blue-600) transition-all
+        hover:(bg-blue-400) transition-all
         py-4
         flex items-center flex-row gap-[20px]
         ${
           active &&
-          "bg-blue-100 hover:(bg-blue-100) text-blue-600 font-bold stroke-2 stroke-current"
+          "bg-blue-400 hover:(bg-blue-400) font-bold stroke-2 stroke-current"
         }
         `}
       >
@@ -42,16 +42,17 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="hidden h-screen w-[260px] md:(flex flex-none flex-col justify-between) bg-white p-5">
-        <div className="logo pt-4 px-4 fixed">logo</div>
-        <div className="links flex gap-[10px] flex-col mt-[120px]">
+      <div className="hidden h-screen w-[260px] md:(flex flex-none flex-col justify-between) bg-blue-500 text-white">
+        <div className="logo pt-4 px-4 fixed p-5">logo</div>
+        <div className="links flex gap-[10px] flex-col mt-[120px] p-5">
           {items.map((item: any) => (
             <NavbarLink {...item} active={location === item.path} />
           ))}
         </div>
-        <div className="footer bottom-0">
-          <div className="flex flex-row gap-[10px]">
-            <LogoutIcon /> Logout{" "}
+        <div className="footer p-5 bg-blue-600">
+          <div className="flex flex-row gap-[10px] items-center">
+            <LogoutIcon />
+            <div>Logout</div>
           </div>
         </div>
       </div>
