@@ -22,6 +22,7 @@ const NavbarLink: React.FC<{
         py-4
         pl-8
         pr-4
+        z-50
         flex items-center flex-row gap-[20px]
         ${
           active
@@ -51,7 +52,7 @@ export const Navbar = () => {
             <NavbarLink {...item} active={location === item.path} />
           ))}
         </div>
-        <div className="footer p-5">
+        <div className="footer p-5 border-t-2">
           <div className="flex flex-row items-center">
             <div className="icon-log-out mr-[20px]" />
             <div>Logout</div>

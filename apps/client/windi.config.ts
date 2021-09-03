@@ -16,7 +16,7 @@ export default defineConfig({
         navBar: "70px",
       },
       colors: {
-        'lala': '#000000'
+        primary: '#0c1ebe'
       }
     },
   },
