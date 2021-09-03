@@ -1,7 +1,7 @@
 import React from "react";
 import { Page, ActionBar } from "@/components/layout";
 import * as dayjs from "dayjs";
-import { ReactComponent as EditIcon } from "@/assets/icons/edit.svg";
+import { LogbookTable } from "./LogbookTable";
 
 const DATE_FORMAT = "dddd, MMMM D, YYYY";
 
@@ -27,16 +27,19 @@ const WeighInHeader: React.FC<{
 export const Logbook = () => {
   const [logDate, setLogDate] = React.useState<Date>(new Date());
 
+  const data = [
+    { date: "11/03/2022", calories: 2000, weight: 80 },
+    { date: "11/03/2022", calories: 2000, weight: 80 },
+    { date: "11/03/2022", calories: 2000, weight: 80 },
+  ];
+
   return (
     <Page>
       <ActionBar>{dayjs(logDate).format(DATE_FORMAT)}</ActionBar>
       <WeighInHeader units="kg" weight={72} calories={2000} />
       <div className="justify-center flex">
-        <div className="logbook-actions-container cursor-pointer rounded-full shadow-xl bg-white w-[200px] p-5 bottom-[35px] relative flex justify-center align-center hover:(transform scale-110) transition-all">
-          <div className="font-bold flex items-center gap-[20px]">
-            <EditIcon />
-            <div>Edit Weigh In</div>
-          </div>
+        <div className="latest-logs-container rounded shadow-xl w-[360px] bg-white bottom-[41px] relative">
+          <LogbookTable data={data} />
         </div>
       </div>
     </Page>
