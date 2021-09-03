@@ -1,4 +1,5 @@
 import { defineConfig } from "windicss/helpers";
+import colors from "windicss/colors";
 
 export default defineConfig({
   plugins: [require("@windicss/plugin-icons")],
@@ -14,6 +15,9 @@ export default defineConfig({
       height: {
         navBar: "70px",
       },
+      colors: {
+        'lala': '#000000'
+      }
     },
   },
   shortcuts: {

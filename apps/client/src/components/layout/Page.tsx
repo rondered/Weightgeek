@@ -11,8 +11,8 @@ export const Page: React.FC<IPage> = (props) => {
   return (
     <MainContainer>
       <div className="flex">
-        <Navbar />
-        <div className="w-full p-5 flex flex-col bg-gray-100">
+        <Navbar/>
+        <div className="w-full p-5 flex flex-col">
           <div className="text-[50px] mb-[40px] p-3">
             <div className="gradient-header">
               Welcome!
