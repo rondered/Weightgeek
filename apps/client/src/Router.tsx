@@ -1,8 +1,7 @@
 import React from "react";
 import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
-import { Login, Signup, Loading, Logbook } from "@/views";
+import { Login, Signup, Loading } from "@/views";
 import { useSession } from "./hooks";
-import { Navbar, MainContainer } from "@/components/layout";
 
 interface IRoute {
   isProtected: boolean;
@@ -10,6 +9,8 @@ interface IRoute {
   component: React.FC;
   menuName: string | undefined;
 }
+
+const Home: React.FC<{}> = () => <>Connected!</>;
 
 interface IProtectedRoute extends RouteProps {
   isLoggedIn?: boolean;
@@ -46,12 +47,7 @@ export const AppRouter: React.FC<{}> = () => {
             <ProtectedRoute
               isLoggedIn={isLoggedIn}
               path="/"
-              component={Logbook}
-            />
-            <ProtectedRoute
-              isLoggedIn={isLoggedIn}
-              path="/logbook"
-              component={Logbook}
+              component={Home}
             />
             <PublicRoute
               isLoggedIn={isLoggedIn}
