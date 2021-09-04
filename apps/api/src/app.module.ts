@@ -4,7 +4,6 @@ import { ConfigModule } from '@nestjs/config';
 import { DbModule } from './db';
 import { AuthController, AuthModule } from './auth';
 import configuration from './config/configuration';
-import { WeightinModule } from './weightin/weightin.module';
 @Module({
   imports: [
     DbModule,
@@ -14,7 +13,6 @@ import { WeightinModule } from './weightin/weightin.module';
     UserModule,
     ConfigModule,
     AuthModule,
-    WeightinModule,
   ],
   controllers: [AuthController],
   providers: [],

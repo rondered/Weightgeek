@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { axiosInstance } from "../utils/axios";
-import { useAuthStore, useUserStore } from "../stores";
+import { useAuthStore } from "../stores";
 import { IGetAuthorization } from "../types";
 
 const AUTH = async (values: any) => {
@@ -32,11 +32,6 @@ export const useSession = () => {
     removeAccessToken: state.removeAccessToken,
   }));
 
-  const { setProfilePhoto, profilePhoto } = useUserStore((state) => ({
-    setProfilePhoto: state.setProfilePhoto,
-    profilePhoto: state.profilePhoto,
-  }));
-
   const { isLoading: isAuthLoading, refetch } = useQuery<
     IGetAuthorization,
     Error
@@ -47,7 +42,6 @@ export const useSession = () => {
       setInitalized();
     },
     onSuccess: (data: any) => {
-      setProfilePhoto(data.profile_photo);
       setLoggedIn(true);
     },
     onError: () => {
@@ -71,7 +65,6 @@ export const useSession = () => {
     setLoggedIn,
     isLoading: isAuthLoading || isLogoutLoading,
     setAccessToken,
-    profilePhoto,
     refetch,
     logout: () => {
       setIsLoggingOut(true);
