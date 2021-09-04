@@ -37,7 +37,7 @@ export const useSession = () => {
     Error
   >("AUTH", AUTH, {
     retry: false,
-    enabled: isLoggedIn || !isInitalized,
+    enabled: !isInitalized,
     onSettled: () => {
       setInitalized();
     },
