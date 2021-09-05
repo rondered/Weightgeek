@@ -26,9 +26,10 @@ export const Signup = () => {
   return (
     <MainContainer>
       {isSuccess && <Redirect to="/" />}
-      <div className="flex w-full bg-gray-900">
+      <div className="flex w-full bg-gray-100">
         <div className="flex h-screen w-full justify-center items-center md:(justify-center w-1/2)">
-          <div className="card w-full h-screen p-10 md:(w-1/2 min-w-[350px] max-w-[450px] h-auto)">
+          <div className="card w-full h-screen md:(w-1/2 min-w-[350px] max-w-[450px] h-auto)">
+          <div className="p-10">
             <div className="mb-8 text-4xl font-extrabold text-center header">
               Sign Up
             </div>
@@ -66,8 +67,9 @@ export const Signup = () => {
                 <FormButton isLoading={isLoading} text="Sign Up" />
               </div>
             </form>
-            <div className="divider mt-10 -ml-10 -mr-10 md:block"></div>
-            <div className="mt-10">
+            </div>
+            <div className="divider md:block"></div>
+            <div className="p-10">
               Already have an account? <Link to="/login">Login</Link>
             </div>
           </div>
