@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
-import { Login, Signup, Loading } from "@/views";
-import { Page } from "@/components/layout";
+import { Login, Signup, Logbook } from "@/views/Pages";
+import { Loading } from "@/views/Layout";
 import { useSession } from "./hooks";
 
 interface IRoute {
@@ -43,7 +43,11 @@ export const AppRouter: React.FC<{}> = () => {
       ) : (
         <Router>
           <Switch>
-            <ProtectedRoute isLoggedIn={isLoggedIn} path="/" component={Page} />
+            <ProtectedRoute
+              isLoggedIn={isLoggedIn}
+              path="/"
+              component={Logbook}
+            />
             <PublicRoute
               isLoggedIn={isLoggedIn}
               path="/login"

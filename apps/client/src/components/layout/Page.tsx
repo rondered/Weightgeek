@@ -1,14 +1,16 @@
 import React from "react";
 import { MainContainer } from "./MainContainer";
+import { NavBar } from "./NavBar";
 
-export const Page = () => {
+interface IPage {
+  children?: React.ReactNode;
+}
+
+export const Page: React.FC<IPage> = (props) => {
   return (
     <MainContainer>
-      <div className="w-full h-[60px] bg-white shadow-lg"></div>
-      <div className="p-5">
-        <div className="flex flex-row h-full w-full">
-        </div>
-      </div>
+      <NavBar />
+      {props.children}
     </MainContainer>
   );
 };
