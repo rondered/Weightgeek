@@ -26,9 +26,7 @@ export class UserService implements OnModuleInit {
     payload?: { email?: string; google_id?: string; facebook_id?: string },
     password?: string,
   ): Promise<User> {
-    const alreadySignedUpUser = await this.dbService.user.findFirst({
-      where: { ...payload },
-    });
+    const alreadySignedUpUser = await this.getUser(payload);
     if (alreadySignedUpUser) {
       throw new ForbiddenException('User already exists!');
     }
@@ -41,22 +39,13 @@ export class UserService implements OnModuleInit {
     return signedUpUser;
   }
 
-  async getUser(payload: any) {
-    const { email, google_id, facebook_id, id } = payload;
-    const getUserQuery : any = {};
-    if (email) {
-      getUserQuery.email = email;
-    }
-    if (google_id) {
-      getUserQuery.google_id = google_id;
-    }
-    if (facebook_id) {
-      getUserQuery.facebook_id = facebook_id;
-    }
-    if (id) {
-      getUserQuery.id = id;
-    }
-    return this.dbService.user.findUnique({ where: getUserQuery });
+  async getUser(payload: {
+    email?: string;
+    google_id?: string;
+    facebook_id?: string;
+    id?: string;
+  }) {
+    return this.dbService.user.findUnique({ where: payload });
   }
 
   async login(email: string, password: string) {
@@ -75,7 +64,6 @@ export class UserService implements OnModuleInit {
       email?: string;
       google_id?: string;
       facebook_id?: string;
-      profile_photo?: string;
     },
     password?: string,
   ): Promise<User> {

@@ -12,11 +12,11 @@ export const FormInput = React.forwardRef((props: IFormInput, ref) => {
   return (
     <div className="flex w-full h-[50px] flex-col">
       <div className="flex">
-        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center text-gray-900">
+        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center text-textColor">
           {icon}
         </div>
         <input
-          className={`input-field pl-10 -ml-10 text-base w-full transition-colors duration-1000 text-gray-900 ${
+          className={`input-field pl-10 -ml-10 text-base w-full transition-colors duration-1000 text-textColor ${
             isInvalid && `custom-ring ring-red-400`
           }`}
           {...inputProps}

@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { axiosInstance } from "../utils/axios";
-import { useAuthStore } from "../stores";
-import { IGetAuthorization } from "../types";
+import { axiosInstance } from "@/utils/axios";
+import { useAuthStore } from "@/stores";
+import { IGetAuthorization } from "@/types";
 
 const AUTH = async (values: any) => {
   const { data } = await axiosInstance.get(`auth/me`);
@@ -18,7 +18,6 @@ export const useSession = () => {
   const {
     isLoggedIn,
     setLoggedIn,
-    setAccessToken,
     setInitalized,
     isInitalized,
     removeAccessToken,
@@ -27,8 +26,6 @@ export const useSession = () => {
     setLoggedIn: state.setLoggedIn,
     isInitalized: state.isInitalized,
     setInitalized: state.setInitalized,
-    accessToken: state.accessToken,
-    setAccessToken: state.setAccessToken,
     removeAccessToken: state.removeAccessToken,
   }));
 
@@ -64,7 +61,6 @@ export const useSession = () => {
     isLoggedIn,
     setLoggedIn,
     isLoading: isAuthLoading || isLogoutLoading,
-    setAccessToken,
     refetch,
     logout: () => {
       setIsLoggingOut(true);

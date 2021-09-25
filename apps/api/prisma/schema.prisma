@@ -14,7 +14,6 @@ model User {
   password      String?
   google_id     String?    @unique
   facebook_id   String?    @unique
-  profile_photo String?
   weight_ins    WeightIn[]
 
   @@index([id, email], name: "User.id_email_index")

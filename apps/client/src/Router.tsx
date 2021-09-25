@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
 import { Login, Signup, Logbook } from "@/views/Pages";
-import { Loading } from "@/views/Layout";
+import { Loading } from "@/views/Layouts";
 import { useSession } from "./hooks";
 
 interface IRoute {

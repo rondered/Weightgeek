@@ -24,18 +24,16 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'Google') {
     profile: any,
     done: VerifyCallback,
   ): Promise<any> {
-    const { name, emails, photos, id } = profile;
+    const { name, emails, id } = profile;
     const user: any = {
       id,
       email: emails[0].value,
       firstName: name.givenName,
       lastName: name.familyName,
-      profile_photo: photos.length > 0 ? photos[0].value : undefined,
       accessToken,
     };
     const userInDb = await this.userService.loginOrSignUp({
       google_id: user.id,
-      profile_photo: user.profile_photo,
     });
     user.id = userInDb.id;
     done(null, user);

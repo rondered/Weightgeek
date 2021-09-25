@@ -3,7 +3,6 @@ import { axiosInstance } from "@/utils";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLocation } from "wouter";
 import { useSession } from "@/hooks";
 
 const SIGN_UP = async (values: any) => {

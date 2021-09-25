@@ -1,23 +1,30 @@
 import create from "zustand";
 
 interface IAuthStore {
-  isInitalized: boolean;
-  setInitalized: () => void;
+  // state
   isLoggedIn: boolean;
-  setLoggedIn: (loggedIn: boolean) => void;
+  isInitalized: boolean;
   accessToken: string | undefined;
+
+  //actions
+  setLoggedIn: (loggedIn: boolean) => void;
+  setInitalized: () => void;
   setAccessToken: (token: string) => void;
   removeAccessToken: () => void;
   disconnect: () => void;
 }
 
 export const useAuthStore = create<IAuthStore>((set) => ({
+  // state
   isLoggedIn: false,
-  setLoggedIn: (logged: boolean) => set((state) => ({ isLoggedIn: logged })),
   isInitalized: false,
-  setInitalized: () => set({ isInitalized: true }),
   accessToken: undefined,
+
+  // actions
+  setLoggedIn: (logged: boolean) => set((state) => ({ isLoggedIn: logged })),
+  setInitalized: () => set({ isInitalized: true }),
   setAccessToken: (token: string) => set({ accessToken: token }),
   removeAccessToken: () => set({ accessToken: undefined }),
-  disconnect: () => set({ isLoggedIn: false, accessToken: undefined, isInitalized: false }),
+  disconnect: () =>
+    set({ isLoggedIn: false, accessToken: undefined, isInitalized: false }),
 }));
