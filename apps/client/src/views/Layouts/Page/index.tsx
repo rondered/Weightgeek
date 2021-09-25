@@ -10,10 +10,8 @@ export const Page: React.FC<IPage> = (props) => {
   return (
     <MainContainer>
       <div className="flex flex-row">
-        <NavBar>
-          hi
-        </NavBar>
-        {props.children}
+        <NavBar>hi</NavBar>
+        <div className="flex flex-col p-5 w-full">{props.children}</div>
       </div>
     </MainContainer>
   );

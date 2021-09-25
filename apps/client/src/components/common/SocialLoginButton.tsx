@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as FacebookIcon } from "@/assets/icons/facebook.svg";
 import { ReactComponent as GoogleIcon } from "@/assets/icons/google.svg";
 
-interface IFormButton {
+interface IFormButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   variation: "google" | "facebook";
 }
