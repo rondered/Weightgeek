@@ -19,7 +19,7 @@ export default defineConfig({
         buttonBgColor: "#FFFFFF",
         buttonHoverBgColor: "#f4f4f5",
         primaryColor: "#4f46e5",
-        secondaryColor: "#14b8a6",
+        secondaryColor: "#3f3f46",
         textColor: "#3B3B3B",
       },
     },

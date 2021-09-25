@@ -1,5 +1,4 @@
 import React from "react";
-import { AiOutlineAlert as ErrorIcon } from "react-icons/ai";
 
 interface IFormAlert {
   message: string;
@@ -7,7 +6,7 @@ interface IFormAlert {
 }
 
 const variationConfig = {
-  error: { icon: <ErrorIcon size="20px" />, ring: "ring-red-400" },
+  error: { icon: <IconGgBlock className="w-[20px] h-[20px]" />, ring: "ring-red-400" },
 };
 
 export const FormAlert: React.FC<IFormAlert> = (props) => {
@@ -23,3 +22,7 @@ export const FormAlert: React.FC<IFormAlert> = (props) => {
     </div>
   );
 };
+
+
+
+<IconGgFacebook className="w-[24px] h-[24px]"/>

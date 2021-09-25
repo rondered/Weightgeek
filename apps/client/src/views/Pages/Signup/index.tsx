@@ -9,8 +9,6 @@ import { useSignup } from "./useSignup";
 import { Link, Redirect } from "wouter";
 import { FormAlert } from "@/components/common";
 import { MainContainer } from "@/components/layout";
-import { HiOutlineMail as MailIcon } from "react-icons/hi";
-import { RiLockPasswordLine as PasswordIcon } from "react-icons/ri";
 
 export const Signup = () => {
   const {
@@ -51,7 +49,7 @@ export const Signup = () => {
                   name="email"
                   placeholder="email"
                   isInvalid={formErrors.email}
-                  icon={<MailIcon size="20px" />}
+                  icon={<IconGgMail className="h-[20px] w-[20px]" />}
                   errorMessage={formErrors.email?.message}
                 />
                 <FormInput
@@ -60,7 +58,7 @@ export const Signup = () => {
                   name="password"
                   placeholder="password"
                   isInvalid={formErrors?.password}
-                  icon={<PasswordIcon size="20px" />}
+                  icon={<IconGgLock className="h-[20px] w-[20px]" />}
                   errorMessage={formErrors.password?.message}
                   maxLength={24}
                 />

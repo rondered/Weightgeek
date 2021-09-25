@@ -1,6 +1,4 @@
 import React from "react";
-import { ReactComponent as SpinnerIcon } from "@/assets/icons/spinner.svg";
-
 interface IFormButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   text?: string;
@@ -8,6 +6,10 @@ interface IFormButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const FormButton: React.FC<IFormButton> = (props) => (
   <button className="btn-primary justify-center">
-    {props.isLoading ? <SpinnerIcon className="animate-spin" /> : props.text}
+    {props.isLoading ? (
+      <IconGgSpinner className="animate-spin h-[24px] w-[24px]" />
+    ) : (
+      props.text
+    )}
   </button>
 );

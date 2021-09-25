@@ -1,6 +1,4 @@
 import React from "react";
-import { ReactComponent as FacebookIcon } from "@/assets/icons/facebook.svg";
-import { ReactComponent as GoogleIcon } from "@/assets/icons/google.svg";
 
 interface IFormButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
@@ -9,12 +7,12 @@ interface IFormButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const socialIcons = {
   facebook: {
-    icon: <FacebookIcon />,
+    icon: <IconGgFacebook className="h-[24px] w-[24px]" />,
     link: "http://localhost:4444/auth/facebook/redirect",
     text: "Sign in with Facebook",
   },
   google: {
-    icon: <GoogleIcon />,
+    icon: <IconGgGoogle className="h-[24px] w-[24px]" />,
     link: "http://localhost:4444/auth/google/redirect",
     text: "Sign in with Google",
   },

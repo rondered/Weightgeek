@@ -1,6 +1,5 @@
 import React from "react";
 import { Page } from "@/views/Layouts";
-import { ReactComponent as PlusIcon } from "@/assets/icons/add-log.svg";
 
 const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
@@ -10,7 +9,7 @@ const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
     {...props}
   >
     <div>Add Log</div>
-    <PlusIcon />
+    <IconGgAdd />
   </button>
 );
 
