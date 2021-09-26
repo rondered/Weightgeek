@@ -5,7 +5,7 @@ const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
 ) => (
   <button
-    className="btn-secondary w-[200px] justify-center gap-[10px] shadow-lg"
+    className="btn-secondary w-[200px] justify-center gap-[10px]"
     {...props}
   >
     <div>Add Log</div>

@@ -3,7 +3,7 @@ import colors from "windicss/colors";
 
 export default defineConfig({
   extract: {
-    include: ["src/**/*.{html,vue,jsx,tsx,svelte}"],
+    include: ["src/**/*.{html,jsx,tsx}"],
   },
   theme: {
     extend: {
@@ -15,28 +15,29 @@ export default defineConfig({
       },
       colors: {
         bgColor: "#222222",
-        cardBgColor: "#FFFFFF",
+        cardBgColor: "#242424",
         buttonBgColor: "#FEC775",
-        buttonHoverBgColor: "#f4f4f5",
-        primaryColor: "FEC775",
+        buttonHoverBgColor: "#ffe0b3",
+        primaryColor: "#FEC775",
         secondaryColor: "#242424",
         borderColor: "#383838",
         textColor: "#FFFFFF",
+        dividerColor: "#383838",
       },
     },
   },
   shortcuts: {
-    header: "font-basier text-primaryColor",
+    "card-header": "font-basier text-textColor",
     "btn-primary":
       "flex font-bold rounded text-white font-bold items-center h-auto w-full h-2 bg-primaryColor pl-4 pr-4 pt-6 pb-6 transitiona-all duration-500",
     "btn-secondary":
-      "flex font-bold rounded text-white font-bold items-center h-auto w-full h-2 bg-secondaryColor pl-4 pr-4 pt-6 pb-6 transitiona-all duration-500 border-borderColor border-2",
-    btn: "flex font-bold border border-gray-300 rounded justify-between items-center text-textColor font-medium h-auto w-full pl-4 pr-4 pt-3 pb-3 bg-buttonBgColor hover:(bg-buttonHoverBgColor) transitiona-all duration-500",
-    divider: "h-px bg-gray-300",
-    card: "bg-cardBgColor rounded-lg shadow-lg",
-    "custom-ring": "ring-3 ring-secondaryColor",
+      "flex font-bold rounded text-white font-bold items-center h-auto w-full h-2 bg-secondaryColor pl-4 pr-4 pt-6 pb-6 transitiona-all duration-500",
+    btn: "flex font-bold border-0 rounded justify-between items-center text-secondaryColor font-medium h-auto w-full pl-4 pr-4 pt-3 pb-3 bg-buttonBgColor hover:(bg-buttonHoverBgColor) transitiona-all duration-500",
+    divider: "h-px bg-dividerColor",
+    card: "bg-cardBgColor rounded-lg border border-borderColor",
+    "focus-ring": "ring-2 ring-primaryColor",
     link: "text-textColor hover:(text-blue-600)",
     "input-field":
-      "p-3 border border-gray-300 rounded focus:(text-textColor custom-ring) placeholder-opacity-100",
+      "p-3 rounded focus:(text-primaryColor focus-ring font-bold) border border-borderColor placeholder-opacity-100 bg-transparent",
   },
 });
