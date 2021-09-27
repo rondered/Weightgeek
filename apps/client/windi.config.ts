@@ -11,6 +11,7 @@ export default defineConfig({
       },
       width: {
         navBar: "350px",
+        modal: "600px"
       },
       zIndex: {
         modal: '10',
@@ -29,9 +30,9 @@ export default defineConfig({
   },
   shortcuts: {
     "card-header": `font-basier text-textColor`,
-    btn: `flex rounded justify-between
+    btn: `flex filter rounded justify-between focus:(outline-none)
     items-center h-auto w-full pl-4 pr-4 pt-3 pb-3
-    transition-all duration-500 hover:(filter brightness-125)`,
+    transition-all duration-500 hover:(brightness-125)`,
     "btn-primary": `btn bg-primaryColor text-bgColor font-bold`,
     "btn-secondary": `btn border border-borderColor
      justify-between font-medium bg-secondaryColor`,

@@ -14,12 +14,12 @@ model User {
   password      String?
   google_id     String?    @unique
   facebook_id   String?    @unique
-  weight_ins    WeightIn[]
+  logs    Log[]
 
   @@index([id, email], name: "User.id_email_index")
 }
 
-model WeightIn {
+model Log {
   id       String @id @default(uuid())
   userId   String
   weight   Int?
@@ -27,5 +27,5 @@ model WeightIn {
   calories Int?
   user     User   @relation(fields: [userId], references: [id])
 
-  @@index([id], name: "WeightIn.id_index")
+  @@index([id], name: "Log.id_index")
 }
