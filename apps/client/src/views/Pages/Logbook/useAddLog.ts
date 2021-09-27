@@ -16,12 +16,6 @@ const schema = yup.object().shape({
     date: yup.date().required()
 })
 
-// const validationSchema = z.object({
-//   weight: z.number().positive({ message: "Must be positive" }),
-//   calories: z.number().positive({ message: "Must be positive" }).optional(),
-//   date: z.date(),
-// });
-
 type CreateLog = yup.SchemaOf<schema>;
 
 export const useAddLog = () => {
