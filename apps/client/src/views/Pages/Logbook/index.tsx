@@ -1,5 +1,6 @@
 import React from "react";
 import { Page } from "@/views/Layouts";
+import { Modal } from "@/components/common";
 
 const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
@@ -20,6 +21,7 @@ const lala = () => {
 export const Logbook: React.FC<{}> = (props) => {
   return (
     <Page>
+      <Modal isOpen={true} />
       <div className="flex flex-row justify-end">
         <AddLogButton onClick={lala} />
       </div>

@@ -12,6 +12,9 @@ export default defineConfig({
       width: {
         navBar: "350px",
       },
+      zIndex: {
+        modal: '10',
+      },
       colors: {
         bgColor: "#222222",
         cardBgColor: "#242424",
