@@ -15,11 +15,11 @@ const schema = yup.object().shape({
     .number()
     .transform((value) => (isNaN(value) ? undefined : value))
     .required("Required")
-    .positive(),
+    .positive("Positive"),
   calories: yup
     .number()
     .transform((value) => (isNaN(value) ? undefined : value))
-    .positive(),
+    .positive("Positive"),
   date: yup
     .date()
     .transform((value) => (isNaN(value) ? undefined : value))
@@ -31,11 +31,7 @@ type CreateLog = yup.SchemaOf<typeof schema>;
 export const useAddLog = () => {
   const { refetch } = useSession();
 
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm<CreateLog>({
+  const { handleSubmit, register, formState, reset } = useForm<CreateLog>({
     resolver: yupResolver(schema),
   });
 
@@ -51,12 +47,14 @@ export const useAddLog = () => {
   return {
     handleSubmit: handleSubmit((values: CreateLog) => mutate(values)),
     register,
-    formErrors: errors,
+    formErrors: formState?.errors,
+    formState,
     responseError: error?.response?.data.message,
     mutate,
     isLoading,
     data,
     isResponseError: isError,
     isSuccess,
+    reset,
   };
 };

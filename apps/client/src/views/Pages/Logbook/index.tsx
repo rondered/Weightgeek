@@ -18,7 +18,7 @@ const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
 export const Logbook: React.FC<{}> = (props) => {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
 
-  const { register, formErrors, isLoading, handleSubmit } = useAddLog();
+  const { register, formErrors, isLoading, handleSubmit, reset, formState } = useAddLog();
 
   return (
     <Page>
@@ -26,13 +26,14 @@ export const Logbook: React.FC<{}> = (props) => {
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
+          reset();
         }}
         title="Add New Log"
       >
         <form
           onSubmit={handleSubmit}
           className="w-full flex gap-[10px] flex-col"
-          C
+          autoComplete="off"
         >
           <FormInput
             {...register("weight")}
