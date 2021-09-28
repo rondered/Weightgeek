@@ -14,13 +14,16 @@ const schema = yup.object().shape({
   weight: yup
     .number()
     .transform((value) => (isNaN(value) ? undefined : value))
-    .required('Required')
+    .required("Required")
     .positive(),
   calories: yup
     .number()
     .transform((value) => (isNaN(value) ? undefined : value))
     .positive(),
-  date: yup.date().required('Required'),
+  date: yup
+    .date()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .required("Required"),
 });
 
 type CreateLog = yup.SchemaOf<typeof schema>;
