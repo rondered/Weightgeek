@@ -11,10 +11,10 @@ export default defineConfig({
       },
       width: {
         navBar: "350px",
-        modal: "600px"
+        modal: "600px",
       },
       zIndex: {
-        modal: '10',
+        modal: "10",
       },
       colors: {
         bgColor: "#222222",
@@ -29,7 +29,7 @@ export default defineConfig({
     },
   },
   shortcuts: {
-    "card-header": `font-basier text-textColor`,
+    "modal-header": 'font-bold text-xl',
     btn: `flex filter rounded justify-between focus:(outline-none)
     items-center h-auto w-full pl-4 pr-4 pt-3 pb-3
     transition-all duration-500 hover:(brightness-125)`,
@@ -38,10 +38,9 @@ export default defineConfig({
      justify-between font-medium bg-secondaryColor`,
     divider: "h-px bg-dividerColor",
     card: "bg-cardBgColor rounded-lg border border-borderColor",
-    "focus-ring": "ring-4 ring-primaryColor",
     link: "text-textColor hover:(text-blue-600)",
-    "input-field": `p-3 rounded 
-        focus:(focus-ring font-bold) border border-borderColor
+    "input-field": `p-3 rounded appearance-none 
+        focus:(font-bold border-2 border-primaryColor) border border-borderColor
         placeholder-opacity-25 placeholder-textColor bg-transparent`,
   },
 });

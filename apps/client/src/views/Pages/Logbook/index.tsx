@@ -27,24 +27,29 @@ export const Logbook: React.FC<{}> = (props) => {
         onClose={() => {
           setIsModalOpen(false);
         }}
+        title="Add New Log"
       >
-        <form onSubmit={handleSubmit} className="w-full flex gap-[10px] flex-col" C>
+        <form
+          onSubmit={handleSubmit}
+          className="w-full flex gap-[10px] flex-col"
+          C
+        >
           <FormInput
-            {...register("weight", { valueAsNumber: true })}
+            {...register("weight")}
             type="number"
             name="weight"
             placeholder="Weight"
             isInvalid={formErrors.weight}
-            icon={<IconGgMail className="h-[20px] w-[20px]" />}
+            icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
             errorMessage={formErrors.weight?.message}
           />
           <FormInput
-            {...register("calories", { valueAsNumber: true })}
+            {...register("calories")}
             type="number"
             name="calories"
-            placeholder="calories"
+            placeholder="Calories"
             isInvalid={formErrors?.calories}
-            icon={<IconGgLock className="h-[20px] w-[20px]" />}
+            icon={<IconIconParkOutlineFire className="h-[20px] w-[20px]" />}
             errorMessage={formErrors.calories?.message}
             maxLength={24}
           />
@@ -54,11 +59,11 @@ export const Logbook: React.FC<{}> = (props) => {
             name="date"
             placeholder="date"
             isInvalid={formErrors?.date}
-            icon={<IconGgLock className="h-[20px] w-[20px]" />}
+            icon={<IconGgCalendar className="h-[20px] w-[20px]" />}
             errorMessage={formErrors.date?.message}
             maxLength={24}
           />
-          <FormButton isLoading={isLoading} text="Add Log" />
+          <FormButton isLoading={isLoading} text="Save" />
         </form>
       </Modal>
       <div className="flex flex-row justify-end">

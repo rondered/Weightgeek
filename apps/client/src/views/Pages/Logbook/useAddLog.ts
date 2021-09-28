@@ -1,6 +1,6 @@
 import { useMutation } from "react-query";
 import { axiosInstance } from "@/utils";
-import * as yup from 'yup';
+import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "@/hooks";
@@ -11,12 +11,19 @@ const ADD_LOG = async (values: any) => {
 };
 
 const schema = yup.object().shape({
-    weight: yup.number().required().positive(),
-    calories: yup.number().positive(),
-    date: yup.date().required()
-})
+  weight: yup
+    .number()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .required('Required')
+    .positive(),
+  calories: yup
+    .number()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .positive(),
+  date: yup.date().required('Required'),
+});
 
-type CreateLog = yup.SchemaOf<schema>;
+type CreateLog = yup.SchemaOf<typeof schema>;
 
 export const useAddLog = () => {
   const { refetch } = useSession();
@@ -25,7 +32,7 @@ export const useAddLog = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm({
+  } = useForm<CreateLog>({
     resolver: yupResolver(schema),
   });
 

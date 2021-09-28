@@ -1,8 +1,8 @@
 import { useMutation } from "react-query";
 import { axiosInstance } from "@/utils";
-import { z } from "zod";
+import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "@/hooks";
 
 const LOGIN = async (values: any) => {
@@ -10,12 +10,12 @@ const LOGIN = async (values: any) => {
   return data;
 };
 
-const validationSchema = z.object({
-  email: z.string().email({ message: "Must be a valid email address" }),
-  password: z.string().min(6, { message: "Must be 6 or more characters" }),
+const schema = yup.object().shape({
+  email: yup.string().email("Invalid address").required("Required"),
+  password: yup.string().min(6, `More than 6 characters`).required("Required"),
 });
 
-type CreateLogin = z.infer<typeof validationSchema>;
+type CreateLogin = yup.SchemaOf<typeof schema>;
 
 export const useLogin = () => {
   const { refetch } = useSession();
@@ -24,8 +24,8 @@ export const useLogin = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm({
-    resolver: zodResolver(validationSchema),
+  } = useForm<CreateLogin>({
+    resolver: yupResolver(schema),
   });
 
   const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<

@@ -10,7 +10,7 @@ export const FormInput = React.forwardRef((props: IFormInput, ref) => {
   const { icon, isInvalid, errorMessage, ...inputProps } = props;
 
   return (
-    <div className="flex w-full h-[50px] flex-col">
+    <div className="group flex w-full h-[50px] flex-col">
       <div className="flex">
         <div
           className={`w-10 z-10 pl-1
@@ -21,7 +21,7 @@ export const FormInput = React.forwardRef((props: IFormInput, ref) => {
         </div>
         <input
           className={`input-field pl-10 -ml-10 text-base w-full ${
-            isInvalid && `custom-ring ring-red-400`
+            isInvalid && `border-red-400 border-2`
           }`}
           {...inputProps}
         />
