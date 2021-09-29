@@ -40,7 +40,7 @@ export default defineConfig({
     card: "bg-cardBgColor rounded-lg border border-borderColor",
     link: "text-textColor hover:(text-blue-600)",
     "input-field": `p-3 rounded appearance-none 
-        focus:(font-bold border-2 border-primaryColor) border border-borderColor
+        focus:(border-2 border-primaryColor) border border-borderColor
         placeholder-opacity-25 placeholder-textColor bg-transparent`,
   },
 });
