@@ -1,6 +1,11 @@
 import React from "react";
 import { Page } from "@/views/Layouts";
-import { Modal, FormInput, FormButton } from "@/components/common";
+import {
+  Modal,
+  FormInput,
+  FormButton,
+  FormDatepicker,
+} from "@/components/common";
 import { useAddLog } from "./useAddLog";
 
 const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
@@ -18,7 +23,16 @@ const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
 export const Logbook: React.FC<{}> = (props) => {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
 
-  const { register, formErrors, isLoading, handleSubmit, reset, formState } = useAddLog();
+  const {
+    register,
+    formErrors,
+    isLoading,
+    handleSubmit,
+    reset,
+    formState,
+    Controller,
+    control,
+  } = useAddLog();
 
   return (
     <Page>
@@ -35,7 +49,7 @@ export const Logbook: React.FC<{}> = (props) => {
           className="w-full flex gap-[10px] flex-col"
           autoComplete="off"
         >
-          <FormInput
+          {/* <FormInput
             {...register("weight")}
             type="number"
             name="weight"
@@ -43,26 +57,41 @@ export const Logbook: React.FC<{}> = (props) => {
             isInvalid={formErrors.weight}
             icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
             errorMessage={formErrors.weight?.message}
+          /> */}
+          <Controller
+            control={control}
+            name="weight"
+            render={({ field, fieldState, formState }) => (
+              <FormInput
+                onChange={field.onChange}
+                placeholder="Weight"
+                type="number"
+                isInvalid={fieldState.invalid}
+                icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
+                errorMessage={fieldState.error?.message}
+              />
+            )}
           />
-          <FormInput
-            {...register("calories")}
-            type="number"
+          <Controller
+            control={control}
             name="calories"
-            placeholder="Calories"
-            isInvalid={formErrors?.calories}
-            icon={<IconIconParkOutlineFire className="h-[20px] w-[20px]" />}
-            errorMessage={formErrors.calories?.message}
-            maxLength={24}
+            render={({ field, fieldState, formState }) => (
+              <FormInput
+                onChange={field.onChange}
+                placeholder="Calories"
+                type="number"
+                isInvalid={fieldState.invalid}
+                icon={<IconIconParkOutlineFire className="h-[20px] w-[20px]" />}
+                errorMessage={fieldState.error?.message}
+              />
+            )}
           />
-          <FormInput
-            {...register("date")}
-            type="date"
+          <Controller
+            control={control}
             name="date"
-            placeholder="date"
-            isInvalid={formErrors?.date}
-            icon={<IconGgCalendar className="h-[20px] w-[20px]" />}
-            errorMessage={formErrors.date?.message}
-            maxLength={24}
+            render={({ field, fieldState, formState }) => (
+              <FormDatepicker onChange={field.onChange} inline />
+            )}
           />
           <FormButton isLoading={isLoading} text="Save" />
         </form>

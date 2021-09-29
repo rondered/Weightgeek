@@ -3,7 +3,6 @@
 declare global {
   const IconGgAdd: typeof import('~icons/gg/add')['default']
   const IconGgBlock: typeof import('~icons/gg/block')['default']
-  const IconGgCalendar: typeof import('~icons/gg/calendar')['default']
   const IconGgClose: typeof import('~icons/gg/close')['default']
   const IconGgFacebook: typeof import('~icons/gg/facebook')['default']
   const IconGgGoogle: typeof import('~icons/gg/google')['default']

@@ -19,6 +19,8 @@ export const Login = () => {
     responseError,
     isResponseError,
     isSuccess,
+    Controller,
+    control,
   } = useLogin();
 
   return (
@@ -43,24 +45,33 @@ export const Login = () => {
                   {isResponseError && (
                     <FormAlert message={responseError} variation="error" />
                   )}
-                  <FormInput
-                    {...register("email")}
-                    type="email"
+                  <Controller
+                    control={control}
                     name="email"
-                    placeholder="email"
-                    isInvalid={formErrors.email}
-                    icon={<IconGgMail className="h-[20px] w-[20px]" />}
-                    errorMessage={formErrors.email?.message}
+                    render={({ field, fieldState, formState }) => (
+                      <FormInput
+                        onChange={field.onChange}
+                        placeholder="Email"
+                        type="text"
+                        isInvalid={fieldState.invalid}
+                        icon={<IconGgMail className="h-[20px] w-[20px]" />}
+                        errorMessage={fieldState.error?.message}
+                      />
+                    )}
                   />
-                  <FormInput
-                    {...register("password")}
-                    type="password"
+                  <Controller
+                    control={control}
                     name="password"
-                    placeholder="password"
-                    isInvalid={formErrors?.password}
-                    icon={<IconGgLock className="h-[20px] w-[20px]" />}
-                    errorMessage={formErrors.password?.message}
-                    maxLength={24}
+                    render={({ field, fieldState, formState }) => (
+                      <FormInput
+                        onChange={field.onChange}
+                        placeholder="Password"
+                        type="password"
+                        isInvalid={fieldState.invalid}
+                        icon={<IconGgLock className="h-[20px] w-[20px]" />}
+                        errorMessage={fieldState.error?.message}
+                      />
+                    )}
                   />
                   <FormButton isLoading={isLoading} text="Login" />
                 </div>

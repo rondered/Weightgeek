@@ -1,7 +1,7 @@
 import { useMutation } from "react-query";
 import { axiosInstance } from "@/utils";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "@/hooks";
 
@@ -31,9 +31,10 @@ type CreateLog = yup.SchemaOf<typeof schema>;
 export const useAddLog = () => {
   const { refetch } = useSession();
 
-  const { handleSubmit, register, formState, reset } = useForm<CreateLog>({
-    resolver: yupResolver(schema),
-  });
+  const { handleSubmit, register, formState, reset, control } =
+    useForm<CreateLog>({
+      resolver: yupResolver(schema),
+    });
 
   const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
     CreateLog,
@@ -56,5 +57,7 @@ export const useAddLog = () => {
     isResponseError: isError,
     isSuccess,
     reset,
+    Controller,
+    control,
   };
 };

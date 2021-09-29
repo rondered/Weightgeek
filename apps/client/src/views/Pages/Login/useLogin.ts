@@ -1,7 +1,7 @@
 import { useMutation } from "react-query";
 import { axiosInstance } from "@/utils";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "@/hooks";
 
@@ -23,6 +23,7 @@ export const useLogin = () => {
   const {
     handleSubmit,
     register,
+    control,
     formState: { errors },
   } = useForm<CreateLogin>({
     resolver: yupResolver(schema),
@@ -47,5 +48,7 @@ export const useLogin = () => {
     data,
     isResponseError: isError,
     isSuccess,
+    control,
+    Controller,
   };
 };
