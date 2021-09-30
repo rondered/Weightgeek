@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "@/hooks";
+import React from "react";
 
 const ADD_LOG = async (values: any) => {
   const { data } = await axiosInstance.post(`/log`, values);
@@ -36,13 +37,17 @@ export const useAddLog = () => {
       resolver: yupResolver(schema),
     });
 
+  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
+
   const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
     CreateLog,
     any,
     CreateLog
   >(ADD_LOG, {
     retry: false,
-    onSuccess: () => refetch(),
+    onSuccess: () => {
+      setIsModalOpen(false);
+    },
   });
 
   return {
@@ -59,5 +64,7 @@ export const useAddLog = () => {
     reset,
     Controller,
     control,
+    isModalOpen,
+    setIsModalOpen,
   };
 };

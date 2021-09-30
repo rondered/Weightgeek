@@ -1,5 +1,6 @@
 import React from "react";
 import DatePicker, { ReactDatePickerProps } from "react-datepicker";
+import "./FormDatepicker.css";
 
 interface IFormDatepicker extends ReactDatePickerProps {
   icon?: React.ReactNode;
@@ -12,7 +13,7 @@ export const FormDatepicker: React.FC<IFormDatepicker> = (props) => {
 
   return (
     <div className={`input-field ${isInvalid && `border-red-400 border-2`}`}>
-      <DatePicker {...datepickerProps} />
+        <DatePicker {...datepickerProps} />
     </div>
   );
 };

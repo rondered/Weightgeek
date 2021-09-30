@@ -21,8 +21,6 @@ const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
 );
 
 export const Logbook: React.FC<{}> = (props) => {
-  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
-
   const {
     register,
     formErrors,
@@ -32,6 +30,8 @@ export const Logbook: React.FC<{}> = (props) => {
     formState,
     Controller,
     control,
+    isModalOpen,
+    setIsModalOpen,
   } = useAddLog();
 
   return (

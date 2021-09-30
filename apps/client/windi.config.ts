@@ -24,7 +24,7 @@ export default defineConfig({
         secondaryColor: "#242424",
         borderColor: "#383838",
         textColor: "#FFFFFF",
-        calendarDaysColor: "#383838",
+        fadedTextColor: "#383838",
         dividerColor: "#383838",
       },
     },
