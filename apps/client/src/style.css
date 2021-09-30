@@ -64,12 +64,18 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-/* Remove date input icon - Chrome */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  position: relative;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
+.react-datepicker {
+  @apply p-3 rounded appearance-none focus:(border-2 border-primaryColor) border border-borderColor;
+}
+.react-datepicker__month-container {
+  @apply flex flex-col;
+}
+.react-datepicker__month {
+  @apply flex flex-row justify-around;
+}
+.react-datepicker__day-names {
+  @apply flex flex-row justify-around;
+}
+.react-datepicker__day {
+  @apply h-[20px] w-[20px];
 }
