@@ -67,6 +67,9 @@ input[type="number"] {
 .react-datepicker__month-container {
   @apply flex flex-col;
 }
+.react-datepicker__current-month {
+  @apply flex flex-row justify-center;
+}
 .react-datepicker__month {
   @apply flex flex-col justify-around;
 }
@@ -80,8 +83,11 @@ input[type="number"] {
   @apply h-[20px] w-[20px];
 }
 .react-datepicker__day--keyboard-selected {
-  @apply bg-primaryColor rounded-full text-bgColor font-bold;
+  @apply bg-primaryColor rounded text-bgColor font-bold;
 }
 .react-datepicker__day {
   @apply h-[20px] w-[20px] text-center text-sm;
+}
+.react-datepicker__navigation {
+  @apply flex justify-between text-center;
 }

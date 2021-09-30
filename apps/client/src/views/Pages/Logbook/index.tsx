@@ -49,15 +49,6 @@ export const Logbook: React.FC<{}> = (props) => {
           className="w-full flex gap-[10px] flex-col"
           autoComplete="off"
         >
-          {/* <FormInput
-            {...register("weight")}
-            type="number"
-            name="weight"
-            placeholder="Weight"
-            isInvalid={formErrors.weight}
-            icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
-            errorMessage={formErrors.weight?.message}
-          /> */}
           <Controller
             control={control}
             name="weight"
