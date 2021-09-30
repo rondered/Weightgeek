@@ -30,7 +30,7 @@ export default defineConfig({
     },
   },
   shortcuts: {
-    "modal-header": 'font-bold text-xl',
+    "modal-header": "font-bold text-xl",
     btn: `flex filter rounded justify-between focus:(outline-none)
     items-center h-auto w-full pl-4 pr-4 pt-3 pb-3
     transition-all duration-500 hover:(brightness-125)`,
@@ -40,7 +40,7 @@ export default defineConfig({
     divider: "h-px bg-dividerColor",
     card: "bg-cardBgColor rounded-lg border border-borderColor",
     link: "text-textColor hover:(text-blue-600)",
-    "input-field": `p-3 rounded appearance-none font-medium 
+    "input-field": `p-3 rounded appearance-none font-medium outline-none
         focus:(border-2 border-primaryColor) border border-borderColor
         placeholder-opacity-25 placeholder-textColor bg-transparent`,
   },

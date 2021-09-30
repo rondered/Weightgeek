@@ -25,7 +25,9 @@ export class LogController {
 
   @Post()
   @UseGuards(AuthGuard('Access'))
-  async addLog(@Req() req,@Body() payload) {
-    return this.dbService.log.create({data: {...payload,userId: req.user.id}});
+  async addLog(@Req() req, @Body() payload) {
+    return this.dbService.log.create({
+      data: { ...payload, userId: req.user.id },
+    });
   }
 }
