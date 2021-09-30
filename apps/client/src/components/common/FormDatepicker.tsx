@@ -10,5 +10,9 @@ interface IFormDatepicker extends ReactDatePickerProps {
 export const FormDatepicker: React.FC<IFormDatepicker> = (props) => {
   const { icon, isInvalid, errorMessage, ...datepickerProps } = props;
 
-  return <DatePicker {...datepickerProps} />;
+  return (
+    <div className={`input-field ${isInvalid && `border-red-400 border-2`}`}>
+      <DatePicker {...datepickerProps} />
+    </div>
+  );
 };

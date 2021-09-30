@@ -24,6 +24,7 @@ export default defineConfig({
         secondaryColor: "#242424",
         borderColor: "#383838",
         textColor: "#FFFFFF",
+        calendarDaysColor: "#383838",
         dividerColor: "#383838",
       },
     },
@@ -39,7 +40,7 @@ export default defineConfig({
     divider: "h-px bg-dividerColor",
     card: "bg-cardBgColor rounded-lg border border-borderColor",
     link: "text-textColor hover:(text-blue-600)",
-    "input-field": `p-3 rounded appearance-none 
+    "input-field": `p-3 rounded appearance-none font-medium 
         focus:(border-2 border-primaryColor) border border-borderColor
         placeholder-opacity-25 placeholder-textColor bg-transparent`,
   },

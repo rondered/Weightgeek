@@ -90,7 +90,11 @@ export const Logbook: React.FC<{}> = (props) => {
             control={control}
             name="date"
             render={({ field, fieldState, formState }) => (
-              <FormDatepicker onChange={field.onChange} inline />
+              <FormDatepicker
+                onChange={field.onChange}
+                inline
+                isInvalid={fieldState.invalid}
+              />
             )}
           />
           <FormButton isLoading={isLoading} text="Save" />
