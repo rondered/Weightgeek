@@ -10,7 +10,7 @@ export const FormInput: React.FC<IFormInput> = (props) => {
   const { icon, isInvalid, errorMessage, ...inputProps } = props;
 
   return (
-    <div className="group flex w-full h-[50px] flex-col">
+    <div className="flex w-full h-[50px] flex-col">
       <div className="flex">
         {icon && (
           <div

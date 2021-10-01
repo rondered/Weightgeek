@@ -81,6 +81,7 @@ export const Logbook: React.FC<{}> = (props) => {
               <FormDatepicker
                 onChange={field.onChange}
                 inline
+                value={field.value}
                 isInvalid={fieldState.invalid}
               />
             )}

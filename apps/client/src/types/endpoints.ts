@@ -9,7 +9,7 @@ export interface IGetAuthorization {
 export interface IAddLog {
   weight: number;
   calories: number | undefined;
-  date: Date;
+  date: string;
 }
 
 export interface ILogin {

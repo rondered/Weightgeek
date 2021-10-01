@@ -13,7 +13,6 @@ const ADD_LOG = async (values: any) => {
 };
 
 export const useAddLog = () => {
-
   const schema = React.useMemo(
     () =>
       yup.object().shape({
@@ -27,7 +26,7 @@ export const useAddLog = () => {
           .optional()
           .transform((value) => (isNaN(value) ? undefined : value))
           .positive("Positive Calories"),
-        date: yup.date().required("Required"),
+        date: yup.string().required("Required"),
       }),
     []
   );
@@ -40,7 +39,7 @@ export const useAddLog = () => {
       defaultValues: {
         weight: undefined,
         calories: undefined,
-        date: new Date(),
+        date: new Date().toISOString(),
       },
     });
 
@@ -58,7 +57,7 @@ export const useAddLog = () => {
   });
 
   return {
-    handleSubmit: handleSubmit((values: CreateLog) => mutate(values)),
+    handleSubmit: handleSubmit((values: IAddLog) => mutate(values)),
     register,
     formErrors: formState?.errors,
     formState,
