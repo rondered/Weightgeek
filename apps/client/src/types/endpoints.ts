@@ -12,6 +12,15 @@ export interface IAddLog {
   date: string;
 }
 
+interface ILog {
+  weight: number;
+  calories: number | undefined;
+  date: string;
+  id: string;
+}
+
+export type IGetLogs = Array<ILog>;
+
 export interface ILogin {
   email: string;
   password: string;

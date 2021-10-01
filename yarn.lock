@@ -608,14 +608,14 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
-"@babel/runtime@^7.10.5":
+"@babel/runtime@^7.10.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2":
+"@babel/runtime@^7.12.5":
   version "7.14.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
   integrity sha512-/PCB2uJ7oM44tz8YhC4Z/6PeOKXp4K588f+5M3clr1M4zbqztlo0XEfJ2LEzj/FgwfgGcIdl8n7YYjTCI0BYwg==
@@ -2161,9 +2161,9 @@ bcrypt@^5.0.1:
     node-addon-api "^3.1.0"
 
 big-integer@^1.6.16:
-  version "1.6.48"
-  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.48.tgz#8fd88bd1632cba4a1c8c3e3d7159f08bb95b4b9e"
-  integrity sha512-j51egjPa7/i+RdiRuJbPdJ2FIUYYPhvYLjzoYbcMMm62ooO6F94fETG4MTs46zPAF9Brs04OajboA/qTGuz78w==
+  version "1.6.49"
+  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.49.tgz#f6817d3ea5d4f3fb19e24df9f4b1b4471a8328ce"
+  integrity sha512-KJ7VhqH+f/BOt9a3yMwJNmcZjG53ijWMTjSAGMveQWyLwqIiwkjNP5PFgDob3Snnx86SjDj6I89fIbv0dkQeNw==
 
 big.js@^5.2.2:
   version "5.2.2"
@@ -5037,9 +5037,9 @@ map-visit@^1.0.0:
     object-visit "^1.0.0"
 
 match-sorter@^6.0.2:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/match-sorter/-/match-sorter-6.3.0.tgz#454a1b31ed218cddbce6231a0ecb5fdc549fed01"
-  integrity sha512-efYOf/wUpNb8FgNY+cOD2EIJI1S5I7YPKsw0LBp7wqPh5pmMS6i/wr3ZWwfwrAw1NvqTA2KUReVRWDX84lUcOQ==
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/match-sorter/-/match-sorter-6.3.1.tgz#98cc37fda756093424ddf3cbc62bfe9c75b92bda"
+  integrity sha512-mxybbo3pPNuA+ZuCUhm5bwNkXrJTbsk5VWbR5wiwz/GC6LIiegBGn2w3O08UG/jdbYLinw51fSQ5xNU1U3MgBw==
   dependencies:
     "@babel/runtime" "^7.12.5"
     remove-accents "0.4.2"
@@ -6019,10 +6019,10 @@ react-popper@^2.2.5:
     react-fast-compare "^3.0.1"
     warning "^4.0.2"
 
-react-query@^3.19.0:
-  version "3.19.0"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.19.0.tgz#e1fe8f62b9956fb2986317686c27f79ad7ee4e7e"
-  integrity sha512-AaerSVsmBG2iIciwX2x8cWZS4Htw/4u2GFTYK8oiicpX3PY5mvat/8/Y3wZhM47KlllAzvC+P9MW81oHuEt2wg==
+react-query@^3.24.5:
+  version "3.24.5"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.24.5.tgz#d3128a86fa5830a9b70a550085c18df3d18bc470"
+  integrity sha512-1kWRBWOi9Nv2qbpu9OgycyWVd1K6lIdxF9FJy8lmhB224OsrT4kr6sKhF6u1gnE4KsbdtMdZU97e+64tKZtZmA==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"

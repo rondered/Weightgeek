@@ -1,18 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { axiosInstance } from "@/utils/axios";
 import { useAuthStore } from "@/stores";
 import { IGetAuthorization } from "@/types";
-
-const AUTH = async (values: any) => {
-  const { data } = await axiosInstance.get(`auth/me`);
-  return data;
-};
-
-const LOGOUT = async (values: any) => {
-  const { data } = await axiosInstance.get(`auth/logout`);
-  return data;
-};
+import { getMe, getLogout } from "@/endpoints/auth";
 
 export const useSession = () => {
   const {
@@ -32,7 +22,7 @@ export const useSession = () => {
   const { isLoading: isAuthLoading, refetch } = useQuery<
     IGetAuthorization,
     Error
-  >("AUTH", AUTH, {
+  >(getMe.name, getMe, {
     retry: false,
     enabled: !isInitalized,
     onSettled: () => {
@@ -49,8 +39,8 @@ export const useSession = () => {
   const [isLoggingOut, setIsLoggingOut] = React.useState<boolean>(false);
 
   const { isLoading: isLogoutLoading } = useQuery<any, Error>(
-    "LOGOUT",
-    LOGOUT,
+    getLogout.name,
+    getLogout,
     {
       retry: false,
       enabled: isLoggingOut,

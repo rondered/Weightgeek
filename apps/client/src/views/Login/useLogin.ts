@@ -1,16 +1,11 @@
 import { useMutation } from "react-query";
-import { axiosInstance } from "@/utils";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "@/hooks";
 import React from "react";
 import { ILogin } from "@/types";
-
-const LOGIN = async (values: any) => {
-  const { data } = await axiosInstance.post(`auth/login`, values);
-  return data;
-};
+import { postLogin } from "@/endpoints/auth";
 
 export const useLogin = () => {
   const { refetch } = useSession();
@@ -40,7 +35,7 @@ export const useLogin = () => {
     ILogin,
     any,
     ILogin
-  >(LOGIN, {
+  >(postLogin, {
     retry: false,
     onSuccess: () => refetch(),
   });

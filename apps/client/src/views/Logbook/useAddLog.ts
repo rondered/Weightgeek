@@ -1,16 +1,11 @@
-import { useMutation } from "react-query";
-import { axiosInstance } from "@/utils";
+import { useMutation, useQueryClient } from "react-query";
 import * as yup from "yup";
-import { IAddLog } from "@/types";
+import { IAddLog, IGetLogs } from "@/types";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "@/hooks";
 import React from "react";
-
-const ADD_LOG = async (values: any) => {
-  const { data } = await axiosInstance.post(`/log`, values);
-  return data;
-};
+import { postLog, getLog } from "@/endpoints/log";
 
 export const useAddLog = () => {
   const schema = React.useMemo(
@@ -33,6 +28,8 @@ export const useAddLog = () => {
 
   const { refetch } = useSession();
 
+  const queryClient = useQueryClient();
+
   const { handleSubmit, register, formState, reset, control } =
     useForm<IAddLog>({
       resolver: yupResolver(schema),
@@ -46,11 +43,23 @@ export const useAddLog = () => {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
 
   const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
-    IAddLog,
-    any,
+    IGetLogs,
+    any[],
     IAddLog
-  >(ADD_LOG, {
+  >(postLog, {
     retry: false,
+    onMutate: async (newLog) => {
+      await queryClient.cancelQueries(getLog.name);
+      const previousLogs = queryClient.getQueryData(getLog.name);
+      queryClient.setQueryData(getLog.name, (oldLogs) => [...oldLogs, newLog]);
+      return { previousLogs };
+    },
+    onError: (err, newLog, context) => {
+      queryClient.setQueryData(getLog.name, context.previousLogs);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries(getLog.name);
+    },
     onSuccess: () => {
       setIsModalOpen(false);
     },
