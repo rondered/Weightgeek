@@ -4,7 +4,7 @@ import {useForm, Controller} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useSession} from "@/hooks";
 import React from "react";
-import {ILogin} from "@/types";
+import {Login} from "@/types";
 import {postLogin} from "@/endpoints/auth";
 
 export const useLogin = () => {
@@ -27,7 +27,7 @@ export const useLogin = () => {
     register,
     control,
     formState: {errors},
-  } = useForm<ILogin>({
+  } = useForm<Login>({
     resolver: yupResolver(schema),
   });
 
@@ -40,7 +40,7 @@ export const useLogin = () => {
   );
 
   return {
-    handleSubmit: handleSubmit((values: ILogin) => mutate(values)),
+    handleSubmit: handleSubmit((values: Login) => mutate(values)),
     register,
     formErrors: errors,
     responseError: error?.response?.data.message,
