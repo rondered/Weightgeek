@@ -1,14 +1,14 @@
-import { useMutation } from "react-query";
+import {useMutation} from "react-query";
 import * as yup from "yup";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useSession } from "@/hooks";
+import {useForm, Controller} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {useSession} from "@/hooks";
 import React from "react";
-import { ISignUp } from "@/types";
-import { postSignUp } from "@/endpoints/auth";
+import {ISignUp} from "@/types";
+import {postSignUp} from "@/endpoints/auth";
 
 export const useSignup = () => {
-  const { refetch } = useSession();
+  const {refetch} = useSession();
 
   const schema = React.useMemo(
     () =>
@@ -25,13 +25,13 @@ export const useSignup = () => {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: {errors},
     control,
   } = useForm<ISignUp>({
     resolver: yupResolver(schema),
   });
 
-  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation(
+  const {mutate, isLoading, data, isError, error, isSuccess} = useMutation(
     postSignUp,
     {
       retry: false,

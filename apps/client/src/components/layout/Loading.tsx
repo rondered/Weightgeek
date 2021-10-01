@@ -1,5 +1,5 @@
 import React from "react";
-import { MainContainer } from "@/components/layout";
+import {MainContainer} from "@/components/layout";
 export const Loading = () => {
   return (
     <MainContainer>

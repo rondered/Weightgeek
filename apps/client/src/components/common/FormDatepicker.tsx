@@ -1,5 +1,5 @@
 import React from "react";
-import DatePicker, { ReactDatePickerProps } from "react-datepicker";
+import DatePicker, {ReactDatePickerProps} from "react-datepicker";
 import "./FormDatepicker.css";
 
 interface IFormDatepicker extends ReactDatePickerProps {
@@ -8,7 +8,7 @@ interface IFormDatepicker extends ReactDatePickerProps {
 }
 
 export const FormDatepicker: React.FC<IFormDatepicker> = (props) => {
-  const { isInvalid, errorMessage, ...datepickerProps } = props;
+  const {isInvalid, errorMessage, ...datepickerProps} = props;
 
   return (
     <>

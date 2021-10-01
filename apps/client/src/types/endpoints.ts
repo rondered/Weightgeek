@@ -1,4 +1,4 @@
-export interface IGetAuthorization {
+export interface User {
   id: string;
   email: string | undefined;
   password: string | undefined;
@@ -6,27 +6,25 @@ export interface IGetAuthorization {
   facebook_id: string | undefined;
 }
 
-export interface IAddLog {
+export interface AddLog {
   weight: number;
   calories: number | undefined;
   date: string;
 }
 
-interface ILog {
+interface Log {
   weight: number;
   calories: number | undefined;
   date: string;
   id: string;
 }
 
-export type IGetLogs = Array<ILog>;
-
-export interface ILogin {
+export interface Login {
   email: string;
   password: string;
 }
 
-export interface ISignUp {
+export interface SignUp {
   email: string;
   password: string;
 }

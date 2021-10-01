@@ -13,9 +13,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": [
-      "unplugin-icons/types/react"
-    ],
+    "types": ["unplugin-icons/types/react"],
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

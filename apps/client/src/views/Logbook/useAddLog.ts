@@ -1,10 +1,10 @@
-import { useMutation, useQueryClient } from "react-query";
+import {useMutation, useQueryClient} from "react-query";
 import * as yup from "yup";
-import { IAddLog, IGetLogs } from "@/types";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import {AddLog, Log} from "@/types";
+import {useForm, Controller} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
 import React from "react";
-import { postLog, getLog } from "@/endpoints/log";
+import {postLog, getLog} from "@/endpoints/log";
 
 export const useAddLog = () => {
   const schema = React.useMemo(
@@ -27,49 +27,52 @@ export const useAddLog = () => {
 
   const queryClient = useQueryClient();
 
-  const { handleSubmit, register, formState, reset, control } =
-    useForm<IAddLog>({
-      resolver: yupResolver(schema),
-      defaultValues: {
-        weight: undefined,
-        calories: undefined,
-        date: new Date().toISOString(),
-      },
-    });
+  const {handleSubmit, register, formState, reset, control} = useForm<AddLog>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      weight: undefined,
+      calories: undefined,
+      date: new Date().toISOString(),
+    },
+  });
 
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
 
-  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation(
-    postLog,
-    {
-      retry: false,
-      onMutate: async (newLog) => {
-        await queryClient.cancelQueries(getLog.name);
-        const previousLogs = queryClient.getQueryData(getLog.name);
-        if (previousLogs) {
-          queryClient.setQueryData(getLog.name, (oldLogs) => [
-            ...oldLogs,
-            newLog,
-          ]);
-        } else {
-          queryClient.setQueryData(getLog.name, () => [newLog]);
-        }
-        return { previousLogs };
-      },
-      onError: (err, newLog, context) => {
-        queryClient.setQueryData(getLog.name, context.previousLogs);
-      },
-      onSettled: () => {
-        queryClient.invalidateQueries(getLog.name);
-      },
-      onSuccess: () => {
-        setIsModalOpen(false);
-      },
-    }
-  );
+  const {mutate, isLoading, data, isError, error, isSuccess} = useMutation<
+    Log[],
+    Error,
+    AddLog
+  >(postLog, {
+    retry: false,
+    onMutate: async (newLog) => {
+      await queryClient.cancelQueries(getLog.name);
+
+      const previousLogs = queryClient.getQueryData(getLog.name);
+
+      if (previousLogs) {
+        queryClient.setQueryData(getLog.name, (oldLogs) => [
+          ...oldLogs,
+          newLog,
+        ]);
+      } else {
+        queryClient.setQueryData(getLog.name, () => [newLog]);
+      }
+
+      return {previousLogs};
+    },
+    onError: (err, newLog, context) => {
+      queryClient.setQueryData(getLog.name, context.previousLogs);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries(getLog.name);
+    },
+    onSuccess: () => {
+      setIsModalOpen(false);
+    },
+  });
 
   return {
-    handleSubmit: handleSubmit((values: IAddLog) => mutate(values)),
+    handleSubmit: handleSubmit((values: AddLog) => mutate(values)),
     register,
     formErrors: formState?.errors,
     formState,

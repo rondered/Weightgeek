@@ -1,12 +1,12 @@
 import React from "react";
-import { Page } from "@/layouts";
+import {Page} from "@/layouts";
 import {
   Modal,
   FormInput,
   FormButton,
   FormDatepicker,
 } from "@/components/common";
-import { useAddLog } from "./useAddLog";
+import {useAddLog} from "./useAddLog";
 
 const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
@@ -49,7 +49,7 @@ export const Logbook: React.FC<{}> = (props) => {
           <Controller
             control={control}
             name="weight"
-            render={({ field, fieldState, formState }) => (
+            render={({field, fieldState, formState}) => (
               <FormInput
                 onChange={field.onChange}
                 placeholder="Weight"
@@ -63,7 +63,7 @@ export const Logbook: React.FC<{}> = (props) => {
           <Controller
             control={control}
             name="calories"
-            render={({ field, fieldState, formState }) => (
+            render={({field, fieldState, formState}) => (
               <FormInput
                 onChange={field.onChange}
                 placeholder="Calories"
@@ -77,7 +77,7 @@ export const Logbook: React.FC<{}> = (props) => {
           <Controller
             control={control}
             name="date"
-            render={({ field, fieldState, formState }) => (
+            render={({field, fieldState, formState}) => (
               <FormDatepicker
                 onChange={field.onChange}
                 inline

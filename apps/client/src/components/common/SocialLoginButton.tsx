@@ -19,7 +19,7 @@ const socialIcons = {
 };
 
 export const SocialLoginButton: React.FC<IFormButton> = (props) => {
-  const { icon, link, text } = socialIcons[props.variation];
+  const {icon, link, text} = socialIcons[props.variation];
 
   return (
     <a className="btn-secondary" href={link}>

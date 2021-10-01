@@ -8,7 +8,7 @@ interface IModel {
 }
 
 export const Modal: React.FC<IModel> = (props) => {
-  const { children, onClose, isOpen, title } = props;
+  const {children, onClose, isOpen, title} = props;
 
   return (
     <div
@@ -20,7 +20,7 @@ export const Modal: React.FC<IModel> = (props) => {
       <div className="flex justify-center items-center z-modal h-full w-full">
         <div className="card w-full h-full md:(h-auto w-modal)">
           <div className="flex justify-end px-5 py-5 items-center justify-between">
-            <div className="modal-header">{ title }</div>
+            <div className="modal-header">{title}</div>
             <IconGgClose className="cursor-pointer" onClick={onClose} />
           </div>
           <div className="divider w-full"></div>

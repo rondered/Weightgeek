@@ -5,10 +5,10 @@ import {
   SocialLoginButton,
   FormInput,
 } from "@/components/common";
-import { useSignup } from "./useSignup";
-import { Link, Redirect } from "wouter";
-import { FormAlert } from "@/components/common";
-import { MainContainer } from "@/components/layout";
+import {useSignup} from "./useSignup";
+import {Link, Redirect} from "wouter";
+import {FormAlert} from "@/components/common";
+import {MainContainer} from "@/components/layout";
 
 export const Signup = () => {
   const {
@@ -48,7 +48,7 @@ export const Signup = () => {
                   <Controller
                     control={control}
                     name="email"
-                    render={({ field, fieldState, formState }) => (
+                    render={({field, fieldState, formState}) => (
                       <FormInput
                         onChange={field.onChange}
                         placeholder="Email"
@@ -62,7 +62,7 @@ export const Signup = () => {
                   <Controller
                     control={control}
                     name="password"
-                    render={({ field, fieldState, formState }) => (
+                    render={({field, fieldState, formState}) => (
                       <FormInput
                         onChange={field.onChange}
                         placeholder="Password"

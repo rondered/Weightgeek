@@ -6,9 +6,9 @@ import {
   FormInput,
   FormAlert,
 } from "@/components/common";
-import { useLogin } from "./useLogin";
-import { Link, Redirect } from "wouter";
-import { MainContainer } from "@/components/layout";
+import {useLogin} from "./useLogin";
+import {Link, Redirect} from "wouter";
+import {MainContainer} from "@/components/layout";
 
 export const Login = () => {
   const {
@@ -48,7 +48,7 @@ export const Login = () => {
                   <Controller
                     control={control}
                     name="email"
-                    render={({ field, fieldState, formState }) => (
+                    render={({field, fieldState, formState}) => (
                       <FormInput
                         onChange={field.onChange}
                         placeholder="Email"
@@ -62,7 +62,7 @@ export const Login = () => {
                   <Controller
                     control={control}
                     name="password"
-                    render={({ field, fieldState, formState }) => (
+                    render={({field, fieldState, formState}) => (
                       <FormInput
                         onChange={field.onChange}
                         placeholder="Password"

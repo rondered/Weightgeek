@@ -1,8 +1,8 @@
 import React from "react";
-import { Switch, Route, Router, RouteProps, Redirect, useRoute } from "wouter";
-import { Login, Signup, Logbook } from "@/views";
-import { Loading } from "@/layouts";
-import { useSession } from "./hooks";
+import {Switch, Route, Router, RouteProps, Redirect, useRoute} from "wouter";
+import {Login, Signup, Logbook} from "@/views";
+import {Loading} from "@/layouts";
+import {useSession} from "./hooks";
 
 interface IRoute {
   isProtected: boolean;
@@ -20,7 +20,7 @@ interface IPublicRoute extends RouteProps {
 }
 
 const ProtectedRoute: React.FC<IProtectedRoute> = (props) => {
-  const { isLoggedIn, ...restOfProps } = props;
+  const {isLoggedIn, ...restOfProps} = props;
 
   return (
     <>{isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/login" />}</>
@@ -28,13 +28,13 @@ const ProtectedRoute: React.FC<IProtectedRoute> = (props) => {
 };
 
 const PublicRoute: React.FC<IPublicRoute> = (props) => {
-  const { isLoggedIn, ...restOfProps } = props;
+  const {isLoggedIn, ...restOfProps} = props;
 
   return <>{!isLoggedIn ? <Route {...restOfProps} /> : <Redirect to="/" />}</>;
 };
 
 export const AppRouter: React.FC<{}> = () => {
-  const { isLoggedIn, isLoading } = useSession();
+  const {isLoggedIn, isLoading} = useSession();
 
   return (
     <>

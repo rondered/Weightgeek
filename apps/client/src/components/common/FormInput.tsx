@@ -7,7 +7,7 @@ interface IFormInput extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const FormInput: React.FC<IFormInput> = (props) => {
-  const { icon, isInvalid, errorMessage, ...inputProps } = props;
+  const {icon, isInvalid, errorMessage, ...inputProps} = props;
 
   return (
     <div className="flex w-full h-[50px] flex-col">

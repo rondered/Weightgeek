@@ -21,10 +21,10 @@ export const useAuthStore = create<IAuthStore>((set) => ({
   accessToken: undefined,
 
   // actions
-  setLoggedIn: (logged: boolean) => set((state) => ({ isLoggedIn: logged })),
-  setInitalized: () => set({ isInitalized: true }),
-  setAccessToken: (token: string) => set({ accessToken: token }),
-  removeAccessToken: () => set({ accessToken: undefined }),
+  setLoggedIn: (logged: boolean) => set((state) => ({isLoggedIn: logged})),
+  setInitalized: () => set({isInitalized: true}),
+  setAccessToken: (token: string) => set({accessToken: token}),
+  removeAccessToken: () => set({accessToken: undefined}),
   disconnect: () =>
-    set({ isLoggedIn: false, accessToken: undefined, isInitalized: false }),
+    set({isLoggedIn: false, accessToken: undefined, isInitalized: false}),
 }));
