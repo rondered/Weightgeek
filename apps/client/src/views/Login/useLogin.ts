@@ -31,14 +31,13 @@ export const useLogin = () => {
     resolver: yupResolver(schema),
   });
 
-  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
-    ILogin,
-    any,
-    ILogin
-  >(postLogin, {
-    retry: false,
-    onSuccess: () => refetch(),
-  });
+  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation(
+    postLogin,
+    {
+      retry: false,
+      onSuccess: () => refetch(),
+    }
+  );
 
   return {
     handleSubmit: handleSubmit((values: ILogin) => mutate(values)),

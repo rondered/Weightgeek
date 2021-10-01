@@ -31,14 +31,13 @@ export const useSignup = () => {
     resolver: yupResolver(schema),
   });
 
-  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
-    ISignUp,
-    any,
-    ISignUp
-  >(postSignUp, {
-    retry: false,
-    onSuccess: () => refetch(),
-  });
+  const { mutate, isLoading, data, isError, error, isSuccess } = useMutation(
+    postSignUp,
+    {
+      retry: false,
+      onSuccess: () => refetch(),
+    }
+  );
 
   return {
     handleSubmit: handleSubmit((values: ISignUp) => mutate(values)),

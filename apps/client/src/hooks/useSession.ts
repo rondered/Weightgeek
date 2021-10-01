@@ -1,7 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useAuthStore } from "@/stores";
-import { IGetAuthorization } from "@/types";
 import { getMe, getLogout } from "@/endpoints/auth";
 
 export const useSession = () => {
@@ -19,10 +18,7 @@ export const useSession = () => {
     removeAccessToken: state.removeAccessToken,
   }));
 
-  const { isLoading: isAuthLoading, refetch } = useQuery<
-    IGetAuthorization,
-    Error
-  >(getMe.name, getMe, {
+  const { isLoading: isAuthLoading, refetch } = useQuery(getMe.name, getMe, {
     retry: false,
     enabled: !isInitalized,
     onSettled: () => {
@@ -38,14 +34,10 @@ export const useSession = () => {
 
   const [isLoggingOut, setIsLoggingOut] = React.useState<boolean>(false);
 
-  const { isLoading: isLogoutLoading } = useQuery<any, Error>(
-    getLogout.name,
-    getLogout,
-    {
-      retry: false,
-      enabled: isLoggingOut,
-    }
-  );
+  const { isLoading: isLogoutLoading } = useQuery(getLogout.name, getLogout, {
+    retry: false,
+    enabled: isLoggingOut,
+  });
 
   return {
     isLoggedIn,
