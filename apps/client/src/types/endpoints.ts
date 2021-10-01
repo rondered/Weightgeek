@@ -12,7 +12,7 @@ export interface AddLog {
   date: string;
 }
 
-interface Log {
+export interface Log {
   weight: number;
   calories: number | undefined;
   date: string;

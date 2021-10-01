@@ -7,6 +7,7 @@ import {
   FormDatepicker,
 } from "@/components/common";
 import {useAddLog} from "./useAddLog";
+import {useGetLogs} from "./useGetLogs";
 
 const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
@@ -30,6 +31,8 @@ export const Logbook: React.FC<{}> = (props) => {
     isModalOpen,
     setIsModalOpen,
   } = useAddLog();
+
+  const { isLoading: isGetLogsLoading , data } = useGetLogs();
 
   return (
     <Page>
@@ -92,6 +95,7 @@ export const Logbook: React.FC<{}> = (props) => {
       <div className="flex flex-row justify-end">
         <AddLogButton onClick={() => setIsModalOpen(true)} />
       </div>
+      <div>{JSON.stringify(data)}</div>
     </Page>
   );
 };

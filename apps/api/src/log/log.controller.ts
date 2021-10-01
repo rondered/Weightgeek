@@ -7,10 +7,8 @@ import {
   Post,
   Body,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { ConfigService } from '@nestjs/config';
-import { SignUpUserDto, LoginUserDto } from '../types';
 import { UserService } from '../user/user.service';
 import { Log } from '@prisma/client';
 import { DbService } from '../db';
@@ -25,9 +23,15 @@ export class LogController {
 
   @Post()
   @UseGuards(AuthGuard('Access'))
-  async addLog(@Req() req, @Body() payload) {
+  async addLog(@Req() req, @Body() payload): Promise<Log> {
     return this.dbService.log.create({
       data: { ...payload, userId: req.user.id },
     });
+  }
+
+  @Get()
+  @UseGuards(AuthGuard('Access'))
+  async getLog(@Req() req): Promise<Log[]> {
+    return this.dbService.log.findMany({ where: { userId: req.user.id } });
   }
 }

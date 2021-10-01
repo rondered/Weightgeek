@@ -66,7 +66,7 @@ export class AuthController {
   }
 
   @Post('/signup')
-  async signUpUser(@Req() req, @Body() payload: SignUpUserDto, @Res() res) {
+  async signUp(@Req() req, @Body() payload: SignUpUserDto, @Res() res) {
     const { email, password } = payload;
     const user = await this.userService.signUp({ email }, password);
     this.authService.refreshTokens(
@@ -79,7 +79,7 @@ export class AuthController {
   }
 
   @Post('/login')
-  async loginUser(@Req() req, @Body() payload: LoginUserDto, @Res() res) {
+  async login(@Req() req, @Body() payload: LoginUserDto, @Res() res) {
     const { email, password } = payload;
     const user = await this.userService.login(email, password);
     this.authService.refreshTokens(
@@ -93,7 +93,7 @@ export class AuthController {
 
   @Get('me')
   @UseGuards(AuthGuard('Access'))
-  async getUser(@Req() req): Promise<User> {
+  async getMe(@Req() req): Promise<User> {
     const id = this.authService.getIdFromToken(req);
     return this.userService.getUser({ id: req.user.id });
   }
