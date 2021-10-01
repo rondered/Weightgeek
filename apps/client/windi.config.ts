@@ -10,8 +10,11 @@ export default defineConfig({
         basier: ["Basier Circle", "Segoe UI", "Roboto"],
       },
       width: {
-        navBar: "350px",
+        mdNavBar: "350px",
         modal: "600px",
+      },
+      height: {
+        navBar: "70px",
       },
       zIndex: {
         modal: "10",

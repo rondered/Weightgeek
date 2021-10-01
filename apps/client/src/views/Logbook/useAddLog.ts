@@ -1,6 +1,7 @@
 import { useMutation } from "react-query";
 import { axiosInstance } from "@/utils";
 import * as yup from "yup";
+import { IAddLog } from "@/types";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "@/hooks";
@@ -11,38 +12,44 @@ const ADD_LOG = async (values: any) => {
   return data;
 };
 
-const schema = yup.object().shape({
-  weight: yup
-    .number()
-    .transform((value) => (isNaN(value) ? undefined : value))
-    .required("Required")
-    .positive("Positive"),
-  calories: yup
-    .number()
-    .transform((value) => (isNaN(value) ? undefined : value))
-    .positive("Positive"),
-  date: yup
-    .date()
-    .transform((value) => (isNaN(value) ? undefined : value))
-    .required("Required"),
-});
-
-type CreateLog = yup.SchemaOf<typeof schema>;
-
 export const useAddLog = () => {
+
+  const schema = React.useMemo(
+    () =>
+      yup.object().shape({
+        weight: yup
+          .number()
+          .transform((value) => (isNaN(value) ? undefined : value))
+          .required("Weight Required")
+          .positive("Positive Weight"),
+        calories: yup
+          .number()
+          .optional()
+          .transform((value) => (isNaN(value) ? undefined : value))
+          .positive("Positive Calories"),
+        date: yup.date().required("Required"),
+      }),
+    []
+  );
+
   const { refetch } = useSession();
 
   const { handleSubmit, register, formState, reset, control } =
-    useForm<CreateLog>({
+    useForm<IAddLog>({
       resolver: yupResolver(schema),
+      defaultValues: {
+        weight: undefined,
+        calories: undefined,
+        date: new Date(),
+      },
     });
 
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
 
   const { mutate, isLoading, data, isError, error, isSuccess } = useMutation<
-    CreateLog,
+    IAddLog,
     any,
-    CreateLog
+    IAddLog
   >(ADD_LOG, {
     retry: false,
     onSuccess: () => {

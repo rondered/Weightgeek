@@ -5,3 +5,19 @@ export interface IGetAuthorization {
   google_id: string | undefined;
   facebook_id: string | undefined;
 }
+
+export interface IAddLog {
+  weight: number;
+  calories: number | undefined;
+  date: Date;
+}
+
+export interface ILogin {
+  email: string;
+  password: string;
+}
+
+export interface ISignUp {
+  email: string;
+  password: string;
+}

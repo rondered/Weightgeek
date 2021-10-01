@@ -1,5 +1,5 @@
 import React from "react";
-import { Page } from "@/views/Layouts";
+import { Page } from "@/layouts";
 import {
   Modal,
   FormInput,
@@ -12,7 +12,7 @@ const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
 ) => (
   <button
-    className="btn-secondary w-[200px] justify-center gap-[10px]"
+    className="btn-secondary w-full md:w-[200px] justify-center gap-[10px]"
     {...props}
   >
     <div>Add Log</div>
@@ -22,12 +22,9 @@ const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
 
 export const Logbook: React.FC<{}> = (props) => {
   const {
-    register,
-    formErrors,
     isLoading,
     handleSubmit,
     reset,
-    formState,
     Controller,
     control,
     isModalOpen,
