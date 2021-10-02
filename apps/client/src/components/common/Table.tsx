@@ -15,8 +15,10 @@ export const Table: React.FC<ITable> = (props) => {
       data,
     });
 
+    const [ selectedRow, setSelectedRow ] = React.useState<number>();
+
   return (
-    <table className="card" {...getTableProps()}>
+    <table {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -30,7 +32,10 @@ export const Table: React.FC<ITable> = (props) => {
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr
+              {...row.getRowProps()}
+              onClick={() => { setSelectedRow(row.index) }}
+            >
               {row.cells.map((cell) => {
                 return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}

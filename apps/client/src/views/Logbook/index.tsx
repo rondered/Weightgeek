@@ -33,7 +33,26 @@ export const Logbook: React.FC<{}> = (props) => {
     setIsModalOpen,
   } = useAddLog();
 
-  const {isLoading: isGetLogsLoading, data, columns} = useGetLogs();
+  const {isLoading: isGetLogsLoading, data} = useGetLogs();
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Weight",
+        accessor: "weight",
+      },
+      {
+        Header: "Calories",
+        accessor: "calories",
+      },
+      {
+        Header: "Date",
+        accessor: "date",
+        Cell: (props) => <div>{props.value.toString()}</div>,
+      },
+    ],
+    []
+  );
 
   return (
     <Page>

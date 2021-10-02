@@ -23,7 +23,7 @@ model Log {
   id       String @id @default(uuid())
   userId   String
   weight   Int?
-  date     String
+  date     DateTime
   calories Int?
   user     User   @relation(fields: [userId], references: [id])
 }

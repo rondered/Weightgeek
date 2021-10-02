@@ -9,13 +9,13 @@ export interface User {
 export interface AddLog {
   weight: number;
   calories: number | undefined;
-  date: string;
+  date: Date;
 }
 
 export interface Log {
   weight: number;
   calories: number | undefined;
-  date: string;
+  date: Date;
   id: string;
 }
 

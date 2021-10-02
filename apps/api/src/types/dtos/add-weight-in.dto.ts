@@ -5,7 +5,7 @@ export class AddWeightInDto {
 
   @IsNotEmpty()
   @IsDateString()
-  date: string;
+  date: Date;
 
   calories?: number;
 }

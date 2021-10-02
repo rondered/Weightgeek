@@ -20,7 +20,7 @@ export const useAddLog = () => {
           .optional()
           .transform((value) => (isNaN(value) ? undefined : value))
           .positive("Positive Calories"),
-        date: yup.string().required("Required"),
+        date: yup.date().required("Required"),
       }),
     []
   );
@@ -32,7 +32,7 @@ export const useAddLog = () => {
     defaultValues: {
       weight: undefined,
       calories: undefined,
-      date: new Date().toISOString(),
+      date: new Date(),
     },
   });
 
