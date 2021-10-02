@@ -11,7 +11,6 @@ async function main(): Promise<void> {
   app.enableCors({
     origin: true,
     credentials: true,
-    methods: 'GET, POST, DELETE, PUT',
   });
   app.use(cookieParser());
   await app.listen(configService.get('API_PORT'));
