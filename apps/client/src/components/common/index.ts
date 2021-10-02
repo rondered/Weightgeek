@@ -6,3 +6,4 @@ export * from "./Modal";
 export * from "./FormDivider";
 export * from "./FormInput";
 export * from "./FormDatepicker";
+export * from "./Table";
