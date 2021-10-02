@@ -25,6 +25,7 @@ importers:
       '@types/supertest': ^2.0.10
       '@typescript-eslint/eslint-plugin': ^4.19.0
       '@typescript-eslint/parser': ^4.19.0
+      '@wg/types': workspace:*
       bcrypt: ^5.0.1
       class-transformer: ^0.4.0
       class-validator: ^0.13.1
@@ -60,6 +61,7 @@ importers:
       '@prisma/client': 3.1.1_prisma@3.1.1
       '@types/bcrypt': 5.0.0
       '@types/passport': 1.0.7
+      '@wg/types': link:../../lib/types
       bcrypt: 5.0.1
       class-transformer: 0.4.0
       class-validator: 0.13.1
@@ -174,6 +176,14 @@ importers:
       vite-plugin-babel-macros: 1.0.5_vite@2.6.2
       vite-plugin-windicss: 1.4.9_typescript@4.4.3+vite@2.6.2
       windicss: 3.1.8
+
+  lib/types:
+    specifiers:
+      ts-loader: ^8.0.18
+      typescript: ^4.4.3
+    devDependencies:
+      ts-loader: 8.3.0_typescript@4.4.3
+      typescript: 4.4.3
 
 packages:
 

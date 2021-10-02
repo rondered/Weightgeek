@@ -1,18 +1,12 @@
 {
   "name": "wg",
-  "private": "true",
   "scripts": {
-    "start:client": "yarn workspace @wg/client run dev",
-    "build:client": "yarn workspace @wg/client run build",
-    "start:api": "yarn workspace @wg/api run start:dev",
-    "prisma": "yarn workspace @wg/api run prisma"
+    "start:client": "pnpm run --filter './apps/client' dev",
+    "build:client": "pnpm run --filter './apps/api' build",
+    "start:api": "pnpm run --filter './apps/api' start:dev",
+    "build:api": "pnpm run --filter './apps/api' build",
+    "prisma": "pnpm run --filter './apps/api' prisma"
   },
-  "workspaces": [
-    "apps/*"
-  ],
-  "include": [
-    "apps"
-  ],
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT"

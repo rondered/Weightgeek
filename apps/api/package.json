@@ -18,6 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+    "prisma": "prisma",
     "prisma:create_migration": "prisma migrate dev --create-only",
     "prisma:deploy_migrations": "prisma migrate deploy"
   },
@@ -44,7 +45,8 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6",
-    "wouter": "^2.7.4"
+    "wouter": "^2.7.4",
+    "@wg/types": "workspace:*"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.6.0",
