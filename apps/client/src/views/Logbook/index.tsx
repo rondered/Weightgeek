@@ -77,6 +77,7 @@ export const Logbook: React.FC<{}> = (props) => {
                 onChange={field.onChange}
                 placeholder="Weight"
                 type="number"
+                step=".01"
                 isInvalid={fieldState.invalid}
                 icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
                 errorMessage={fieldState.error?.message}
