@@ -34,6 +34,7 @@ export default defineConfig({
   },
   shortcuts: {
     "modal-header": "font-bold text-xl",
+    "table-header": "font-bold text-lg",
     btn: `flex filter rounded justify-between focus:(outline-none)
     items-center h-auto w-full pl-4 pr-4 pt-3 pb-3
     transition-all duration-500 hover:(brightness-125)`,

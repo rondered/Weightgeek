@@ -9,6 +9,7 @@ import {
 } from "@/components/common";
 import {useAddLog} from "./useAddLog";
 import {useGetLogs} from "./useGetLogs";
+import { formatDate } from '@/utils';
 
 const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
@@ -40,15 +41,21 @@ export const Logbook: React.FC<{}> = (props) => {
       {
         Header: "Weight",
         accessor: "weight",
+        Cell: (props) => <div className="flex items-center justify-center p-2">{props.value}</div>
       },
       {
         Header: "Calories",
         accessor: "calories",
+        Cell: (props) => <div className="flex items-center justify-center p-2">{props.value}</div>
       },
       {
         Header: "Date",
         accessor: "date",
-        Cell: (props) => <div>{props.value.toString()}</div>,
+        Cell: (props) => <div className="flex items-center justify-center p-2">{formatDate(props.value)}</div>,
+      },
+      {
+        Header: "Date",
+        Cell: (props) => <div className="flex items-center justify-center p-2">lala</div>,
       },
     ],
     []

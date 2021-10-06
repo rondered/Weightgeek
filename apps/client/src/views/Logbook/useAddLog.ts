@@ -6,25 +6,21 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import React from "react";
 import {postLog, getLog} from "@/endpoints/log";
 
-export const useAddLog = () => {
-  const schema = React.useMemo(
-    () =>
-      yup.object().shape({
-        weight: yup
-          .number()
-          .transform((value) => (isNaN(value) ? undefined : value))
-          .required("Weight Required")
-          .positive("Positive Weight"),
-        calories: yup
-          .number()
-          .optional()
-          .transform((value) => (isNaN(value) ? undefined : value))
-          .positive("Positive Calories"),
-        date: yup.date().required("Required"),
-      }),
-    []
-  );
+const schema = yup.object().shape({
+  weight: yup
+    .number()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .required("Weight Required")
+    .positive("Positive Weight"),
+  calories: yup
+    .number()
+    .optional()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .positive("Positive Calories"),
+  date: yup.date().required("Required"),
+});
 
+export const useAddLog = () => {
   const queryClient = useQueryClient();
 
   const {handleSubmit, register, formState, reset, control} = useForm<AddLog>({
@@ -49,14 +45,10 @@ export const useAddLog = () => {
 
       const previousLogs = queryClient.getQueryData(getLog.name);
 
-      if (previousLogs) {
-        queryClient.setQueryData(getLog.name, (oldLogs) => [
-          ...oldLogs,
-          newLog,
-        ]);
-      } else {
-        queryClient.setQueryData(getLog.name, () => [newLog]);
-      }
+      queryClient.setQueryData(getLog.name, () => [
+        ...(previousLogs || []),
+        newLog,
+      ]);
 
       return {previousLogs};
     },

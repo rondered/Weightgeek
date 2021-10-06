@@ -11,7 +11,7 @@ export const Page: React.FC<IPage> = (props) => {
     <MainContainer>
       <div className="flex flex-col md:flex-row">
         <NavBar>hi</NavBar>
-        <div className="flex flex-col p-5 w-full">{props.children}</div>
+        <div className="flex flex-col p-5 w-full gap-[20px]">{props.children}</div>
       </div>
     </MainContainer>
   );

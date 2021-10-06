@@ -7,20 +7,16 @@ import React from "react";
 import {SignUp} from "@/types";
 import {postSignUp} from "@/endpoints/auth";
 
-export const useSignup = () => {
-  const {refetch} = useSession();
+const schema = yup.object().shape({
+  email: yup.string().email("Invalid address").required("Email Required"),
+  password: yup
+    .string()
+    .min(6, `More than 6 characters`)
+    .required("Password Required"),
+});
 
-  const schema = React.useMemo(
-    () =>
-      yup.object().shape({
-        email: yup.string().email("Invalid address").required("Email Required"),
-        password: yup
-          .string()
-          .min(6, `More than 6 characters`)
-          .required("Password Required"),
-      }),
-    []
-  );
+export const useSignup = () => {
+  const {setLoggedIn} = useSession();
 
   const {
     handleSubmit,
@@ -35,7 +31,7 @@ export const useSignup = () => {
     postSignUp,
     {
       retry: false,
-      onSuccess: () => refetch(),
+      onSuccess: () => setLoggedIn(true),
     }
   );
 
