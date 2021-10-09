@@ -39,6 +39,11 @@ export const Logbook: React.FC<{}> = (props) => {
   const columns = React.useMemo(
     () => [
       {
+        Header: "Date",
+        accessor: "date",
+        Cell: (props) => <div className="flex items-center justify-center p-2">{formatDate(props.value)}</div>,
+      },
+      {
         Header: "Weight",
         accessor: "weight",
         Cell: (props) => <div className="flex items-center justify-center p-2">{props.value}</div>
@@ -47,11 +52,6 @@ export const Logbook: React.FC<{}> = (props) => {
         Header: "Calories",
         accessor: "calories",
         Cell: (props) => <div className="flex items-center justify-center p-2">{props.value}</div>
-      },
-      {
-        Header: "Date",
-        accessor: "date",
-        Cell: (props) => <div className="flex items-center justify-center p-2">{formatDate(props.value)}</div>,
       },
       {
         Header: "Date",

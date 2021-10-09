@@ -20,13 +20,13 @@
   @apply h-[20px] w-[20px];
 }
 .react-datepicker__day--keyboard-selected {
-  @apply bg-primaryColor rounded text-bgColor font-bold;
+  @apply bg-primaryColor rounded text-bgColor font-bold transition-all duration-500;
 }
 .react-datepicker__navigation {
   @apply hidden;
 }
 .react-datepicker__day {
-  @apply h-[20px] w-[20px] text-center text-sm;
+  @apply h-[20px] w-[20px] text-center rounded text-sm hover:(bg-hoverSecondaryColor) transition-all duration-500;
 }
 .react-datepicker__day--outside-month {
   @apply text-fadedTextColor;

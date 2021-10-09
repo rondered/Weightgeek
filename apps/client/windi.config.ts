@@ -24,7 +24,9 @@ export default defineConfig({
         cardBgColor: "#242424",
         buttonBgColor: "#FEC775",
         primaryColor: "#FEC775",
+        hoverPrimaryColor: "#ffd08a",
         secondaryColor: "#242424",
+        hoverSecondaryColor: "#3b3b3b",
         borderColor: "#383838",
         textColor: "#FFFFFF",
         fadedTextColor: "#383838",
@@ -37,9 +39,9 @@ export default defineConfig({
     "table-header": "font-bold text-lg",
     btn: `flex filter rounded justify-between focus:(outline-none)
     items-center h-auto w-full pl-4 pr-4 pt-3 pb-3
-    transition-all duration-500 hover:(brightness-125)`,
-    "btn-primary": `btn bg-primaryColor text-bgColor font-bold`,
-    "btn-secondary": `btn border border-borderColor
+    transition-all duration-500`,
+    "btn-primary": `btn bg-primaryColor hover:(bg-hoverPrimaryColor) text-bgColor font-bold`,
+    "btn-secondary": `btn bg-secondaryColor border hover:(bg-hoverSecondaryColor) border-borderColor
      justify-between font-medium bg-secondaryColor`,
     divider: "h-px bg-dividerColor",
     card: "bg-cardBgColor rounded-lg border border-borderColor",

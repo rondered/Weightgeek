@@ -35,7 +35,7 @@ export const Table: React.FC<ITable> = (props) => {
             return (
               <tr
                 {...row.getRowProps()}
-                className="transition-all duration-500 hover:(bg-primaryColor) bg-bgColor"
+                className="transition-all duration-500 hover:(bg-hoverSecondaryColor) bg-secondaryColor"
                 onClick={() => {
                   setSelectedRow(row.index);
                 }}
