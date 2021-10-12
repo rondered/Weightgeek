@@ -53,10 +53,6 @@ export const Logbook: React.FC<{}> = (props) => {
         accessor: "calories",
         Cell: (props) => <div className="flex items-center justify-center p-2">{props.value}</div>
       },
-      {
-        Header: "Date",
-        Cell: (props) => <div className="flex items-center justify-center p-2">lala</div>,
-      },
     ],
     []
   );
@@ -123,7 +119,7 @@ export const Logbook: React.FC<{}> = (props) => {
       <div className="flex flex-row justify-end">
         <AddLogButton onClick={() => setIsModalOpen(true)} />
       </div>
-      {data && <Table columns={columns} data={data} />}
+      {data && <Table onRowClick={(e) => console.log(e)} columns={columns} data={data} />}
     </Page>
   );
 };
