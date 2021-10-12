@@ -2,7 +2,7 @@
   "name": "wg",
   "scripts": {
     "start:client": "pnpm run --filter './apps/client' dev",
-    "build:client": "pnpm run --filter './apps/api' build",
+    "build:client": "pnpm run --filter './apps/client' build",
     "start:api": "pnpm run --filter './apps/api' start:dev",
     "build:api": "pnpm run --filter './apps/api' build",
     "prisma": "pnpm run --filter './apps/api' prisma"

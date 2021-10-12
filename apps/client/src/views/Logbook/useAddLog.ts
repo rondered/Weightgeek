@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     .optional()
     .transform((value) => (isNaN(value) ? undefined : value))
     .positive("Positive Calories"),
-  date: yup.date().required("Required"),
+  date: yup.string().required("Required"),
 });
 
 export const useAddLog = () => {
@@ -28,7 +28,7 @@ export const useAddLog = () => {
     defaultValues: {
       weight: undefined,
       calories: undefined,
-      date: new Date(),
+      date: (new Date()).toISOString(),
     },
   });
 
@@ -60,6 +60,7 @@ export const useAddLog = () => {
     },
     onSuccess: () => {
       setIsModalOpen(false);
+      reset();
     },
   });
 
