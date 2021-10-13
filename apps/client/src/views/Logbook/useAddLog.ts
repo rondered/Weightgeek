@@ -28,7 +28,7 @@ export const useAddLog = () => {
     defaultValues: {
       weight: undefined,
       calories: undefined,
-      date: (new Date()).toISOString(),
+      date: new Date().toISOString(),
     },
   });
 
