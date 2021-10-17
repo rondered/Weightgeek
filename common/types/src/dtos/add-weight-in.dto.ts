@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsPositive, IsDateString } from 'class-validator';
+import { IsNotEmpty, IsDateString } from 'class-validator';
 
 export class AddWeightInDto {
   weight?: number;

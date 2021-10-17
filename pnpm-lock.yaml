@@ -185,8 +185,10 @@ importers:
 
   common/types:
     specifiers:
+      class-validator: ^0.13.1
       typescript: ^4.3.5
     devDependencies:
+      class-validator: 0.13.1
       typescript: 4.4.4
 
 packages:
@@ -1570,7 +1572,6 @@ packages:
 
   /@types/validator/13.6.3:
     resolution: {integrity: sha512-fWG42pMJOL4jKsDDZZREnXLjc3UE0R8LOJfARWYg6U966rxDT7TYejYzLnUF5cvSObGg34nd0+H2wHHU5Omdfw==}
-    dev: false
 
   /@types/yargs-parser/20.2.1:
     resolution: {integrity: sha512-7tFImggNeNBVMsn0vLrpn1H1uPrUBdnARPTpZoitY37ZrdJREzf7I16tMrlK3hen349gr1NYh8CmZQa7CTG6Aw==}
@@ -2559,7 +2560,6 @@ packages:
       '@types/validator': 13.6.3
       libphonenumber-js: 1.9.34
       validator: 13.6.0
-    dev: false
 
   /classnames/2.3.1:
     resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
@@ -5347,7 +5347,6 @@ packages:
 
   /libphonenumber-js/1.9.34:
     resolution: {integrity: sha512-gHTNU9xTtVgSp30IDX/57W4pETMXDIYXFfwEOJVXiYosiY7Hc7ogJwlBjOqlCcU04X0aA8DT57hdwUC1sJBJnA==}
-    dev: false
 
   /lilconfig/2.0.3:
     resolution: {integrity: sha512-EHKqr/+ZvdKCifpNrJCKxBTgk5XupZA3y/aCPY9mxfgBzmgh93Mt/WqjjQ38oMxXuvDokaKiM3lAgvSH2sjtHg==}
@@ -8001,7 +8000,6 @@ packages:
   /validator/13.6.0:
     resolution: {integrity: sha512-gVgKbdbHgtxpRyR8K0O6oFZPhhB5tT1jeEHZR0Znr9Svg03U0+r9DXWMrnRAB+HtCStDQKlaIZm42tVsVjqtjg==}
     engines: {node: '>= 0.10'}
-    dev: false
 
   /vary/1.1.2:
     resolution: {integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=}
