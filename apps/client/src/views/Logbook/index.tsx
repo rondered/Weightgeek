@@ -9,7 +9,7 @@ import {
 } from "@/components/common";
 import {useAddLog} from "./useAddLog";
 import {useGetLogs} from "./useGetLogs";
-import { formatDate } from '@/utils';
+import {formatDate} from "@/utils";
 
 const AddLogButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
   props
@@ -27,11 +27,12 @@ export const Logbook: React.FC<{}> = (props) => {
   const {
     isLoading,
     handleSubmit,
-    reset,
-    Controller,
-    control,
+    formErrors,
+    formValues,
+    handleFormChange,
     isModalOpen,
-    setIsModalOpen,
+    openModal,
+    closeModal
   } = useAddLog();
 
   const {isLoading: isGetLogsLoading, data} = useGetLogs();
@@ -41,17 +42,29 @@ export const Logbook: React.FC<{}> = (props) => {
       {
         Header: "Date",
         accessor: "date",
-        Cell: (props) => <div className="flex items-center justify-center p-2">{formatDate(props.value)}</div>,
+        Cell: (props) => (
+          <div className="flex items-center justify-center p-2">
+            {formatDate(props.value)}
+          </div>
+        ),
       },
       {
         Header: "Weight",
         accessor: "weight",
-        Cell: (props) => <div className="flex items-center justify-center p-2">{props.value}</div>
+        Cell: (props) => (
+          <div className="flex items-center justify-center p-2">
+            {props.value}
+          </div>
+        ),
       },
       {
         Header: "Calories",
         accessor: "calories",
-        Cell: (props) => <div className="flex items-center justify-center p-2">{props.value}</div>
+        Cell: (props) => (
+          <div className="flex items-center justify-center p-2">
+            {props.value}
+          </div>
+        ),
       },
     ],
     []
@@ -61,10 +74,7 @@ export const Logbook: React.FC<{}> = (props) => {
     <Page>
       <Modal
         isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-          reset();
-        }}
+        onClose={closeModal}
         title="Add New Log"
       >
         <form
@@ -72,54 +82,48 @@ export const Logbook: React.FC<{}> = (props) => {
           className="w-full flex gap-[10px] flex-col"
           autoComplete="off"
         >
-          <Controller
-            control={control}
+          <FormInput
+            placeholder="Weight"
+            type="number"
             name="weight"
-            render={({field, fieldState, formState}) => (
-              <FormInput
-                onChange={field.onChange}
-                placeholder="Weight"
-                type="number"
-                step=".01"
-                isInvalid={fieldState.invalid}
-                icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
-                errorMessage={fieldState.error?.message}
-              />
-            )}
+            step=".01"
+            isInvalid={!!formErrors.weight}
+            onChange={handleFormChange}
+            value={formErrors.weight}
+            icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
+            errorMessage={formErrors.weight}
           />
-          <Controller
-            control={control}
+          <FormInput
+            placeholder="Calories"
+            type="number"
             name="calories"
-            render={({field, fieldState, formState}) => (
-              <FormInput
-                onChange={field.onChange}
-                placeholder="Calories"
-                type="number"
-                isInvalid={fieldState.invalid}
-                icon={<IconIconParkOutlineFire className="h-[20px] w-[20px]" />}
-                errorMessage={fieldState.error?.message}
-              />
-            )}
+            isInvalid={!!formErrors.calories}
+            onChange={handleFormChange}
+            value={formValues.calories}
+            icon={<IconIconParkOutlineFire className="h-[20px] w-[20px]" />}
+            errorMessage={formErrors.calories}
           />
-          <Controller
-            control={control}
+          <FormDatepicker
+            inline
             name="date"
-            render={({field, fieldState, formState}) => (
-              <FormDatepicker
-                onChange={field.onChange}
-                inline
-                value={field.value}
-                isInvalid={fieldState.invalid}
-              />
-            )}
+            onChange={handleFormChange}
+            value={formValues.date}
+            isInvalid={!!formErrors.date}
+            errorMessage={formErrors.date}
           />
-          <FormButton isLoading={isLoading} text="Save" />
+          <FormButton type="submit" isLoading={isLoading} text="Save" />
         </form>
       </Modal>
       <div className="flex flex-row justify-end">
-        <AddLogButton onClick={() => setIsModalOpen(true)} />
+        <AddLogButton onClick={openModal} />
       </div>
-      {data && <Table onRowClick={(e) => console.log(e)} columns={columns} data={data} />}
+      {data && (
+        <Table
+          onRowClick={(e) => console.log(e)}
+          columns={columns}
+          data={data}
+        />
+      )}
     </Page>
   );
 };

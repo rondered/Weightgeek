@@ -1,10 +1,9 @@
 import {useMutation, useQueryClient} from "react-query";
 import * as yup from "yup";
 import {AddLog, Log} from "@/types";
-import {useForm, Controller} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
 import React from "react";
 import {postLog, getLog} from "@/endpoints/log";
+import {useFormik} from "formik";
 
 const schema = yup.object().shape({
   weight: yup
@@ -23,9 +22,12 @@ const schema = yup.object().shape({
 export const useAddLog = () => {
   const queryClient = useQueryClient();
 
-  const {handleSubmit, register, formState, reset, control} = useForm<AddLog>({
-    resolver: yupResolver(schema),
-    defaultValues: {
+  const {handleSubmit, handleChange, values, errors, resetForm} = useFormik({
+    validationSchema: schema,
+    onSubmit: (values) => {
+      mutate(values);
+    },
+    initialValues: {
       weight: undefined,
       calories: undefined,
       date: new Date().toISOString(),
@@ -60,25 +62,28 @@ export const useAddLog = () => {
     },
     onSuccess: () => {
       setIsModalOpen(false);
-      reset();
+      resetForm();
     },
   });
 
   return {
-    handleSubmit: handleSubmit((values: AddLog) => mutate(values)),
-    register,
-    formErrors: formState?.errors,
-    formState,
-    responseError: error?.response?.data.message,
+    handleSubmit,
+    formErrors: errors,
+    formValues: values,
+    handleFormChange: handleChange,
     mutate,
     isLoading,
     data,
+    resetForm,
     isResponseError: isError,
     isSuccess,
-    reset,
-    Controller,
-    control,
     isModalOpen,
-    setIsModalOpen,
+    openModal: () => {
+      setIsModalOpen(true);
+    },
+    closeModal: () => {
+      resetForm();
+      setIsModalOpen(false);
+    },
   };
 };
