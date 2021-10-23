@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsDateString } from 'class-validator';
 
 export class AddWeightInDto {
-  weight?: number;
+  weight: number;
 
   @IsNotEmpty()
   @IsDateString()

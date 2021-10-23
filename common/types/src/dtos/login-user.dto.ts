@@ -1,9 +1,7 @@
 
 import { IsNotEmpty } from 'class-validator';
-export class LoginUserDto {
-  @IsNotEmpty()
+export interface LoginUserDto {
   email: string;
-
   password?: string;
 
 }

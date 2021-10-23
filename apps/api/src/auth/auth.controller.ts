@@ -14,7 +14,6 @@ import { ConfigService } from '@nestjs/config';
 import { SignUpUserDto, LoginUserDto } from '@wg/types';
 import { UserService } from '../user/user.service';
 import { User } from '@prisma/client';
-
 @Controller('auth')
 export class AuthController {
   constructor(

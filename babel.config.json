@@ -1,12 +1,26 @@
 {
-    "babelrcRoots": [
-      "*"
+  "babelrcRoots": [
+    "*"
+  ],
+  "presets": [
+    "@babel/preset-typescript",
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
     ],
-    "presets": [
-      "@babel/preset-typescript",
-      "@babel/preset-env"
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "legacy": true
+      }
     ],
-    "plugins": [
-      ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    [
+      "@babel/plugin-transform-runtime"
     ]
-  }
+  ]
+}
