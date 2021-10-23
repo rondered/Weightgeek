@@ -75,30 +75,29 @@ export const Logbook: React.FC<{}> = (props) => {
           <Controller
             control={control}
             name="weight"
-            render={({field, fieldState, formState}) => (
+            render={({field: { ref,...inputProps }, fieldState, formState}) => (
               <FormInput
-                onChange={field.onChange}
                 placeholder="Weight"
                 type="number"
                 step=".01"
                 isInvalid={fieldState.invalid}
                 icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
                 errorMessage={fieldState.error?.message}
+                {...inputProps}
               />
             )}
           />
           <Controller
             control={control}
             name="calories"
-            render={({field, fieldState, formState}) => (
+            render={({field: {ref, ...inputProps}, fieldState, formState}) => (
               <FormInput
-                onChange={field.onChange}
                 placeholder="Calories"
                 type="number"
                 isInvalid={fieldState.invalid}
                 icon={<IconIconParkOutlineFire className="h-[20px] w-[20px]" />}
                 errorMessage={fieldState.error?.message}
-              />
+                {...inputProps}/>
             )}
           />
           <Controller

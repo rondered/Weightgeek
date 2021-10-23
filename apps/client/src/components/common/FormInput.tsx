@@ -26,6 +26,7 @@ export const FormInput: React.FC<IFormInput> = (props) => {
             isInvalid && `border-red-400 border-2`
           }`}
           {...inputProps}
+          value={inputProps.value || ""}
         />
       </div>
       {isInvalid && (
