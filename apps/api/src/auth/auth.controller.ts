@@ -11,7 +11,7 @@ import { Request, Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { ConfigService } from '@nestjs/config';
-import { SignUpUserDto, LoginUserDto } from '../types';
+import { SignUpUserDto, LoginUserDto } from '@wg/types';
 import { UserService } from '../user/user.service';
 import { User } from '@prisma/client';
 
