@@ -3,7 +3,7 @@ import {
   Get,
   Req,
   UseGuards,
-  Res,
+  Patch,
   Post,
   Body,
 } from '@nestjs/common';
@@ -33,5 +33,12 @@ export class LogController {
   @UseGuards(AuthGuard('Access'))
   async getLog(@Req() req): Promise<Log[]> {
     return this.dbService.log.findMany({ where: { userId: req.user.id } });
+  }
+
+  @Patch()
+  @UseGuards(AuthGuard('Access'))
+  async patchLog(@Req() req, @Body() payload): Promise<Log> {
+    const { id, ...updatedLog } = payload;
+    return this.dbService.log.update({ where: { id }, data: updatedLog });
   }
 }

@@ -12,6 +12,13 @@ export interface AddLog {
   date: string;
 }
 
+export interface PatchLog {
+  id: string;
+  weight: number;
+  calories: number | undefined;
+  date: string;
+}
+
 export interface Log {
   weight: number;
   calories: number | undefined;
