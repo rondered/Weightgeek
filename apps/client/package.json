@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.2",
-    "@wg/types": "0.0.0",
     "autoprefixer": "^10.3.7",
     "axios": "^0.21.4",
     "date-fns": "^2.25.0",
