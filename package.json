@@ -1,13 +1,30 @@
 {
   "name": "wg",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "common/*"
+  ],
   "scripts": {
-    "start:client": "pnpm run --filter './apps/client' dev",
-    "build:client": "pnpm run --filter './apps/client' build",
-    "start:api": "pnpm run --filter './apps/api' start:dev",
-    "build:api": "pnpm run --filter './apps/api' build",
-    "prisma": "pnpm run --filter './apps/api' prisma"
+    "start:client": "yarn workspace @wg/client run dev",
+    "build:client": "yarn workspace @wg/client run build",
+    "start:api": "yarn workspace @wg/api run start:dev",
+    "build:api": "yarn workspace @wg/api run build",
+    "prisma": "yarn workspace @wg/api run prisma",
+    "postinstall": "preconstruct dev"
   },
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-typescript": "^7.15.0",
+    "@preconstruct/cli": "^2.1.5"
+  },
+  "preconstruct": {
+    "packages": [
+      "common/*"
+    ]
+  }
 }
