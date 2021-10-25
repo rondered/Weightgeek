@@ -48,28 +48,28 @@ export const Login = () => {
                   <Controller
                     control={control}
                     name="email"
-                    render={({field, fieldState, formState}) => (
+                    render={({field: {ref, ...inputProps}, fieldState, formState}) => (
                       <FormInput
-                        onChange={field.onChange}
                         placeholder="Email"
                         type="text"
                         isInvalid={fieldState.invalid}
                         icon={<IconGgMail className="h-[20px] w-[20px]" />}
                         errorMessage={fieldState.error?.message}
+                        {...inputProps}
                       />
                     )}
                   />
                   <Controller
                     control={control}
                     name="password"
-                    render={({field, fieldState, formState}) => (
+                    render={({field: {ref, ...inputProps}, fieldState, formState}) => (
                       <FormInput
-                        onChange={field.onChange}
                         placeholder="Password"
                         type="password"
                         isInvalid={fieldState.invalid}
                         icon={<IconGgLock className="h-[20px] w-[20px]" />}
                         errorMessage={fieldState.error?.message}
+                        {...inputProps}
                       />
                     )}
                   />
