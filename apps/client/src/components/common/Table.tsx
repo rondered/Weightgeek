@@ -4,7 +4,7 @@ import {useTable} from "react-table";
 interface ITable {
   columns: any;
   data: any;
-  onRowClick?: void;
+  onRowClick?: (e:any) => void;
 }
 
 export const Table: React.FC<ITable> = (props) => {

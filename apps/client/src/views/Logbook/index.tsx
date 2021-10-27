@@ -44,7 +44,7 @@ export const Logbook: React.FC<{}> = (props) => {
     isModalOpen: isModalOpenEditLog,
     setIsModalOpen: setIsModalOpenEditLog,
     setLogToEdit,
-    logToEdit
+    logToEdit,
   } = useEditLog();
 
   const {isLoading: isGetLogsLoading, data} = useGetLogs();
@@ -133,7 +133,7 @@ export const Logbook: React.FC<{}> = (props) => {
               <FormDatepicker
                 onChange={field.onChange}
                 inline
-                value={field.value}
+                selected={new Date(field.value)}
                 isInvalid={fieldState.invalid}
               />
             )}
@@ -141,63 +141,75 @@ export const Logbook: React.FC<{}> = (props) => {
           <FormButton isLoading={isLoadingAddLog} text="Save" />
         </form>
       </Modal>
-      <Modal
-        isOpen={isModalOpenEditLog}
-        onClose={() => {
-          setIsModalOpenEditLog(false);
-          resetEditLog();
-        }}
-        title="Edit Log"
-      >
-        <form
-          onSubmit={handleSubmitEditLog}
-          className="w-full flex gap-[10px] flex-col"
-          autoComplete="off"
+      {isModalOpenEditLog && (
+        <Modal
+          isOpen={isModalOpenEditLog}
+          onClose={() => {
+            setIsModalOpenEditLog(false);
+            resetEditLog();
+          }}
+          title="Edit Log"
         >
-          <ControllerEditLog
-            control={controlEditLog}
-            name="weight"
-            render={({field: {ref, ...inputProps}, fieldState, formState}) => (
-              <FormInput
-                placeholder="Weight"
-                type="number"
-                step=".01"
-                isInvalid={fieldState.invalid}
-                icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
-                errorMessage={fieldState.error?.message}
-                {...inputProps}
-              />
-            )}
-          />
-          <ControllerEditLog
-            control={controlEditLog}
-            name="calories"
-            render={({field: {ref, ...inputProps}, fieldState, formState}) => (
-              <FormInput
-                placeholder="Calories"
-                type="number"
-                isInvalid={fieldState.invalid}
-                icon={<IconIconParkOutlineFire className="h-[20px] w-[20px]" />}
-                errorMessage={fieldState.error?.message}
-                {...inputProps}
-              />
-            )}
-          />
-          <ControllerEditLog
-            control={controlEditLog}
-            name="date"
-            render={({field, fieldState, formState}) => (
-              <FormDatepicker
-                onChange={field.onChange}
-                inline
-                value={field.value}
-                isInvalid={fieldState.invalid}
-              />
-            )}
-          />
-          <FormButton isLoading={isLoadingEditLog} text="Save" />
-        </form>
-      </Modal>
+          <form
+            onSubmit={handleSubmitEditLog}
+            className="w-full flex gap-[10px] flex-col"
+            autoComplete="off"
+          >
+            <ControllerEditLog
+              control={controlEditLog}
+              name="weight"
+              render={({
+                field: {ref, ...inputProps},
+                fieldState,
+                formState,
+              }) => (
+                <FormInput
+                  placeholder="Weight"
+                  type="number"
+                  step=".01"
+                  isInvalid={fieldState.invalid}
+                  icon={<IconIonScaleOutline className="h-[20px] w-[20px]" />}
+                  errorMessage={fieldState.error?.message}
+                  {...inputProps}
+                />
+              )}
+            />
+            <ControllerEditLog
+              control={controlEditLog}
+              name="calories"
+              render={({
+                field: {ref, ...inputProps},
+                fieldState,
+                formState,
+              }) => (
+                <FormInput
+                  placeholder="Calories"
+                  type="number"
+                  isInvalid={fieldState.invalid}
+                  icon={
+                    <IconIconParkOutlineFire className="h-[20px] w-[20px]" />
+                  }
+                  errorMessage={fieldState.error?.message}
+                  {...inputProps}
+                />
+              )}
+            />
+            <ControllerEditLog
+              control={controlEditLog}
+              name="date"
+              render={({field, fieldState, formState}) => (
+                <FormDatepicker
+                  onChange={field.onChange}
+                  inline
+                  selected={new Date(field.value)}
+                  isInvalid={fieldState.invalid}
+                />
+              )}
+            />
+            <FormButton isLoading={isLoadingEditLog} text="Save" />
+          </form>
+        </Modal>
+      )}
 
       <div className="flex flex-row justify-end">
         <AddLogButton onClick={() => setIsModalOpenAddLog(true)} />
