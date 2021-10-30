@@ -1432,6 +1432,20 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.20.tgz#53746961f731a8ea666e3316271e944238dc31db"
   integrity sha512-FbpX+hD5BvXCQerEYO7jtAGHlhAkhTQ4KIV73kmLWNlawWhTiVuQxizgVb0BOkX5oG9cIRZ42EG++d/k/Efp0w==
 
+"@vuelidate/core@^2.0.0-alpha.30":
+  version "2.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@vuelidate/core/-/core-2.0.0-alpha.30.tgz#874a27c625a373be602da46a6f29594e4210a359"
+  integrity sha512-J4OO/IqzBP/qlUJJssm+Af9aVIGCemCASiwvXOSHQoW0rUo9aeSsUQ/+14yBHZ7vQ5I1MLgTYMkgql0ejBXK1g==
+  dependencies:
+    vue-demi "^0.11.3"
+
+"@vuelidate/validators@^2.0.0-alpha.24":
+  version "2.0.0-alpha.24"
+  resolved "https://registry.yarnpkg.com/@vuelidate/validators/-/validators-2.0.0-alpha.24.tgz#bed71a2eb4eddf522b42fe412922fc4e7fc3212f"
+  integrity sha512-LjZGP2dK9848Xw+KLDb6RlaeN3crIdl+z2TZYyg+BqrJhWAV1ZUnpgzGKf4wefsqF5dQ4bWAZY/xnBKn2naIfg==
+  dependencies:
+    vue-demi "^0.11.3"
+
 "@webassemblyjs/ast@1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.0.tgz#a5aa679efdc9e51707a4207139da57920555961f"
@@ -7899,7 +7913,7 @@ vite-plugin-vue-layouts@^0.5.0:
     debug "^4.3.2"
     fast-glob "^3.2.7"
 
-vite-plugin-windicss@^1.4.11:
+vite-plugin-windicss@^1.4.11, vite-plugin-windicss@^1.4.12:
   version "1.4.12"
   resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.4.12.tgz#a301fd554425042b5fdaec562bd11a5a0fcbf178"
   integrity sha512-5YLT7e72z1vCTSmprU/KxtRg22ySN+H19Qxy67lbG3mEbq8YbheOlmVhbqNqSv2MjFVhFqu72Q1FkkjyWENyQQ==
@@ -7937,6 +7951,11 @@ vue-demi@*:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.12.0.tgz#b202a01cdfc635443e41faea697d624caac0fa73"
   integrity sha512-eggsbQSQEJKlvQrtrJLx4J44MIVq5+Z7QetIEh1Na+ZWLgt5Fq0qskQ1QmckTTEoFcUdn36c4K23EjtXZhws7w==
+
+vue-demi@^0.11.3:
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.11.4.tgz#6101992fe4724cf5634018a16e953f3052e94e2a"
+  integrity sha512-/3xFwzSykLW2HiiLie43a+FFgNOcokbBJ+fzvFXd0r2T8MYohqvphUyDQ8lbAwzQ3Dlcrb1c9ykifGkhSIAk6A==
 
 vue-router@^4.0.12:
   version "4.0.12"
@@ -8153,6 +8172,11 @@ windicss@^3.0.12, windicss@^3.1.9:
   version "3.1.9"
   resolved "https://registry.yarnpkg.com/windicss/-/windicss-3.1.9.tgz#e43d924168422efa743c8223607c3af47d2d0291"
   integrity sha512-5YoKvXeCQXIdwc91BoOgpKbIImr2JS8I14rPMa/5dKDDPA4ot3NgICWKELkml39R/8rn4Q0BVUUTqN+w+hjDSA==
+
+windicss@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/windicss/-/windicss-3.2.0.tgz#d779cface09afafa4c31e41f9c229db3d66b5807"
+  integrity sha512-z0q789VZXKdRBrAsfkR+1vOYCb7bS1kec1hyaulT4NClNgO9zGObWbiN+9Jwk0Iw7CLdk/QCB/WCF+zVmr0WpQ==
 
 windows-release@^4.0.0:
   version "4.0.0"
