@@ -22,9 +22,12 @@ const handleChange = (event) => {
 
 <template>
   <div class="flex flex-col gap-[5px]">
-    <div class="rounded shadow px-2 focus-within:ring-1">
+    <div
+      class="rounded shadow px-2 focus-within:ring-1 gap-[5px] flex flex-row items-center text-gray-400 focus-within:text-gray-900"
+    >
+      <slot name="icon" />
       <input
-        class="border-none focus:ring-0"
+        class="border-none focus:ring-0 placeholder-gray-400"
         width="100%"
         @change="handleChange"
         v-model="modelValue"

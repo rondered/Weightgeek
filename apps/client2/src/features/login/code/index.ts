@@ -10,7 +10,15 @@ const useLogin = () => {
       .required("Password Required"),
   });
 
-  const { submitForm, handleReset } = useForm({ validationSchema });
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  const { submitForm, handleReset } = useForm({
+    validationSchema,
+    initialValues,
+  });
 
   const { value: email, errorMessage: emailError } = useField("email", {
     validateOnValueUpdate: false,
@@ -20,7 +28,14 @@ const useLogin = () => {
     { validateOnValueUpdate: false }
   );
 
-  return { email, emailError, password, passwordError, submitForm, handleReset };
+  return {
+    email,
+    emailError,
+    password,
+    passwordError,
+    submitForm,
+    handleReset,
+  };
 };
 
 export default useLogin;

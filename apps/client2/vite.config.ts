@@ -5,6 +5,7 @@ import AutoImport from "unplugin-auto-import/vite";
 import Pages from "vite-plugin-pages";
 import Layouts from "vite-plugin-vue-layouts";
 import WindiCSS from "vite-plugin-windicss";
+import Icons from 'unplugin-icons/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
   plugins: [
     vue(),
     WindiCSS(),
+    Icons({ compiler: 'vue3' }),
     Pages({
       pagesDir: [
         { dir: "src/pages", baseRoute: "" },
