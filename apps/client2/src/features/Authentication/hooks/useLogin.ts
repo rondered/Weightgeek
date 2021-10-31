@@ -1,6 +1,11 @@
 import { useForm, useField } from "vee-validate";
 import { object, string } from "yup";
+import { postLogin } from "@/features/Authentication/endpoints/login";
+import { useRouter } from 'vue-router';
 export const useLogin = () => {
+
+  const router = useRouter();
+
   const validationSchema = object({
     email: string().email("Invalid address").required("Email Required"),
     password: string()
@@ -27,9 +32,12 @@ export const useLogin = () => {
   );
 
   const handleSubmit = async () => {
-    const result = await validate();
-    console.log(result);
-  }
+    const { valid } = await validate();
+    if (valid) {
+      await postLogin({ email: email.value , password: password.value });
+      router.push('/');
+    }
+  };
 
   return {
     email,

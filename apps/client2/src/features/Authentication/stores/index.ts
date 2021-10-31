@@ -11,6 +11,7 @@ export const useAuthenticationStore = defineStore("Authentication", {
     },
     setAccessToken(accessToken: string) {
       this.accessToken = accessToken;
+      this.isLogged = true;
       axiosInstance.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${this.accessToken}`;
