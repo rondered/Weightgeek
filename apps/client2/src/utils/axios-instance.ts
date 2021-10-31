@@ -18,7 +18,7 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     if (error.response.status === 401) {
       try {
-        const access_token = await getAccessToken();
+        const { access_token } = await getAccessToken();
         useAuthenticationStore().setAccessToken(access_token);
         return axiosInstance(error.config, agentConfig);
       } catch (error) {

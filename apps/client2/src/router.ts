@@ -11,8 +11,6 @@ export const router = createRouter({
   routes,
 });
 
-router.beforeResolve;
-
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthenticationStore();
 
@@ -27,8 +25,11 @@ router.beforeEach(async (to, from, next) => {
     if (!authStore.isLogged) {
       console.log(authStore.isLogged);
       next("/login");
+      return;
     }
     next();
+    return;
   }
   next();
+  return;
 });
