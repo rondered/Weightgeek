@@ -2,7 +2,7 @@
 import InputField from "@/components/InputField.vue";
 import useLogin from "../code";
 
-const { fieldState, v, submitForm } = useLogin();
+const { fieldState, v, submitForm, resetForm } = useLogin();
 </script>
 
 <template>
@@ -20,6 +20,7 @@ const { fieldState, v, submitForm } = useLogin();
         placeholder="password"
       />
       <button type="submit">click</button>
+      <button type="reset" @click="resetForm">Reset</button>
     </form>
 </template>
 

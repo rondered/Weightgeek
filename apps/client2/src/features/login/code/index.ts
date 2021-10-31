@@ -22,7 +22,11 @@ const useLogin = () => {
     await v.value.$validate();
   };
 
-  return { fieldState, v, submitForm };
+  const resetForm = () => {
+    v.value.$reset();
+  }
+
+  return { fieldState, v, submitForm, resetForm };
 };
 
 export default useLogin;
