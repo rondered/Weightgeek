@@ -1,31 +1,31 @@
 import { defineConfig } from "vite";
-import path from 'path';
+import path from "path";
 import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
 import Pages from "vite-plugin-pages";
 import Layouts from "vite-plugin-vue-layouts";
 import WindiCSS from "vite-plugin-windicss";
-import Icons from 'unplugin-icons/vite'
+import Icons from "unplugin-icons/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [{find: "@", replacement: path.resolve(__dirname, "src")}],
+    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
   },
   plugins: [
     vue(),
     WindiCSS(),
-    Icons({ compiler: 'vue3' }),
+    Icons({ compiler: "vue3" }),
     Pages({
       pagesDir: [
         { dir: "src/pages", baseRoute: "" },
-        { dir: "src/features/login/pages", baseRoute: "login" },
+        { dir: "src/features/Authentication/pages", baseRoute: "" },
       ],
       extensions: ["vue"],
     }),
     Layouts({
       layoutsDir: "src/layouts",
-      defaultLayout: "app",
+      defaultLayout: "authorized",
     }),
     AutoImport({
       include: [

@@ -1,12 +1,10 @@
-import useVuelidate from "@vuelidate/core";
-// import { required, email, minLength, helpers } from "@vuelidate/validators";
 import { useForm, useField } from "vee-validate";
 import { object, string } from "yup";
-const useLogin = () => {
+export const useLogin = () => {
   const validationSchema = object({
     email: string().email("Invalid address").required("Email Required"),
     password: string()
-      .min(6, `More than 6 characters`)
+      .min(6, "More than 6 characters")
       .required("Password Required"),
   });
 
@@ -15,7 +13,7 @@ const useLogin = () => {
     password: "",
   };
 
-  const { submitForm, handleReset } = useForm({
+  const { validate, handleReset } = useForm({
     validationSchema,
     initialValues,
   });
@@ -28,14 +26,17 @@ const useLogin = () => {
     { validateOnValueUpdate: false }
   );
 
+  const handleSubmit = async () => {
+    const result = await validate();
+    console.log(result);
+  }
+
   return {
     email,
     emailError,
     password,
     passwordError,
-    submitForm,
+    handleSubmit,
     handleReset,
   };
 };
-
-export default useLogin;

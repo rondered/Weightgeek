@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import InputField from "@/components/InputField.vue";
-import useLogin from "../code";
+import { useLogin } from "@/features/Authentication/hooks";
 import EmailIcon from "~icons/ion/email";
 import PasswordIcon from "~icons/ion/key";
 
-const { email, emailError, password, passwordError, submitForm, handleReset } =
+const { email, emailError, password, passwordError, handleSubmit, handleReset } =
   useLogin();
 </script>
 
 <template>
-  <form class="flex flex-col gap-[10px]" @submit.prevent="submitForm">
+  <form class="flex flex-col gap-[10px]" @submit.prevent="handleSubmit">
     <input-field
       v-model="email"
       type="text"
