@@ -5,17 +5,13 @@ import { ErrorObject } from "@vuelidate/core";
 interface IInputField {
   type: string;
   placeholder: string;
-  modelValue: string;
-  errors: ErrorObject[];
+  modelValue?: string;
+  errorMessage?: string;
 }
 
 const props = defineProps<IInputField>();
 
 const emit = defineEmits(["update:modelValue"]);
-
-const errorMessage = computed(() =>
-  props.errors.map((error) => error.$message).join(", ")
-);
 
 const handleChange = (event) => {
   emit("update:modelValue", event.target.value);

@@ -1,32 +1,26 @@
 import useVuelidate from "@vuelidate/core";
-import { required, email, minLength, helpers } from "@vuelidate/validators";
+// import { required, email, minLength, helpers } from "@vuelidate/validators";
+import { useForm, useField } from "vee-validate";
+import { object, string } from "yup";
 const useLogin = () => {
-  const fieldState = reactive({
-    email: "",
-    password: "",
+  const validationSchema = object({
+    email: string().email("Invalid address").required("Email Required"),
+    password: string()
+      .min(6, `More than 6 characters`)
+      .required("Password Required"),
   });
-  const fieldRules = {
-    email: {
-      required: helpers.withMessage("Email is required", required),
-      email,
-    },
-    password: {
-      required: helpers.withMessage("Password is required", required),
-      minLength: minLength(6),
-    },
-  };
 
-  const v = useVuelidate(fieldRules, fieldState);
+  const { submitForm, handleReset } = useForm({ validationSchema });
 
-  const submitForm = async () => {
-    await v.value.$validate();
-  };
+  const { value: email, errorMessage: emailError } = useField("email", {
+    validateOnValueUpdate: false,
+  });
+  const { value: password, errorMessage: passwordError } = useField(
+    "password",
+    { validateOnValueUpdate: false }
+  );
 
-  const resetForm = () => {
-    v.value.$reset();
-  }
-
-  return { fieldState, v, submitForm, resetForm };
+  return { email, emailError, password, passwordError, submitForm, handleReset };
 };
 
 export default useLogin;
