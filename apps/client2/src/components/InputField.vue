@@ -13,28 +13,31 @@ const props = defineProps<IInputField>();
 
 const emit = defineEmits(["update:modelValue"]);
 
+const errorMessage = computed(() =>
+  props.errors.map((error) => error.$message).join(", ")
+);
+
 const handleChange = (event) => {
   emit("update:modelValue", event.target.value);
 };
+
+//TODO: ADD ICON
 </script>
 
 <template>
   <div class="flex flex-col gap-[5px]">
-    <input
-      class="
-        rounded
-        border-gray-300 border-2
-        bg-gray-100
-        focus:(bg-transparent)
-      "
-      width="100%"
-      @change="handleChange"
-      v-model="modelValue"
-      :type="type"
-      :placeholder="placeholder"
-    />
-    <div v-for="error of errors" :key="error.$uid">
-      <div class="error-msg">{{ error.$message }}</div>
+    <div class="rounded shadow px-2 focus-within:ring-1">
+      <input
+        class="border-none focus:ring-0"
+        width="100%"
+        @change="handleChange"
+        v-model="modelValue"
+        :type="type"
+        :placeholder="placeholder"
+      />
+    </div>
+    <div class="text-red-500 font-light text-xs">
+      {{ errorMessage }}
     </div>
   </div>
 </template>

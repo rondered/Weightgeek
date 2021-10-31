@@ -6,7 +6,6 @@ const { fieldState, v, submitForm } = useLogin();
 </script>
 
 <template>
-  <div class="shadow-xl p-5">
     <form class="flex flex-col gap-[10px]" @submit.prevent="submitForm">
       <input-field
         v-model="fieldState.email"
@@ -22,7 +21,6 @@ const { fieldState, v, submitForm } = useLogin();
       />
       <button type="submit">click</button>
     </form>
-  </div>
 </template>
 
 <route lang="yaml">
