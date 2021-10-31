@@ -21,15 +21,20 @@ router.beforeEach(async (to, from, next) => {
     authStore.setIsLogged(false);
   }
 
-  if (to.meta.layout == "authorized") {
-    if (!authStore.isLogged) {
-      console.log(authStore.isLogged);
-      next("/login");
-      return;
+  switch (to?.meta?.layout) {
+    case "authorized": {
+      if (!authStore.isLogged) {
+        next("/login");
+      } else {
+        next();
+      }
     }
-    next();
-    return;
+    case "unauthorized": {
+      if (!authStore.isLogged) {
+        next();
+      } else {
+        next("/");
+      }
+    }
   }
-  next();
-  return;
 });

@@ -10,7 +10,7 @@ export const axiosInstance: AxiosInstance = axios.create(agentConfig);
 
 const getAccessToken = async () => {
   const { data } = await axios.get(`/auth/access`, agentConfig);
-  return data.access_token;
+  return data;
 };
 
 axiosInstance.interceptors.response.use(

@@ -33,5 +33,5 @@ const { email, emailError, password, passwordError, handleSubmit, handleReset } 
 
 <route lang="yaml">
 meta:
-  layout: onboarding
+  layout: unauthorized
 </route>
