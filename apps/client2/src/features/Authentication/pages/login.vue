@@ -1,34 +1,52 @@
 <script setup lang="ts">
 import InputField from "@/components/InputField.vue";
+import FormButton from "@/components/FormButton.vue";
 import { useLogin } from "@/features/Authentication/hooks";
 import EmailIcon from "~icons/ion/email";
 import PasswordIcon from "~icons/ion/key";
 
-const { email, emailError, password, passwordError, handleSubmit, handleReset } =
-  useLogin();
+const {
+  email,
+  emailError,
+  password,
+  passwordError,
+  handleSubmit,
+  handleReset,
+} = useLogin();
 </script>
 
 <template>
-  <form class="flex flex-col gap-[10px]" @submit.prevent="handleSubmit">
-    <input-field
-      v-model="email"
-      type="text"
-      :error-message="emailError"
-      placeholder="email"
+  <div class="flex flex-row w-full justify-between px-5 py-10 md:px-10">
+    <form
+      class="flex flex-col gap-[15px] w-full md:w-[450px]"
+      @submit.prevent="handleSubmit"
     >
-      <template v-slot:icon><email-icon /></template>
-    </input-field>
-    <input-field
-      v-model="password"
-      type="password"
-      :error-message="passwordError"
-      placeholder="password"
-    >
-      <template v-slot:icon><password-icon /></template>
-    </input-field>
-    <button type="submit">click</button>
-    <button type="reset" @click="handleReset">Reset</button>
-  </form>
+      <span class="text-xl font-bold text-gray-700">Login</span>
+      <div class="flex flex-row items-center gap-[10px]">
+        <div class="h-px w-full bg-gray-300"/>
+        <div class="text-sm font-light">OR</div>
+        <div class="h-px w-full bg-gray-300"/>
+      </div>
+      <input-field
+        v-model="email"
+        type="text"
+        :error-message="emailError"
+        placeholder="email"
+      >
+        <template v-slot:icon><email-icon /></template>
+      </input-field>
+      <input-field
+        v-model="password"
+        type="password"
+        :error-message="passwordError"
+        placeholder="password"
+      >
+        <template v-slot:icon><password-icon /></template>
+      </input-field>
+      <form-button type="submit">click</form-button>
+    </form>
+    <div class="hidden md:block">x</div>
+  </div>
 </template>
 
 <route lang="yaml">
