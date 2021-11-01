@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import SpinnerIcon from "~icons/gg/spinner";
 interface IFormButton {
   type: string;
-  loading?: string;
+  loading?: boolean;
 }
 
 const props = defineProps<IFormButton>();
@@ -24,6 +25,7 @@ const props = defineProps<IFormButton>();
       items-center
     "
   >
-    <slot />
+    <spinner-icon v-if="loading" class="animate-spin" />
+    <slot v-else />
   </button>
 </template>

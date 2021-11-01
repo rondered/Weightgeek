@@ -14,7 +14,8 @@ const {
   passwordError,
   handleSubmit,
   handleReset,
-  errorMessage
+  errorMessage,
+  isLoading
 } = useLogin();
 </script>
 
@@ -49,7 +50,7 @@ const {
       >
         <template v-slot:icon><password-icon /></template>
       </input-field>
-      <form-button type="submit">click</form-button>
+      <form-button :loading="isLoading" type="submit">click</form-button>
     </form>
     <div class="hidden md:block">x</div>
   </div>
