@@ -20,7 +20,7 @@ const handleChange = (event) => {
 <template>
   <div class="flex flex-col gap-[5px]">
     <div
-      class="rounded-full shadow px-2 focus-within:ring-1 gap-[5px] flex flex-row items-center text-gray-800 focus-within:(ring-purple-600 ring-3) bg-white"
+      class="rounded-xl shadow px-2 focus-within:ring-1 gap-[5px] flex flex-row items-center text-gray-800 focus-within:(ring-purple-700 ring-3) bg-white"
     >
       <slot name="icon" />
       <input

@@ -6,4 +6,11 @@ export default defineConfig({
     exclude: ["node_modules", ".git"],
   },
   plugins: [require("windicss/plugin/forms")],
+  theme: {
+    extend: {
+      fontFamily: {
+        basier: ["Basier Circle", "Segoe UI", "Roboto"],
+      },
+    },
+  },
 });

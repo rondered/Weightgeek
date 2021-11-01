@@ -21,7 +21,7 @@ const {
       class="flex flex-col gap-[15px] w-full md:w-[450px]"
       @submit.prevent="handleSubmit"
     >
-      <span class="text-xl font-bold text-gray-700">Login</span>
+      <span class="text-3xl font-bold text-gray-700">Login</span>
       <div class="flex flex-row items-center gap-[10px]">
         <div class="h-px w-full bg-gray-300"/>
         <div class="text-sm font-light">OR</div>
