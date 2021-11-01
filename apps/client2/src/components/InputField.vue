@@ -20,11 +20,30 @@ const handleChange = (event) => {
 <template>
   <div class="flex flex-col gap-[5px]">
     <div
-      class="rounded-xl shadow px-2 focus-within:ring-1 gap-[5px] flex flex-row items-center text-gray-800 focus-within:(ring-purple-700 ring-3) bg-white"
+      class="
+        shadow
+        px-2
+        focus-within:ring-1
+        gap-[5px]
+        flex flex-row
+        items-center
+        text-gray-800
+        focus-within:(border-b-10
+        border-blue-700
+        ring-0)
+        bg-white
+        transition-all
+      "
     >
       <slot name="icon" />
       <input
-        class="border-none focus:ring-0 placeholder-gray-300 bg-transparent w-full"
+        class="
+          border-none
+          focus:ring-0
+          placeholder-gray-300
+          bg-transparent
+          w-full
+        "
         width="100%"
         @change="handleChange"
         v-model="modelValue"

@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { useMutation } from "vue-query";
 import InputField from "@/components/InputField.vue";
 import FormButton from "@/components/FormButton.vue";
+import Alert from "@/components/Alert.vue";
 import { useLogin } from "@/features/Authentication/hooks";
 import EmailIcon from "~icons/ion/email";
 import PasswordIcon from "~icons/ion/key";
@@ -12,6 +14,7 @@ const {
   passwordError,
   handleSubmit,
   handleReset,
+  errorMessage
 } = useLogin();
 </script>
 
@@ -21,11 +24,14 @@ const {
       class="flex flex-col gap-[15px] w-full md:w-[450px]"
       @submit.prevent="handleSubmit"
     >
-      <span class="text-3xl font-bold text-gray-700">Login</span>
+      <span class="text-3xl font-semibold border-b-10 border-blue-700 w-min"
+        >Login</span
+      >
+      <alert variation="alert" v-if="errorMessage">{{ errorMessage }}</alert>
       <div class="flex flex-row items-center gap-[10px]">
-        <div class="h-px w-full bg-gray-300"/>
+        <div class="h-px w-full bg-gray-300" />
         <div class="text-sm font-light">OR</div>
-        <div class="h-px w-full bg-gray-300"/>
+        <div class="h-px w-full bg-gray-300" />
       </div>
       <input-field
         v-model="email"
