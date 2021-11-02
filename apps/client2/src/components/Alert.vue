@@ -9,12 +9,16 @@ const props = defineProps<IAlert>();
 <template>
   <div
     class="
-      w-max
+      w-full
       text-sm
-      border-b-10 border-b-blue-700
       flex
       items-center
+      justify-center
       gap-[5px]
+      rounded-full
+      border-gray-600
+      border-1
+      p-6
     "
   >
     <alert-icon class="h-[25px] w-[25px]" v-if="variation == 'alert'" />

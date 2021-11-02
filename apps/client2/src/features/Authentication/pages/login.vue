@@ -25,7 +25,7 @@ const {
       class="flex flex-col gap-[15px] w-full md:w-[450px]"
       @submit.prevent="handleSubmit"
     >
-      <span class="text-3xl font-semibold border-b-10 border-blue-700 w-min"
+      <span class="text-3xl pb-10"
         >Login</span
       >
       <alert variation="alert" v-if="errorMessage">{{ errorMessage }}</alert>
@@ -50,7 +50,7 @@ const {
       >
         <template v-slot:icon><password-icon /></template>
       </input-field>
-      <form-button :loading="isLoading" type="submit">click</form-button>
+      <form-button :loading="isLoading" type="submit">Login</form-button>
     </form>
     <div class="hidden md:block">x</div>
   </div>

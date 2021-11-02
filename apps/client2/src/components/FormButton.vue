@@ -12,17 +12,17 @@ const props = defineProps<IFormButton>();
   <button
     class="
       w-full
-      bg-blue-700
-      hover:(bg-blue-600)
-      px-4
-      py-2
+      bg-gray-600
+      hover:(bg-gray-500)
+      px-6
+      py-6
       text-white
       transition-all
-      font-medium
       text-md
       flex
       justify-center
       items-center
+      rounded-full
     "
   >
     <spinner-icon v-if="loading" class="animate-spin" />
