@@ -6,6 +6,8 @@ import Alert from "@/components/Alert.vue";
 import { useLogin } from "@/features/Authentication/hooks";
 import EmailIcon from "~icons/ion/email";
 import PasswordIcon from "~icons/ion/key";
+import FacebookIcon from "~icons/gg/facebook";
+import GoogleIcon from "~icons/gg/google";
 
 const {
   email,
@@ -15,7 +17,7 @@ const {
   handleSubmit,
   handleReset,
   errorMessage,
-  isLoading
+  isLoading,
 } = useLogin();
 </script>
 
@@ -25,15 +27,21 @@ const {
       class="flex flex-col gap-[15px] w-full md:w-[450px]"
       @submit.prevent="handleSubmit"
     >
-      <span class="text-3xl pb-10"
-        >Login</span
-      >
-      <alert variation="alert" v-if="errorMessage">{{ errorMessage }}</alert>
+      <span class="text-3xl pb-10">Login</span>
+      <form-button class="bg-blue-700">
+        <template v-slot:text>Login with Facebook</template
+        ><template v-slot:icon><facebook-icon /></template
+      ></form-button>
+      <form-button class="bg-red-700">
+        <template v-slot:text>Login with Google</template
+        ><template v-slot:icon><google-icon /></template
+      ></form-button>
       <div class="flex flex-row items-center gap-[10px]">
         <div class="h-px w-full bg-gray-300" />
         <div class="text-sm font-light">OR</div>
         <div class="h-px w-full bg-gray-300" />
       </div>
+      <alert variation="alert" v-if="errorMessage">{{ errorMessage }}</alert>
       <input-field
         v-model="email"
         type="text"
@@ -50,7 +58,9 @@ const {
       >
         <template v-slot:icon><password-icon /></template>
       </input-field>
-      <form-button :loading="isLoading" type="submit">Login</form-button>
+      <form-button :loading="isLoading" type="submit"
+        ><template v-slot:text>Login</template></form-button
+      >
     </form>
     <div class="hidden md:block">x</div>
   </div>

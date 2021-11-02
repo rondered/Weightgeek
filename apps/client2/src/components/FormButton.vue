@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SpinnerIcon from "~icons/gg/spinner";
 interface IFormButton {
-  type: string;
+  type?: string;
   loading?: boolean;
 }
 
@@ -13,7 +13,8 @@ const props = defineProps<IFormButton>();
     class="
       w-full
       bg-gray-600
-      hover:(bg-gray-500)
+      hover:(filter
+      brightness-130)
       px-6
       py-6
       text-white
@@ -26,6 +27,9 @@ const props = defineProps<IFormButton>();
     "
   >
     <spinner-icon v-if="loading" class="animate-spin" />
-    <slot v-else />
+    <div v-else class="flex flex-row gap-[10px] items-center">
+      <slot name="icon"/>
+      <slot name="text" />
+    </div>
   </button>
 </template>
