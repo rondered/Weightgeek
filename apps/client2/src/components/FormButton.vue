@@ -12,11 +12,11 @@ const props = defineProps<IFormButton>();
   <button
     class="
       w-full
-      bg-gray-600
+      bg-teal-600
       hover:(filter
       brightness-130)
       px-6
-      py-6
+      py-4
       text-white
       transition-all
       text-md
@@ -24,6 +24,7 @@ const props = defineProps<IFormButton>();
       justify-center
       items-center
       rounded-full
+      leading-[25px]
     "
   >
     <spinner-icon v-if="loading" class="animate-spin" />
