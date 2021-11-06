@@ -2,55 +2,64 @@
   html {
     @apply bg-gray-900 text-white font-basier;
   }
-  @font-face {
-    font-family: "Basier circle";
-    src: url("./assets/fonts//basiercircle-bold-webfont.eot");
-    src: url("./assets/fonts//basiercircle-bold-webfont.eot?#iefix")
-        format("embedded-opentype"),
-      url("./assets/fonts//basiercircle-bold-webfont.woff2") format("woff2"),
-      url("./assets/fonts//basiercircle-bold-webfont.woff") format("woff"),
-      url("./assets/fonts//basiercircle-bold-webfont.ttf") format("truetype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+}
+
+@font-face {
+  font-family: "Basier circle";
+  src: url("./assets/fonts/basiercircle-bold-webfont.eot");
+  src: url("./assets/fonts/basiercircle-bold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/basiercircle-bold-webfont.woff2") format("woff2"),
+    url("./assets/fonts/basiercircle-bold-webfont.woff") format("woff"),
+    url("./assets/fonts/basiercircle-bold-webfont.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Basier circle";
+  src: url("./assets/fonts/basiercircle-semibold-webfont.eot");
+  src: url("./assets/fonts/basiercircle-semibold-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/basiercircle-semibold-webfont.woff2") format("woff2"),
+    url("./assets/fonts/basiercircle-semibold-webfont.woff") format("woff"),
+    url("./assets/fonts/basiercircle-semibold-webfont.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Basier circle";
+  src: url("./assets/fonts/basiercircle-medium-webfont.eot");
+  src: url("./assets/fonts/basiercircle-medium-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/basiercircle-medium-webfont.woff2") format("woff2"),
+    url("./assets/fonts/basiercircle-medium-webfont.woff") format("woff"),
+    url("./assets/fonts/basiercircle-medium-webfont.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Basier circle";
+  src: url("./assets/fonts/basiercircle-regular-webfont.eot");
+  src: url("./assets/fonts/basiercircle-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/basiercircle-regular-webfont.woff2") format("woff2"),
+    url("./assets/fonts/basiercircle-regular-webfont.woff") format("woff"),
+    url("./assets/fonts/basiercircle-regular-webfont.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer components {
+
+  .main-title {
+    @apply text-3xl pb-10 font-bold;
   }
-  
-  @font-face {
-    font-family: "Basier circle";
-    src: url("./assets/fonts//basiercircle-semibold-webfont.eot");
-    src: url("./assets/fonts//basiercircle-semibold-webfont.eot?#iefix")
-        format("embedded-opentype"),
-      url("./assets/fonts//basiercircle-semibold-webfont.woff2") format("woff2"),
-      url("./assets/fonts//basiercircle-semibold-webfont.woff") format("woff"),
-      url("./assets/fonts//basiercircle-semibold-webfont.ttf") format("truetype");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "Basier circle";
-    src: url("./assets/fonts//basiercircle-medium-webfont.eot");
-    src: url("./assets/fonts//basiercircle-medium-webfont.eot?#iefix")
-        format("embedded-opentype"),
-      url("./assets/fonts//basiercircle-medium-webfont.woff2") format("woff2"),
-      url("./assets/fonts//basiercircle-medium-webfont.woff") format("woff"),
-      url("./assets/fonts//basiercircle-medium-webfont.ttf") format("truetype");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "Basier circle";
-    src: url("./assets/fonts//basiercircle-regular-webfont.eot");
-    src: url("./assets/fonts//basiercircle-regular-webfont.eot?#iefix")
-        format("embedded-opentype"),
-      url("./assets/fonts//basiercircle-regular-webfont.woff2") format("woff2"),
-      url("./assets/fonts//basiercircle-regular-webfont.woff") format("woff"),
-      url("./assets/fonts//basiercircle-regular-webfont.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
+
 }

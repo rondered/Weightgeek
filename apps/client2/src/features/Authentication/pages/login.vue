@@ -27,7 +27,7 @@ const {
       class="flex flex-col gap-[15px] w-full md:w-[450px]"
       @submit.prevent="handleSubmit"
     >
-      <span class="text-3xl pb-10">Login</span>
+      <span class="main-title">Login</span>
       <form-button class="bg-blue-700">
         <template v-slot:text>Login with Facebook</template
         ><template v-slot:icon><facebook-icon /></template

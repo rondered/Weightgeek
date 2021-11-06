@@ -14,8 +14,6 @@ const handleChange = (e: Event) => {
   const target = <HTMLInputElement>e.target;
   emit("update:modelValue", target.value);
 };
-
-//TODO: ADD ICON
 </script>
 
 <template>

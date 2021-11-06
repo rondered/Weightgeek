@@ -6,6 +6,7 @@
       flex
       md:items-center
       justify-center
+      min-w-[300px]
     "
   >
     <router-view />
