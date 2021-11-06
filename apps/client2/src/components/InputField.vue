@@ -19,7 +19,7 @@ const handleChange = (e: Event) => {
 <template>
   <div class="flex flex-col gap-[5px]">
     <div
-      class="px-5 py-2 focus-within:ring-1 gap-[5px] flex flex-row items-center text-white focus-within:(ring-3 ring-teal-600 bg-white text-teal-600) hover:(ring-3 ring-gray-200) bg-gray-800 transition-all rounded-lg"
+      class="px-5 py-2 gap-[5px] ring-2 ring-gray-700 flex flex-row items-center text-white focus-within:(ring-teal-600 ring-2 bg-white text-teal-600) hover:(ring-teal-600) bg-gray-800 transition-all rounded-lg"
     >
       <slot name="icon" />
       <input
