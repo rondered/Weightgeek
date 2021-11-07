@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useQueryProvider } from "vue-query";
-useQueryProvider();
+import { useQueryProvider } from 'vue-query'
+useQueryProvider()
 </script>
 
 <template>

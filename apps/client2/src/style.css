@@ -57,9 +57,7 @@
 }
 
 @layer components {
-
   .main-title {
-    @apply text-3xl pb-2 mb-5 font-bold text-center border-b-teal-600 border-b-10 w-min;
+    @apply text-3xl pb-2 mb-5 font-bold text-center border-b-blue-600 border-b-10 w-min;
   }
-
 }
