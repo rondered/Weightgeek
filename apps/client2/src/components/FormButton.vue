@@ -10,7 +10,7 @@ const props = defineProps<IFormButton>();
 
 <template>
   <button
-    class="w-full bg-emerald-600 hover:(filter brightness-130) px-6 py-4 text-white transition-all text-md flex justify-center items-center rounded-full leading-[25px] ring-2 ring-emerald-500"
+    class="w-full bg-emerald-600 hover:(filter brightness-130) px-6 py-4 text-white transition-all text-md flex justify-center items-center rounded-full leading-[25px]"
   >
     <spinner-icon v-if="loading" class="animate-spin" />
     <div v-else class="flex 
