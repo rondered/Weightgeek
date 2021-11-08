@@ -6,9 +6,9 @@ import { useRouter } from "vue-router";
 export const useLogin = () => {
   const router = useRouter();
 
-  const { isLoading, isError, error, mutateAsync, isSuccess } = useMutation<
+  const { isLoading, error, mutateAsync, isSuccess } = useMutation<
     any,
-    { statusCode: number; message: string; error: string },
+    any,
     { email: string; password: string }
   >(async (data) => {
     return postLogin(data);
@@ -49,7 +49,14 @@ export const useLogin = () => {
     }
   };
 
-  const errorMessage = computed(() => error.value?.message);
+  const errorMessage = computed(() => error.value?.response.data.message);
+
+  watch(
+    () => errorMessage.value,
+    () => {
+      console.log(error);
+    }
+  );
 
   return {
     email,

@@ -19,11 +19,11 @@ const handleChange = (e: Event) => {
 <template>
   <div class="flex flex-col gap-[5px]">
     <div
-      class="px-5 py-2 gap-[5px] ring-2 ring-gray-700 flex flex-row items-center text-white focus-within:(ring-blue-600 ring-2 bg-white text-gray-900) hover:(ring-blue-600) bg-gray-800 transition-all rounded-lg"
+      class="px-5 py-2 gap-[5px] ring-2 ring-dark-700 flex flex-row items-center text-white focus-within:(ring-purple-600 ring-2 bg-dark-200) hover:(ring-purple-600) bg-dark-800 transition-all rounded-lg"
     >
       <slot name="icon" />
       <input
-        class="border-none focus:ring-0 placeholder-gray-400 text-lg bg-transparent w-full"
+        class="border-none focus:ring-0 text-lg bg-transparent w-full"
         width="100%"
         @change="handleChange"
         v-model="modelValue"

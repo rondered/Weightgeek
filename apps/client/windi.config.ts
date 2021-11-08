@@ -45,7 +45,7 @@ export default defineConfig({
      justify-between font-medium bg-secondaryColor`,
     divider: "h-px bg-dividerColor",
     card: "bg-cardBgColor rounded-lg border border-borderColor",
-    link: "text-textColor hover:(text-blue-600)",
+    link: "text-textColor hover:(text-purple-600)",
     "input-field": `p-3 rounded appearance-none font-medium outline-none
         focus:(border-2 border-primaryColor) border border-borderColor
         placeholder-opacity-25 placeholder-textColor bg-transparent`,

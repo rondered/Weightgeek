@@ -1,6 +1,6 @@
 @layer base {
   html {
-    @apply bg-gray-900 text-white font-basier;
+    @apply bg-dark-900 text-white font-basier;
   }
 }
 
@@ -58,6 +58,6 @@
 
 @layer components {
   .main-title {
-    @apply text-3xl pb-2 mb-5 font-bold text-center border-b-blue-600 border-b-10 w-min;
+    @apply text-3xl pb-2 mb-5 font-bold text-center border-b-purple-600 border-b-10 w-min;
   }
 }

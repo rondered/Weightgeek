@@ -38,9 +38,9 @@ const {
         </template>
       </form-button>
       <div class="flex flex-row items-center gap-[10px]">
-        <div class="h-px w-full bg-gray-600" />
-        <div class="text-sm font-light text-blue-600">OR</div>
-        <div class="h-px w-full bg-gray-600" />
+        <div class="h-px w-full bg-dark-600" />
+        <div class="text-sm font-light text-purple-600">OR</div>
+        <div class="h-px w-full bg-dark-600" />
       </div>
       <alert v-if="errorMessage" variation="alert">{{ errorMessage }}</alert>
       <input-field v-model="email" type="text" :error-message="emailError" placeholder="email">

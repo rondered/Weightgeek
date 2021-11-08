@@ -15,9 +15,9 @@ const props = defineProps<IAlert>();
       items-center
       justify-center
       gap-[5px]
-      rounded-full
+      rounded-lg
       ring-2
-      ring-gray-700
+      ring-dark-700
       p-6
     "
   >
