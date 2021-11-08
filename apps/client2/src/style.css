@@ -58,6 +58,6 @@
 
 @layer components {
   .main-title {
-    @apply text-3xl pb-2 mb-5 font-bold text-center border-b-purple-600 border-b-10 w-min;
+    @apply text-3xl pb-2 mb-5 font-bold text-center;
   }
 }

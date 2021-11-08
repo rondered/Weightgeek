@@ -39,7 +39,7 @@ const {
       </form-button>
       <div class="flex flex-row items-center gap-[10px]">
         <div class="h-px w-full bg-dark-600" />
-        <div class="text-sm font-light text-purple-600">OR</div>
+        <div class="text-sm font-light">OR</div>
         <div class="h-px w-full bg-dark-600" />
       </div>
       <alert v-if="errorMessage" variation="alert">{{ errorMessage }}</alert>
