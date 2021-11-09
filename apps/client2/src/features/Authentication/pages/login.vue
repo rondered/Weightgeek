@@ -56,13 +56,13 @@ const {
       </form-button>
       <span class="text-center font-bold">OR</span>
       <primary-button>
-        <template #text>Login with Facebook</template>
+        <template #text>Sign in with Facebook</template>
         <template #icon>
           <facebook-icon />
         </template>
       </primary-button>
       <primary-button>
-        <template #text>Login with Google</template>
+        <template #text>Sign in with Google</template>
         <template #icon>
           <google-icon />
         </template>
