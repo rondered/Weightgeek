@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { InputHTMLAttributes } from 'vue';
 interface IInputField {
   type: string;
   placeholder: string;
+  autocomplete?: string;
   modelValue?: string;
   errorMessage?: string;
 }
@@ -27,8 +29,7 @@ const handleChange = (e: Event) => {
         width="100%"
         @change="handleChange"
         v-model="modelValue"
-        :type="type"
-        :placeholder="placeholder"
+        v-bind="props"
       />
     </div>
     <div class="text-red-500 font-light text-sm">{{ errorMessage }}</div>

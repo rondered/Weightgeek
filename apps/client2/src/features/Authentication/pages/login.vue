@@ -43,7 +43,13 @@ const {
         <div class="h-px w-full bg-dark-600" />
       </div>
       <alert v-if="errorMessage" variation="alert">{{ errorMessage }}</alert>
-      <input-field v-model="email" type="text" :error-message="emailError" placeholder="email">
+      <input-field
+        v-model="email"
+        type="text"
+        :error-message="emailError"
+        placeholder="email"
+        autocomplete="email"
+      >
         <template #icon>
           <email-icon />
         </template>
@@ -53,6 +59,7 @@ const {
         type="password"
         :error-message="passwordError"
         placeholder="password"
+        autocomplete="password"
       >
         <template #icon>
           <password-icon />
