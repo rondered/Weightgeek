@@ -44,7 +44,7 @@ export default defineConfig({
     "btn-secondary": `btn bg-secondaryColor border hover:(bg-hoverSecondaryColor) border-borderColor
      justify-between font-medium bg-secondaryColor`,
     divider: "h-px bg-dividerColor",
-    card: "bg-cardBgColor rounded-lg border border-borderColor",
+    card: "bg-cardBgColor rounded-xl border border-borderColor",
     link: "text-textColor hover:(text-emerald-600)",
     "input-field": `p-3 rounded appearance-none font-medium outline-none
         focus:(border-2 border-primaryColor) border border-borderColor

@@ -16,7 +16,7 @@ export const FormAlert: React.FC<IFormAlert> = (props) => {
   const {variation, message} = props;
   return (
     <div
-      className={`flex border rounded-lg items-center justify-between transition duration-1000 p-3 custom-ring ${variationConfig[variation].ring}`}
+      className={`flex border rounded-xl items-center justify-between transition duration-1000 p-3 custom-ring ${variationConfig[variation].ring}`}
     >
       {message}
       {variationConfig[variation].icon}

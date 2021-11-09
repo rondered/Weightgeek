@@ -2,6 +2,7 @@
 import { useMutation } from 'vue-query'
 import InputField from '@/components/InputField.vue'
 import FormButton from '@/components/FormButton.vue'
+import PrimaryButton from '@/components/PrimaryButton.vue'
 import Alert from '@/components/Alert.vue'
 import { useLogin } from '@/features/Authentication/hooks'
 import EmailIcon from '~icons/ion/email'
@@ -24,23 +25,8 @@ const {
 <template>
   <div class="flex flex-row w-full justify-between px-5 py-10 md:px-10">
     <form class="flex flex-col gap-[25px] w-full md:w-[450px]" @submit.prevent="handleSubmit">
-      <span class="main-title">Login</span>
-      <form-button>
-        <template #text>Login with Facebook</template>
-        <template #icon>
-          <facebook-icon />
-        </template>
-      </form-button>
-      <form-button>
-        <template #text>Login with Google</template>
-        <template #icon>
-          <google-icon />
-        </template>
-      </form-button>
+      <span class="main-title mb-[30px]">Login</span>
       <div class="flex flex-row items-center gap-[10px]">
-        <div class="h-px w-full bg-dark-600" />
-        <div class="text-sm font-light">OR</div>
-        <div class="h-px w-full bg-dark-600" />
       </div>
       <alert v-if="errorMessage" variation="alert">{{ errorMessage }}</alert>
       <input-field
@@ -68,6 +54,18 @@ const {
       <form-button :loading="isLoading" type="submit">
         <template #text>Login</template>
       </form-button>
+      <primary-button class="mt-[60px]">
+        <template #text>Login with Facebook</template>
+        <template #icon>
+          <facebook-icon />
+        </template>
+      </primary-button>
+      <primary-button>
+        <template #text>Login with Google</template>
+        <template #icon>
+          <google-icon />
+        </template>
+      </primary-button>
     </form>
     <div class="hidden md:block">x</div>
   </div>
