@@ -54,7 +54,8 @@ const {
       <form-button :loading="isLoading" type="submit">
         <template #text>Login</template>
       </form-button>
-      <primary-button class="mt-[60px]">
+      <span class="text-center font-bold">OR</span>
+      <primary-button>
         <template #text>Login with Facebook</template>
         <template #icon>
           <facebook-icon />

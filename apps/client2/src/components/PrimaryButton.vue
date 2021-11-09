@@ -10,12 +10,10 @@ const props = defineProps<IPrimaryButton>();
 
 <template>
   <button
-
-    class="w-full bg-dark-800 px-6 py-4 text-white transition-all text-md flex justify-center items-center rounded-xl leading-[25px] ring-2 ring-dark-300 hover:(ring-cyan-500) focus:(ring-cyan-500)"
+    class="w-full bg-transparent px-6 py-4 text-white transition-all text-md flex justify-center items-center rounded-xl leading-[25px] border-2 border-teal-500 hover:(border-cyan-500) focus:(border-cyan-500)"
   >
     <spinner-icon v-if="loading" class="animate-spin" />
-    <div v-else class="flex 
-    flex-row gap-[10px] items-center">
+    <div v-else class="flex flex-row gap-[10px] items-center">
       <slot name="icon" />
       <slot name="text" />
     </div>
