@@ -1,5 +1,0 @@
-@layer base {
-  html {
-    @apply bg-indigo-50 text-indigo-900 font-montserrat;
-  }
-}

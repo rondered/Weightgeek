@@ -21,7 +21,7 @@ const handleChange = (e: Event) => {
 <template>
   <div class="flex flex-col gap-[5px]">
     <div
-      class="px-5 py-2 gap-[5px] flex flex-row items-center text-gray-700 focus-within:(bg-indigo-100) bg-indigo-100 transition-all rounded-xl"
+      class="bg-inputBgColor px-5 py-2 gap-[5px] flex flex-row items-center text-gray-700 transition-all rounded-xl"
     >
       <slot name="icon" />
       <input

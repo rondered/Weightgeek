@@ -4,5 +4,5 @@ useQueryProvider()
 </script>
 
 <template>
-  <router-view />
+  <router-view class="bg-bgColor text-indigo-900 font-montserrat" />
 </template>

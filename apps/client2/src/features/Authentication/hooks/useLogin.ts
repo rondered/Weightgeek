@@ -50,14 +50,7 @@ export const useLogin = () => {
   };
 
   const errorMessage = computed(() => error.value?.response.data.message);
-
-  watch(
-    () => errorMessage.value,
-    () => {
-      console.log(error);
-    }
-  );
-
+  
   return {
     email,
     emailError,

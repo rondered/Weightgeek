@@ -1,8 +1,7 @@
 import { createApp } from "vue";
 import { router } from './router';
 import { createPinia } from "pinia";
-import 'virtual:windi.css'
-import './style.css'
+import 'virtual:windi.css';
 
 import App from "./App.vue";
 

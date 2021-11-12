@@ -6,7 +6,7 @@ import Pages from "vite-plugin-pages";
 import Layouts from "vite-plugin-vue-layouts";
 import WindiCSS from "vite-plugin-windicss";
 import Icons from "unplugin-icons/vite";
-import ViteFonts from 'vite-plugin-fonts';
+import ViteFonts from "vite-plugin-fonts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,8 +16,11 @@ export default defineConfig({
   plugins: [
     ViteFonts({
       google: {
-        families: ['Montserrat']
-      }
+        families: [
+          { name: "Montserrat", styles: "wght@0,400;1,200;3,700;" },
+        ],
+        preconnect: true,
+      },
     }),
     vue(),
     WindiCSS(),

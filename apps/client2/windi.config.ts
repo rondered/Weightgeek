@@ -14,6 +14,11 @@ export default defineConfig({
       },
       boxShadow: {
         indigoGlow: `0px 10px 20px ${colors.indigo['400']}`
+      },
+      colors: {
+        bgColor: "#F3F5F5",
+        primaryColor: "#4461F2",
+        inputBgColor: "#EAF0F7"
       }
     },
   },
