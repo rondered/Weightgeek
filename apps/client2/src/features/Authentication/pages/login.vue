@@ -54,19 +54,6 @@ const {
       <form-button :loading="isLoading" type="submit">
         <template #text>Login</template>
       </form-button>
-      <span class="text-center font-bold">OR</span>
-      <primary-button>
-        <template #text>Sign in with Facebook</template>
-        <template #icon>
-          <facebook-icon />
-        </template>
-      </primary-button>
-      <primary-button>
-        <template #text>Sign in with Google</template>
-        <template #icon>
-          <google-icon />
-        </template>
-      </primary-button>
     </form>
     <div class="hidden md:block">x</div>
   </div>

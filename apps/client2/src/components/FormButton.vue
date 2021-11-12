@@ -11,7 +11,7 @@ const props = defineProps<IFormButton>();
 <template>
   <button
 
-    class="w-full bg-gradient-to-r from-teal-600 to-cyan-500 hover:(filter brightness-130) px-6 py-4 text-white transition-all text-md flex justify-center items-center rounded-xl leading-[25px]"
+    class="w-full ring-0 shadow-indigoGlow bg-indigo-500 hover:(bg-indigo-400) px-6 py-4 text-white transition-all text-lg flex justify-center items-center rounded-full"
   >
     <spinner-icon v-if="loading" class="animate-spin" />
     <div v-else class="flex 

@@ -21,17 +21,17 @@ const handleChange = (e: Event) => {
 <template>
   <div class="flex flex-col gap-[5px]">
     <div
-      class="px-5 py-2 gap-[5px] ring-2 ring-dark-300 flex flex-row items-center text-white focus-within:(ring-cyan-500 ring-2 bg-dark-200) hover:(ring-cyan-500) bg-dark-800 transition-all rounded-xl"
+      class="px-5 py-2 gap-[5px] flex flex-row items-center text-gray-700 focus-within:(bg-indigo-100) bg-indigo-100 transition-all rounded-xl"
     >
       <slot name="icon" />
       <input
-        class="border-none focus:ring-0 text-lg bg-transparent w-full"
+        class="border-none focus:ring-0 text-md bg-transparent w-full"
         width="100%"
         @change="handleChange"
         v-model="modelValue"
         v-bind="props"
       />
     </div>
-    <div class="text-red-500 font-light text-sm">{{ errorMessage }}</div>
+    <div class="text-red-600 text-xs font-bold">{{ errorMessage }}</div>
   </div>
 </template>

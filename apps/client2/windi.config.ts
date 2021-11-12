@@ -1,4 +1,5 @@
 import { defineConfig } from "windicss/helpers";
+import colors from 'windicss/colors';
 
 export default defineConfig({
   extract: {
@@ -9,8 +10,11 @@ export default defineConfig({
   theme: {
     extend: {
       fontFamily: {
-        basier: ["Basier Circle", "Segoe UI", "Roboto"],
+        montserrat: ["Montserrat", "sans-serif"]
       },
+      boxShadow: {
+        indigoGlow: `0px 10px 20px ${colors.indigo['400']}`
+      }
     },
   },
 });
