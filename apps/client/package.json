@@ -1,5 +1,5 @@
 {
-  "name": "client2",
+  "name": "@wg/client",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
